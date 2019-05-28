@@ -5,5 +5,8 @@
 </header>
 <body>
     <h1>Teste</h1>
+    <div>
+        <p>Ajout d'un texte depuis une autre branche teste</p>
+    </div>
 </body>
 </html>
