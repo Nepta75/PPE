@@ -20,7 +20,34 @@ create table technicien (
 	prenom varchar(50),
 	email varchar(50),
 	tel int(10),
-	primary key (idadmin)
+	primary key (idtechnicien)
+);
+
+
+create table avis (
+	idavis int(5) not null auto_increment,
+	note int(5),
+	commentaire varchar(200),
+	date_avis date,
+	primary key (idavis)
+);
+
+create table vehicule_client (
+	idvehiculeclient int(5) not null auto_increment,
+	type_vehicule enum ("2 Roues" , "4 Roues"),
+	modele varchar(50),
+	millesime int(4),
+	kilometrage int(6),
+	cylindree int(4),
+	energie enum ("Essence" , "Diesel", "Electrique", "Hybride"),
+	type_boite enum ("Manuelle" , "Automatique"),
+	date_immat date,
+	descriptif varchar(200),
+	valide bool,
+	date_rdv date,
+	heure_rdv time,
+	type_rdv enum (""),
+	primary key (idvehiculeclient)
 );
 
 create table acheter (
@@ -49,10 +76,12 @@ create table essayer (
 	primary key (idvehiculeneuf, idclient),
 	foreign key (idvehiculeneuf) references vehicule_neuf (idvehiculeneuf),
 	foreign key (idclient) references client (idclient)
-):
+);
 
 create table devis (
 	iddevis int(5) not null auto_increment,
+	idclient int(5),
+	idtechnicien int(5),
 	date_devis date,
 	designation varchar(50),
 	prix_total float(6.2),
@@ -63,6 +92,8 @@ create table devis (
 
 create table facture (
 	idfacture int(5) not null auto_increment,
+	idclient int(5),
+	idtechnicien int(5),
 	date_facture date,
 	designation varchar(50),
 	prix_total float(6.2),
@@ -71,33 +102,11 @@ create table facture (
 	foreign key (idtechnicien) references technicien (idtechnicien)
 );
 
-create table avis (
-	idavis int(5) not null auto_increment,
-	note int(5),
-	commentaire varchar(200),
-	date_avis date,
-	primary key (idavis)
-);
-
-create table vehicule_client (
-	idvehiculeclient int(5) not null auto_increment,
-	type_vehicule enum ("2 Roues" , "4 Roues"),
-	modele varchar(50),
-	millesime int(4),
-	kilometrage int(6),
-	cylindree int(4),
-	energie enum ("Essence" , "Diesel", "Electrique", "Hybride"),
-	type_boite enum ("Manuelle" , "Automatique"),
-	date_immat date,
-	descriptif varchar(200),
-	valide bool,
-	date_rdv date,
-	heure_rdv time,
-	type_rdv enum ("")
-);
-
 create table vehicule_occasion (
 	idvehiculeocc int(5) not null auto_increment,
+	idclient int(5),
+	idtechnicien int(5),
+	idfacture int(5),
 	type_vehicule enum ("2 Roues" , "4 Roues"),
 	modele varchar(50),
 	millesime int(4),
@@ -117,6 +126,7 @@ create table vehicule_occasion (
 
 create table vehicule_neuf (
 	idvehiculeneuf int(5) not null auto_increment,
+	idfacture int(5),
 	type_vehicule enum ("2 Roues" , "4 Roues"),
 	modele varchar(50),
 	millesime int(4),
