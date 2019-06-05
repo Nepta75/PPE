@@ -1,5 +1,4 @@
 <?php
-	//appelle le modèle
 	require_once ("modele/modele.php");
 	class Controleur
 	{
@@ -11,58 +10,33 @@
 			$this->unModele = new Modele ($serveur, $bdd, $user, $mdp);
 		}
 
-		public function selectEvents()
-		{
-			$resultats = $this->unModele->selectAll();
-			//on peut réaliser des traitements avant l'affichage 
+		public function connexion($user, $mdp) {
+			if($this->unModele->connexion($user, $mdp) == null ) {
+				return null;
+			} else {
+				$resultat = $this->unModele->connexion($user, $mdp);
+				$_SESSION['pseudo'] = $resultat['pseudo'];
+				$_SESSION['id_user'] = $resultat['id'];
+				$_SESSION['mdp'] = $resultat['mdp'];
+				$_SESSION['email'] = $resultat['email'];
+				$_SESSION['admin_lvl'] = intval($resultat['admin_lvl']);
 
-			return $resultats;
+				if ($resultat['admin_lvl'] == 0) {
+					header("Location:index.php");
+					exit();
+				} elseif ($resultat['admin_lvl'] > 0) {
+					header("Location:admin.php");
+					exit();
+				}
+			}
 		}
 
-		public function insertEvent($tab)
-		{
-			$this->unModele->insertEvent($tab);
-		}
-
-		public function deleteEvent($idevent)
-		{
-			//on peut réaliser des contrôles sur l'idproduit
-			$this->unModele->deleteEvent($idevent);
-		}
-
-		public function verifConnexion ($login , $mdp)
-		{
-			// on peut controler les données avant leur envoi au modele
-			return $this->unModele->verifConnexion($login , $mdp);
-		}
-
-		public function insertCategorie ($tab)
-		{
-			$this->unModele->insertCategorie($tab);	
-		}
-		public function deleteCategorie ($idcategorie)
-		{
-			$this->unModele->deleteCategorie($idcategorie);
-		}
-
-		public function selectCategories ()
-		{
-			return $this->unModele->selectCategories();
-		}
-
-		public function insertStaff ($tab)
-		{
-			$this->unModele->insertStaff($tab);
-		}
-
-		public function deleteStaff ($idstaff)
-		{
-			$this->unModele->deleteStaff($idstaff);
-		}
-
-		public function selectStaff ()
-		{
-			return $this->unModele->selectStaff();
+		public function verifAdmin() {
+			if(isset($_SESSION['admin_lvl'])) {
+				if($_SESSION['admin_lvl'] > 0) {
+					return true;
+				}
+			}
 		}
 	}
  ?>

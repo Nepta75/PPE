@@ -13,14 +13,14 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="img/carousel.jpg" class="d-block w-100" alt="...">
+        <img src="img/carousel.jpg" class="d-block w-100 img_carousel_index" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h3> BMW AUTO & MOTO </h3>
           <p> Notre concession se charge autant des automobiles que des deux roues. Pas de favoritisme. </p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="img/carousel2.jpg" class="d-block w-100" alt="...">
+        <img src="img/carousel2.jpg" class="d-block w-100 img_carousel_index" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h3> BMW X7 2019 </h3>
           <p> SUV Sportif de luxe. Une élégance marquant.
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="carousel-item">
-        <img src="img/carousel1.jpg" class="d-block w-100" alt="...">
+        <img src="img/carousel1.jpg" class="d-block w-100 img_carousel_index" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h3> BMW S1000RR 2019 </h3>
           <p> Le renouveau d'une hypersportive révolutionnaire. 207ch pour 197kg tous pleins faits.
@@ -47,5 +47,10 @@
       <span class="sr-only"> Suivant </span>
     </a>
   </div>
+</div>
+
+
+<div>
+  <h2>Rajouter élement ici</h2>
 </div>
 

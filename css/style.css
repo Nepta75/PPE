@@ -20,7 +20,21 @@ a, a:hover{
 	padding: 0px;
 }
 
+.error-message {
+	font-weight: bold;
+	margin: 50px 0;
+	color: red;
+	width: 100%;
+	text-align: center;
+}
+
 /* --------------- HEADER ----------------- */
+
+.container_header {
+	display: flex;
+	justify-content: space-between;
+	margin-left: 125px;
+}
 
 .header1 {
 	height: 15px;
@@ -42,8 +56,8 @@ a, a:hover{
 
 .logo {
 	z-index: 10000;
-	position: relative;
-	bottom: 70px;
+	position: absolute;
+	top: 10px;
 	left: 15px;
 }
 
@@ -52,10 +66,9 @@ a, a:hover{
 	text-transform: uppercase;
 	text-align: center;
 	color: #ffffff;
-	display: inline-block;
 	height: 50px;
 	line-height: 50px;
-	margin-right: 10%;
+	padding: 0 20px;
 }
 
 .menu a:hover {
@@ -72,8 +85,12 @@ a, a:hover{
 /* CONTENU ACCUEIL */
 
 .carousel {
-	position: relative;
-	bottom: 122px;
+	position: absolute;
+}
+
+.img_carousel_index {
+	width: 100%;
+	height: calc(100vh - 80px);
 }
 
 .carousel-caption {
@@ -84,4 +101,39 @@ a, a:hover{
 .carousel-caption p {
 	text-shadow: 1px 1px 20px #000000;
 	font-size: 20px;
+}
+
+/* --------------- connexion ----------------- */
+
+.connexion {
+	text-align: center;
+	display: block;
+	padding: 50px;
+	border-radius: 5px;
+	background-color: #2d3436;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.connexion .element_connexion {
+	display: flex;
+	justify-content: space-between;
+	margin: 5px 5px;
+}
+
+.connexion label {
+	color: #fff;
+	margin: 5px 20px;
+}
+
+.connexion input[type=submit] {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.connexion h3 {
+	color : #fff;
+	text-transform: uppercase;
 }

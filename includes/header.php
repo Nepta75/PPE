@@ -1,3 +1,10 @@
+<?php
+session_start();
+require_once ("controleur/controleur.php");
+$unControler = new Controleur("localhost", "bmwppe", "root", "");
+$admin = $unControler->verifAdmin();
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -38,13 +45,21 @@
 		<div class="header2">	
 		</div>
 		<header class="container-fluid header">
-			<div class="container">
+			<div class="container_header">
 				<nav class="menu">
-					<a href="#"> Accueil </a>
+					<a href="index.php"> Accueil </a>
 					<a href="#"> Véhicules </a>
 					<a href="#"> Devis & Factures </a>
 					<a href="#"> À Propos </a>
-					<a href="#"> Contact </a>	
+					<a href="#"> Contact </a>
+					<?php
+						if ($admin != null) {
+							echo '<a href="deconnexion.php">deconnexion</a>';
+						} else {
+							echo '<a href="gestionclient.php">connexion</a>';
+						}
+					?>
+					<a href="gestionclient.php"> Connexion </a>
 				</nav>
 			</div>
 		</header>	

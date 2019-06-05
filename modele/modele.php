@@ -18,6 +18,18 @@ class Modele
 		}
 	}
 
+	function connexion ($user, $mdp) {
+		if($this->unPdo != null) {
+			$requete = 'select * from utilisateur where pseudo = :user and mdp = :mdp';
+			$verif = $this->unPdo->prepare($requete);
+			$verif->execute(array(":user"=>$user, ":mdp"=>$mdp));
+
+			$resultat = $verif->fetch();
+			return $resultat;
+		}
+	}
+
+
 	function selectAll ()
 	{
 		//connexion à la base de données en utlisant la classe PDO
