@@ -1,9 +1,16 @@
-<form method="post" action="">
-	<table border=0>
-		<tr> <td> Login </td> <td> <input type="text" name="login"> </td> </tr>
-		<tr> <td> MDP </td> <td> <input type="password" name="mdp"> </td> </tr>
-		<tr> <td> <input type="reset" name="Annuler" value="Annuler"> </td>
-			 <td> <input type="submit" name="SeConnecter" value="Se Connecter"> </td> 
-		</tr>
-	</table>
+<form action="" method="POST">
+    <div class="connexion">
+        <h3>Connexion</h3>
+        <div class="element_connexion">
+            <label for="pseudo">Pseudo :</label>
+            <input id="pseudo" type="text" name="pseudo" />
+        </div>
+        <div class="element_connexion">
+            <label for="mdp">Mot de passe :</label>
+            <input id="mdp" type="password" name="mdp" />
+        </div>
+        <div class="element_connexion">
+            <input type="submit" name="connexion" value="Connexion" />
+        </div>
+    <div>
 </form>

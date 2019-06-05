@@ -14,6 +14,19 @@ create table client (
 	primary key (idclient)
 );
 
+create table utilisateur (
+	iduser int(5) not null auto_increment,
+	pseudo varchar(50),
+	mdp varchar(255),
+	email varchar(50),
+	admin_lvl int(2) DEFAULT 0,
+	primary key (iduser)
+);
+
+insert into utilisateur values (null, 'Lokman', '123', 'lokman-hekim@hotmail.fr', 1),
+(null, 'Miguel', '123', 'miguel@hotmail.fr', 1),
+(null, 'Mohamed', '123', 'lmohamed@hotmail.fr', 1);
+
 create table technicien (
 	idtechnicien int(5) not null auto_increment,
 	nom varchar(50),
