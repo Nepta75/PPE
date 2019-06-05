@@ -59,7 +59,6 @@ $admin = $unControler->verifAdmin();
 							echo '<a href="gestionclient.php">connexion</a>';
 						}
 					?>
-					<a href="gestionclient.php"> Connexion </a>
 				</nav>
 			</div>
 		</header>	
