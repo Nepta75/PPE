@@ -27,6 +27,13 @@ a, a:hover{
 	width: 100%;
 	text-align: center;
 }
+.succes-message {
+	font-weight: bold;
+	margin: 50px 0;
+	color: green;
+	width: 100%;
+	text-align: center;
+}
 
 /* --------------- HEADER ----------------- */
 
@@ -136,4 +143,103 @@ a, a:hover{
 .connexion h3 {
 	color : #fff;
 	text-transform: uppercase;
+}
+
+/* --------------- contact ----------------- */
+
+
+.contact-info {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 100px;
+}
+
+.sub-block-contact-info {
+	padding: 50px;
+}
+
+.googlemap_contact {
+	padding : 50px;
+}
+
+.form_contact {
+	margin-top: 100px;
+	width: 100%;
+	background-image: url("../img/contact-form-background.jpg");
+	height: 100%;
+}
+
+.block-contact {
+	display: flex;
+	justify-content: space-between;
+}
+
+.test {
+	background-color: #2d3436;
+	width: 100%;
+	justify-content: flex-end;
+}
+
+.test2{
+	width: 100%;
+}
+
+.form_contact h3 {
+	position: relative;
+	bottom : 50px;
+	text-transform: uppercase;
+	color: #000000;
+	text-align: center;
+}
+
+.form_contact div {
+	margin: 10px 30px;
+}
+
+.form_contact label {
+	color: #fff;
+}
+
+.form_contact i {
+	color:#fff;
+}
+
+.form_contact input {
+	width: 100%;
+	border: none;
+	border-radius: 2px;
+	height: 40px;
+}
+
+
+.form_contact textarea {
+	width: 100%;
+	min-height: 100px;
+}
+
+.test2-sub-block i {
+	color: #2d3436;
+}
+
+.test2-sub-block label {
+	color: #2d3436;
+}
+
+.submit_form_contact  input {
+	border: 1px solid #fff;
+	border-radius: 2px;
+	color: #fff;
+	height: 50px;
+	background-color: #2d3436;
+}
+
+.submit_form_contact input:hover {
+	background-color: #3e4446;
+}
+
+.objet_form_contact i {
+	color: #2d3436;
+}
+.objet_form_contact label {
+	color: #2d3436;
 }
