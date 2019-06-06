@@ -1,8 +1,8 @@
 @charset "utf-8";
 
 body, html {
-	padding: 0;
-	margin: 0;
+	padding: 0px;
+	margin: 0px;
 	background-color: #ffffff; 
 }
 
@@ -46,29 +46,30 @@ a, a:hover{
 .header1 {
 	height: 15px;
 	line-height: 15px;
-	background-color: #FF1B17;
+	background-color: #FF1B17; 
 }
 
 .header2 {
 	height: 15px;
 	line-height: 15px;
-	background-color: #2787CC;
+	background-color: #076BB3; 
 }
 
 .header {
 	height: 50px;
 	line-height: 50px;
-	background-color: #076BB3;
+	background-color: #2787CC;
 }
 
 .logo {
 	z-index: 10000;
 	position: absolute;
-	top: 10px;
+	top: 7px;
 	left: 15px;
+	box-shadow: 4px 3px 3px #000000;
 }
 
-.menu a {
+nav {
 	font-weight: bold;
 	text-transform: uppercase;
 	text-align: center;
@@ -76,16 +77,100 @@ a, a:hover{
 	height: 50px;
 	line-height: 50px;
 	padding: 0 20px;
+	width: 100%;
 }
 
-.menu a:hover {
+nav ul {
+	margin-left: 2%;
+	padding: 0px;
+}
+
+nav ul::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+nav li {
+	float: left;
+	position: relative;
+	margin-right: 1%;
+	color: #ffffff;
+	list-style-type: none;	
+}
+
+nav li:hover .submenu {
+	display: inline-block;
+	position: absolute;
+	top: 100%;
+	left: 0px;
+	height: 20px;
+	padding-left: 0px;
+	z-index: 1000;
+	margin-bottom: 1%;
+}
+
+.submenu {
+	display: none;
+	transition-property: background-color; 
+    transition-duration: 1s;
+}
+
+.submenu li {
+	background-color: rgb(59 , 59 , 59);
+	border-left: 1px solid rgb(255 , 255 , 255 , 0.3);
+	border-right: 1px solid rgb(255 , 255 , 255 , 0.3);
+	border-bottom: 1px solid rgb(255 , 255 , 255 , 0.3);
+}
+
+.submenu li a {
+	padding: 0px 0px;
+	font-size: 13px;
+	width: 270px;
+	color: #000000;
+}
+
+.submenu li:hover a {
+	color: #ffffff;
+	font-weight: bold;
+}
+
+.submenu li a{
+	color: #ffffff;
+}
+
+.submenu:hover a {
+	color: #ffffff;
+}
+
+nav a {
+	text-decoration: none;
+	display: inline-block;
+	color: #ffffff;
+	padding: 0 20px 0 20px;
+	transition-property: background-color; 
+    transition-duration: 0.3s; 
+}
+
+nav a:hover {
 	height: 50px;
 	line-height: 50px;
+	color: #ffffff;
+	background-color: rgba(255 , 255 , 255 , 0.075);
+}
+
+nav a:active {
 	color: #E6E6E6; 
 }
 
-.menu a:active {
-	color: #E6E6E6; 
+#connexionmenu {
+	float: right;
+	transition-property: background-color; 
+    transition-duration: 1s; 
+}
+
+#connexionmenu:hover {
+	background-color: #076BB3;
 }
 
 
