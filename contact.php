@@ -30,7 +30,7 @@
                   $error = "Erreur : Email invalide !";
               }
         } else {
-            $error = "Erreur : Veuillez remplire tous les champs !";
+            $error = "Erreur : Veuillez remplir tous les champs !";
         }
     }
 ?>
@@ -46,14 +46,14 @@
 
 <div class="contact-info">
     <div class="sub-block-contact-info">
-        <h4>Horraire d'ouverture :</h4>
+        <h4>Horaires d'ouverture :</h4>
         <div>Lundi : 9h00 - 12h00 | 14h00 - 19h00</div>
-        <div>mardi : 9h00 - 12h00 | 14h00 - 19h00</div>
-        <div>mercredi : 9h00 - 12h00 | 14h00 - 19h00</div>
-        <div>jeudi : 9h00 - 12h00 | 14h00 - 19h00</div>
-        <div>vendredi : 9h00 - 12h00 | 14h00 - 19h00</div>
-        <div>samedi : fermé</div>
-        <div>dimanche : fermé</div>
+        <div>Mardi : 9h00 - 12h00 | 14h00 - 19h00</div>
+        <div>Mercredi : 9h00 - 12h00 | 14h00 - 19h00</div>
+        <div>Jeudi : 9h00 - 12h00 | 14h00 - 19h00</div>
+        <div>Vendredi : 9h00 - 12h00 | 14h00 - 19h00</div>
+        <div>Samedi : fermé</div>
+        <div>Dimanche : fermé</div>
         <hr>
         <div><i class="fas fa-phone-square-alt"> Tel : </i><b> 01 85 53 09 07</b></div>
         <div><i class="fas fa-phone-square-alt"> Service client : </i><b> 0 800 26 98 00</b></div>
