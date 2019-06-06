@@ -207,7 +207,7 @@ nav a:active {
 .connexion {
 	text-align: center;
 	display: block;
-	padding: 50px;
+	padding: 50px 50px 20px 50px;
 	border-radius: 5px;
 	background-color: #2d3436;
 	position: absolute;

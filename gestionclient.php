@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/header.php';
+require_once ("includes/header.php");
 require_once ("controleur/controleur.php");
 $unControler = new Controleur("localhost", "bmwppe", "root", "");
 if (isset($_POST['connexion'])) {
@@ -9,10 +9,10 @@ if (isset($_POST['connexion'])) {
         if ($unControler->connexion($pseudo, $_POST['mdp']) !== null) {
             $unControler->connexion($pseudo, $_POST['mdp']);
         } else {
-            $error = "Erreur : Veuillez vérifier vaux identifiants";
+            $error = "Erreur : Veuillez vérifier vos identifiants";
         }
     } else {
-        $error = 'Erreur :Veuillez remplir tous les champs !';
+        $error = 'Erreur : Veuillez remplir tous les champs !';
     }
 }
 ?>
