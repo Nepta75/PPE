@@ -22,6 +22,7 @@ $admin = $unControler->verifAdmin();
 
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<link href="css/fontawesome/css/all.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -59,9 +60,9 @@ $admin = $unControler->verifAdmin();
 						</li>
 						<li class="menu-devisfactures"> <a href="#"> Devis & Factures </a>
 						</li>
-						<li class="menu-apropos"> <a href="#"> À Propos </a>
+						<li class="menu-apropos"> <a href="propos.php"> À Propos </a>
 						</li>
-						<li class="menu-contact"> <a href="#"> Contact </a>
+						<li class="menu-contact"> <a href="contact.php"> Contact </a>
 						</li>
 					<?php
 						if ($admin != null) {
