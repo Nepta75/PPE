@@ -79,7 +79,7 @@ class Mail {
         Bonjour <b>".$nom." ".$prenom."</b>, 
         <br></br>Nous vous confirmons l'envoi de votre message à BMW.
         <br></br>
-        Nous reprendrons contacte avec vous sous un délai de 24 heures. <br></br>Cordialement l'équipe BMW Paris.
+        Nous reprendrons contact avec vous sous un délai de 24 heures. <br></br>Cordialement l'équipe BMW Paris.
         <hr>
         <br></br>
         <br</br>
