@@ -9,9 +9,16 @@
 	<head>
 		<meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 		<title>
 			À Propos
 		</title>
+		<style >
+
+
+
+		</style>
 
 	<!-- FONT -->
 
@@ -26,6 +33,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
+
 	<!-- FAVICON -->
 
 	<link rel="shortcut icon" type="image/ico" href="img/icons/favicon.ico" />
@@ -33,10 +41,17 @@
 </head>
 
 <body>
-	
+
+	<!--titre-->
+	<div align="center"> 
+<h1> 
+<img src="img/about4.png"  alt="LE TITRE" />
+</h1>
+
+</div>
 
 
-	<!-- Conteunue page -->
+	<!-- Conteunue-->
 	<section class="bg0 p-t-75 p-b-120">
 		<div class="container">
 			<div class="row p-b-148">
@@ -51,7 +66,7 @@
 
               </p>
 
-						<p class="stext-113 cl6 p-b-26">
+						<p class="stext-113 cl6 p-b-26" style="right">
 							 La Rapp Motorenwerke GmbH est fondée par Karl Rapp le 15 février 1912 à Munich et produisait des aéronefs biplans et monoplan, cette entreprise ne connait pas la réussite et est rapidement dissoute. A la place, Karl Rapp constitue une société qui fabrique des moteurs, principalement à destination de l’aviation.  Cette fois, la réussite est au rendez-vous, la première guerre mondiale aidant à la prospérité de cette activité. En 1915, l’entreprise comprend 370 collaborateurs et produit sous licence des moteurs Austro-Daimler qui ne sont pas d’une grande fiabilité, fait partie du groupe BMW Group conprenant des constructeurs tels que Mini et Rolls Royces
 						 
 						</p>
