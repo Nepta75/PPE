@@ -47,16 +47,27 @@ $admin = $unControler->verifAdmin();
 		<header class="container-fluid header">
 			<div class="container_header">
 				<nav class="menu">
-					<a href="index.php"> Accueil </a>
-					<a href="#"> Véhicules </a>
-					<a href="#"> Devis & Factures </a>
-					<a href="#"> À Propos </a>
-					<a href="#"> Contact </a>
+					<ul>
+						<li class="menu-accueil"> <a href="index.php"> Accueil </a>
+						</li>
+						<li class="menu-vehicules"> <a href="#"> Véhicules </a>
+							<ul class="submenu">
+								<li><a href="#"> Véhicules d'occasion </a></li>
+								<li><a href=""> Véhicules neufs </a></li>
+								<li><a href=""> Mon véhicule </a></li>								
+							</ul>
+						</li>
+						<li class="menu-devisfactures"> <a href="#"> Devis & Factures </a>
+						</li>
+						<li class="menu-apropos"> <a href="#"> À Propos </a>
+						</li>
+						<li class="menu-contact"> <a href="#"> Contact </a>
+						</li>
 					<?php
 						if ($admin != null) {
-							echo '<a href="deconnexion.php">deconnexion</a>';
+							echo '<a href="deconnexion.php"> Se déconnecter </a>';
 						} else {
-							echo '<a href="gestionclient.php">connexion</a>';
+							echo '<a href="gestionclient.php" id="connexionmenu"> Se connecter</a>';
 						}
 					?>
 				</nav>
