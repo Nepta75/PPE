@@ -49,9 +49,9 @@ $admin = $unControler->verifAdmin();
 			<div class="container_header">
 				<nav class="menu">
 					<a href="index.php"> Accueil </a>
-					<a href="#"> Véhicules </a>
+					<a href=""> Véhicules </a>
 					<a href="#"> Devis & Factures </a>
-					<a href="#"> À Propos </a>
+					<a href="propos.php"> À Propos </a>
 					<a href="contact.php"> Contact </a>
 					<?php
 						if ($admin != null) {
