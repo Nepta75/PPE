@@ -204,6 +204,13 @@ nav a:active {
 
 /* --------------- CONNEXION ----------------- */
 
+.background-connexion {
+	background-image: url('../img/connexion-background.jpg');
+	height: calc(100vh - 80px);
+	background-size: cover;
+	width: 100%;
+}
+
 .connexion {
 	text-align: center;
 	display: block;
@@ -222,6 +229,11 @@ nav a:active {
 	margin: 5px 5px;
 }
 
+.element_connexion input {
+	border:none;
+	border-radius: 2px;
+}
+
 .connexion label {
 	color: #fff;
 	margin: 5px 20px;
@@ -230,6 +242,11 @@ nav a:active {
 .connexion input[type=submit] {
 	width: 100%;
 	margin-top: 20px;
+	height: 40px;
+}
+
+.connexion input[type=submit]:hover {
+	background-color: #E6E6E6;
 }
 
 .connexion h3 {
