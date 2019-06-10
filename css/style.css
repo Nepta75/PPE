@@ -69,8 +69,8 @@ a, a:hover{
 	box-shadow: 4px 3px 3px #000000;
 }
 
-nav {
-	font-weight: bold;
+.menu {
+	font-weight: 400;
 	text-transform: uppercase;
 	text-align: center;
 	color: #ffffff;
@@ -80,101 +80,105 @@ nav {
 	width: 100%;
 }
 
-nav ul {
+.menu ul {
 	margin-left: 2%;
 	padding: 0px;
 }
 
-nav ul::after {
+.menu ul::after {
 	content: "";
 	display: block;
 	clear: both;
 }
 
-nav li {
+.menu li {
 	float: left;
 	position: relative;
-	margin-right: 1%;
+	list-style-type: none;
+	text-decoration: none;
+	display: inline-block;
 	color: #ffffff;
-	list-style-type: none;	
+	padding: 0 30px 0 30px;	
+	transition-property: background-color; 
+    transition-duration: 0.3s; 
 }
 
-nav li:hover .submenu {
+.menu li:hover {
+	height: 50px;
+	line-height: 50px;
+	color: #ffffff;
+	background-color: #2990D9;
+}
+
+.menu li:hover .submenu {
 	display: inline-block;
 	position: absolute;
 	top: 100%;
-	left: 0px;
+	left: -3px;
 	height: 20px;
-	padding-left: 0px;
 	z-index: 1000;
 	margin-bottom: 1%;
 }
 
+.menu a {
+	list-style-type: none;
+	color: #ffffff;
+}
+
+.menu a:hover {
+	list-style-type: none;
+	text-decoration: none;
+	color: #ffffff;
+}
+
+.menu a:active {
+	color: #E6E6E6; 
+}
+
 .submenu {
+	text-align: left;
+	font-size: 14px;
 	display: none;
 	transition-property: background-color; 
     transition-duration: 1s;
 }
 
 .submenu li {
-	background-color: rgb(59 , 59 , 59);
-	border-left: 1px solid rgb(255 , 255 , 255 , 0.3);
-	border-right: 1px solid rgb(255 , 255 , 255 , 0.3);
-	border-bottom: 1px solid rgb(255 , 255 , 255 , 0.3);
+	background-color: #161616;
+	width: 250px;
 }
 
-.submenu li a {
-	padding: 0px 0px;
-	font-size: 13px;
-	width: 270px;
-	color: #000000;
-}
-
-.submenu li:hover a {
-	color: #ffffff;
-	font-weight: bold;
-}
-
-.submenu li a{
-	color: #ffffff;
-}
-
-.submenu:hover a {
-	color: #ffffff;
-}
-
-nav a {
-	text-decoration: none;
-	display: inline-block;
-	color: #ffffff;
-	padding: 0 20px 0 20px;
-	transition-property: background-color; 
-    transition-duration: 0.3s; 
-}
-
-nav a:hover {
-	height: 50px;
-	line-height: 50px;
-	color: #ffffff;
-	background-color: rgba(255 , 255 , 255 , 0.075);
-}
-
-nav a:active {
-	color: #E6E6E6; 
+.submenu a:hover {
+	color: #E6E6E6;
 }
 
 #connexionmenu {
 	float: right;
 	transition-property: background-color; 
-    transition-duration: 1s; 
+    transition-duration: 1s;
+   	padding: 0 20px 0 20px;	
 }
 
 #connexionmenu:hover {
+	text-decoration: none;
 	background-color: #076BB3;
+	border-bottom: 2px solid #FF1B17;
+}
+
+.monvehicule {
+	float: right;
+	transition-property: background-color; 
+    transition-duration: 1s;
+}
+
+.monvehicule:hover {
+	background-color: #076BB3;
+	border-bottom: 2px solid #FF1B17;
 }
 
 
-/* CONTENU ACCUEIL */
+
+/* ----------- CONTENU ACCUEIL ------------ */
 
 .carousel {
 	position: absolute;
@@ -182,20 +186,25 @@ nav a:active {
 
 .img_carousel_index {
 	width: 100%;
-	height: calc(100vh - 80px);
 }
 
 .carousel-caption {
 	background-color: rgb(0, 0, 0, 0.5);
 	border-radius: 3px;
+	margin-bottom: 21%;
 }
 
 .carousel-caption p {
+	margin-top: 2%;
 	text-shadow: 1px 1px 20px #000000;
 	font-size: 20px;
 }
 
-/*             CONTENU A PROPOS                */
+.index-content {
+	margin: 10% 0 10% 0;
+}
+
+/* --------------- CONTENU A PROPOS ----------------- */
 
 .about-title {
 	font-weight: bolder;
@@ -254,7 +263,7 @@ nav a:active {
 	text-transform: uppercase;
 }
 
-/* --------------- contact ----------------- */
+/* --------------- CONTACT ----------------- */
 
 
 .contact-info {
@@ -372,3 +381,14 @@ hr.separator {
 	margin-bottom: 4%;
 	background-color: #FF1B17;
 }
+
+/* -------------- FOOTER ----------------- */
+
+#footer {
+	background-color: #2787CC;
+	color: #ffffff;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	text-align: center;
+}
+
