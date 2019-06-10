@@ -69,8 +69,8 @@ a, a:hover{
 	box-shadow: 4px 3px 3px #000000;
 }
 
-nav {
-	font-weight: bold;
+.menu {
+	font-weight: 400;
 	text-transform: uppercase;
 	text-align: center;
 	color: #ffffff;
@@ -80,18 +80,18 @@ nav {
 	width: 100%;
 }
 
-nav ul {
+.menu ul {
 	margin-left: 2%;
 	padding: 0px;
 }
 
-nav ul::after {
+.menu ul::after {
 	content: "";
 	display: block;
 	clear: both;
 }
 
-nav li {
+.menu li {
 	float: left;
 	position: relative;
 	list-style-type: none;
@@ -103,14 +103,14 @@ nav li {
     transition-duration: 0.3s; 
 }
 
-li:hover {
+.menu li:hover {
 	height: 50px;
 	line-height: 50px;
 	color: #ffffff;
 	background-color: #2990D9;
 }
 
-nav li:hover .submenu {
+.menu li:hover .submenu {
 	display: inline-block;
 	position: absolute;
 	top: 100%;
@@ -120,19 +120,24 @@ nav li:hover .submenu {
 	margin-bottom: 1%;
 }
 
-nav a {
+.menu a {
+	list-style-type: none;
 	color: #ffffff;
 }
 
-nav a:hover {
+.menu a:hover {
+	list-style-type: none;
+	text-decoration: none;
 	color: #ffffff;
 }
 
-nav a:active {
+.menu a:active {
 	color: #E6E6E6; 
 }
 
 .submenu {
+	text-align: left;
+	font-size: 14px;
 	display: none;
 	transition-property: background-color; 
     transition-duration: 1s;
@@ -173,7 +178,7 @@ nav a:active {
 
 
 
-/* CONTENU ACCUEIL */
+/* ----------- CONTENU ACCUEIL ------------ */
 
 .carousel {
 	position: absolute;
@@ -195,7 +200,11 @@ nav a:active {
 	font-size: 20px;
 }
 
-/*             CONTENU A PROPOS                */
+.index-content {
+	margin: 10% 0 10% 0;
+}
+
+/* --------------- CONTENU A PROPOS ----------------- */
 
 .about-title {
 	font-weight: bolder;
@@ -372,3 +381,14 @@ hr.separator {
 	margin-bottom: 4%;
 	background-color: #FF1B17;
 }
+
+/* -------------- FOOTER ----------------- */
+
+#footer {
+	background-color: #2787CC;
+	color: #ffffff;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	text-align: center;
+}
+

@@ -54,4 +54,8 @@
   <h2>Rajouter élement ici</h2>
 </div>
 
+<?php
+  include "includes/footer.php";
+?>
+
 
