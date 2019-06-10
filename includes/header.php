@@ -54,8 +54,7 @@ $admin = $unControler->verifAdmin();
 						<li class="menu-vehicules"> <a href="#"> Véhicules </a>
 							<ul class="submenu">
 								<li><a href="#"> Véhicules d'occasion </a></li>
-								<li><a href=""> Véhicules neufs </a></li>
-								<li><a href=""> Mon véhicule </a></li>								
+								<li><a href="#"> Véhicules neufs </a></li>								
 							</ul>
 						</li>
 						<li class="menu-devisfactures"> <a href="#"> Devis & Factures </a>
@@ -71,6 +70,9 @@ $admin = $unControler->verifAdmin();
 							echo '<a href="gestionclient.php" id="connexionmenu"> Se connecter</a>';
 						}
 					?>
+						<li class="monvehicule"> <a href="#"> Mon véhicule </a>
+						</li>
+					</ul>
 				</nav>
 			</div>
 		</header>	
