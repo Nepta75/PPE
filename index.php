@@ -1,6 +1,16 @@
 <?php
 	include "includes/header.php";
 ?>
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="css/product.css">
+<head>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
 
 <!-- CONTENT -->
 
@@ -50,7 +60,88 @@
 </div>
 
 
-<div>
-  <h2>Rajouter élement ici</h2>
-</div>
+</head>
+<body>
+<div class="container">
+    <br>
+    <h4>Nos Véhicules Neufs:</h4>
+	<br>
+	<div class="row" id="ads">
+    <!-- Category Card -->
+    <div class="col-md-4">
+        <div class="card rounded">
+            <div class="card-image">
+                <span class="card-notify-badge">Bmw Serie 1</span>
+                <span class="card-notify-year">2019</span>
+                <img class="img-fluid" src="img/image1" alt="Alternate Text" />
+            </div>
+            <div class="card-image-overlay m-auto">
+              <p>les details de la perfections</p>
+          
+            </div>
+            <div class="card-body text-center">
+                <div class="ad-title m-auto">
+                    <h5>Honda Accord LX</h5>
+                </div>
+                <a class="ad-btn" href="#">View</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card rounded">
+            <div class="card-image">
+                <span class="card-notify-badge">Bmw M7</span>
+                <span class="card-notify-year">2018</span>
+                <img class="img-fluid" src="img/image2" alt="Alternate Text" />
+            </div>
+            <div class="card-image-overlay m-auto">
+               <p>conçue pour l'émotion</p>
+            </div>
+            <div class="card-body text-center">
+                <div class="ad-title m-auto">
+                </div>
+                <a class="ad-btn" href="#">View</a>
+            </div>
+        </div>
+    </div>
 
+    <div class="col-md-4">
+        <div class="card rounded">
+            <div class="card-image">
+                <span class="card-notify-badge">Bmw X7</span>
+                <span class="card-notify-year">2018</span>
+                <img class="img-fluid" src="img/image3" alt="Alternate Text" />
+            </div>
+            <div class="card-image-overlay m-auto">
+       <p>Une élégence marquante</p>
+            </div>
+            <div class="card-body text-center">
+                <div class="ad-title m-auto">
+                </div>
+                <a class="ad-btn" href="#">View</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+<div class="container">
+    <br>
+    <h4>Nos Véhicules D'occasions :</h4>
+	<br>
+	<div class="row" id="ads">
+    <!-- Category Card -->
+    <div class="col-md-4">
+        <div class="card rounded">
+            <div class="card-image">
+                <span class="card-notify-badge">Bmw X2</span>
+                <span class="card-notify-year">2018</span>
+                <img class="img-fluid" src="img/image4" alt="Alternate Text" />
+            </div>
+            <div class="card-image-overlay m-auto">
+                <span class="card-detail-badge">Occasion</span>
+                <span class="card-detail-badge">14,700.00 €</span>
+                <span class="card-detail-badge">80 000 Kms</span>
+            </div>
+</body>
+</html>
