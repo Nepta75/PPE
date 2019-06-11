@@ -26,6 +26,8 @@ require 'vue/vueconnexion.php';
 ?>
 
 
+    
 <?php
 require_once 'includes/footer.php';
 ?>
+
