@@ -37,6 +37,7 @@ a, a:hover{
 
 /* --------------- HEADER ----------------- */
 
+
 .container_header {
 	display: flex;
 	justify-content: space-between;
@@ -386,6 +387,61 @@ hr.separator {
 	background-color: #FF1B17;
 }
 
+
+/* --------------- ADMIN ----------------- */
+
+.block-panel_admin {
+	padding: 30px 20px;
+	position: relative;
+}
+
+.block-panel_admin h3 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.form-panel_admin div{
+	display: flex;
+	justify-content: space-between;
+	padding: 0 50px;
+	margin: 10px 0;
+}
+
+.form-panel_admin input {
+	width: 300px;
+	height: 40px;
+}
+
+.form-panel_admin textarea {
+	width: 300px;
+	height: 120px;
+}
+
+.form-panel_admin select {
+	width: 300px;
+	height: 40px;
+}
+
+.form-panel_admin input[type='submit'] {
+	width: 100%;
+	border: none;
+	height: 40px;
+	border-radius: 3px;
+	color: #fff;
+	background-color: #FF1B17;
+}
+
+.form-panel_admin input[type='submit']:hover {
+	background-color: #ff2e2b;
+}
+
+
+/* -- Ajouter vehicule -- */
+
+.ajout_vehicule_type {
+	text-align: center;
+	margin: 15px;
+}
 /* -------------- FOOTER ----------------- */
 
 #footer {
