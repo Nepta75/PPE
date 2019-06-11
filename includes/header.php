@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once ("controleur/controleur.php");
-$unControler = new Controleur("localhost", "bmwppe", "root", "");
+require_once ("controleur/controleur_admin.php");
+$unControler = new Administrateur("localhost", "bmwppe", "root", "");
 $admin = $unControler->verifAdmin();
 ?>
 
@@ -40,7 +40,7 @@ $admin = $unControler->verifAdmin();
 
 	<!-- Header -->
 
-	<div>
+	<div id="header_menu">
 		<div class="header1">
 		</div>
 		<div class="header2">	
@@ -51,7 +51,7 @@ $admin = $unControler->verifAdmin();
 					<ul>
 						<li class="menu-accueil"> <a href="index.php"> Accueil </a>
 						</li>
-						<li class="menu-vehicules"> <a href="#"> Véhicules </a>
+						<li class="menu-vehicules"> <a href="#"> Véhicules <i class="fas fa-caret-down"></i></a>
 							<ul class="submenu">
 								<li><a href="#"> Véhicules d'occasion </a></li>
 								<li><a href=""> Véhicules neufs </a></li>
@@ -64,6 +64,17 @@ $admin = $unControler->verifAdmin();
 						</li>
 						<li class="menu-contact"> <a href="contact.php"> Contact </a>
 						</li>
+						<?php if(isset($_SESSION['admin_lvl']) && $_SESSION['admin_lvl'] > 0) { ?>
+							<li class="menu-admin"> <a href="admin.php"> Admin <i class="fas fa-caret-down"></i></a>
+								<ul class="submenu">
+									<li><a href="admin.php?page=1" id="page1">Ajouter un Véhicule</a></li>
+									<li><a href="admin.php?page=2">Modifier un Véhicule</a></li>
+									<li><a href="admin.php?page=3">Devis</a></li>
+									<li><a href="admin.php?page=4">Liste des clients</a></li>
+									<li><a href="admin.php?page=5">Location</a></li>						
+								</ul>
+							</li>
+						<?php } ?>
 					<?php
 						if ($admin != null) {
 							echo '<a href="deconnexion.php"> Se déconnecter </a>';
@@ -75,4 +86,4 @@ $admin = $unControler->verifAdmin();
 			</div>
 		</header>	
 	</div>
-	<img src="img/logo2.png" class="logo" width="110"/>
+	<img src="img/logo2.png" id="logo" class="logo" width="110"/>

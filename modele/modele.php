@@ -29,28 +29,12 @@ class Modele
 		}
 	}
 
-
-	function selectAll ()
-	{
-		//connexion à la base de données en utlisant la classe PDO
-		if($this->unPdo != null)
-		{
-			$requete = "select e.idevent, e.designation, e.date_event, e.heure_debut, e.prix, e.lieu_event, c.libelle
-						from event e, categorie c
-						where e.idcategorie = c.idcategorie ;";
-		
-
-			//préparation de la requête avant exécution
-			$select = $this->unPdo->prepare ($requete);
-
-			//exécution de la requête
-			$select->execute ();
-
-			//extration des données
-			$resultats = $select->fetchAll();
-			return $resultats;
-		}
+	public function selectAllUsers() {
+			$requete = "select * from utilisateur";
+			$select = $this->unPdo->query($requete);
+			return $select;
 	}
+
 	public function insertEvent($tab)
 	{
 		if ($this->unPdo!=null)

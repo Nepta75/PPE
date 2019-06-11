@@ -25,18 +25,15 @@
 					header("Location:index.php");
 					exit();
 				} elseif ($resultat['admin_lvl'] > 0) {
-					header("Location:admin.php");
+					header("Location:admin.php?c=1");
 					exit();
 				}
 			}
 		}
 
-		public function verifAdmin() {
-			if(isset($_SESSION['admin_lvl'])) {
-				if($_SESSION['admin_lvl'] > 0) {
-					return true;
-				}
-			}
+		public function selectAllUsers(){
+			$resultat = $this->unModele->selectAllUsers();
+			return $resultat;
 		}
 	}
  ?>

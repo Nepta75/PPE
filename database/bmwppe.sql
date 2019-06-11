@@ -47,6 +47,8 @@ create table avis (
 
 create table vehicule_client (
 	idvehiculeclient int(5) not null auto_increment,
+	iduser int(5),
+	immatriculation varchar(15),
 	type_vehicule enum ("2 Roues" , "4 Roues"),
 	modele varchar(50),
 	millesime int(4),
@@ -56,11 +58,14 @@ create table vehicule_client (
 	type_boite enum ("Manuelle" , "Automatique"),
 	date_immat date,
 	descriptif varchar(200),
-	valide bool,
+	valide enum ("Oui", "Non"),
+	prix float(6.2),
+	img text,
 	date_rdv date,
 	heure_rdv time,
 	type_rdv enum (""),
-	primary key (idvehiculeclient)
+	primary key (idvehiculeclient),
+	foreign key(iduser) references utilisateur (iduser)
 );
 
 create table acheter (
@@ -120,6 +125,7 @@ create table vehicule_occasion (
 	idclient int(5),
 	idtechnicien int(5),
 	idfacture int(5),
+	immatriculation varchar(15),
 	type_vehicule enum ("2 Roues" , "4 Roues"),
 	modele varchar(50),
 	millesime int(4),
@@ -130,7 +136,8 @@ create table vehicule_occasion (
 	prix float(6.2),
 	date_immat date,
 	descriptif varchar(200),
-	valide bool,
+	valide enum ("Oui" , "Non"),
+	img text,
 	primary key (idvehiculeocc),
 	foreign key (idclient) references client (idclient),
 	foreign key (idtechnicien) references technicien (idtechnicien),
@@ -140,6 +147,7 @@ create table vehicule_occasion (
 create table vehicule_neuf (
 	idvehiculeneuf int(5) not null auto_increment,
 	idfacture int(5),
+	immatriculation varchar(15),
 	type_vehicule enum ("2 Roues" , "4 Roues"),
 	modele varchar(50),
 	millesime int(4),
@@ -148,6 +156,7 @@ create table vehicule_neuf (
 	type_boite enum ("Manuelle" , "Automatique"),
 	prix float(6.2),
 	date_immat date,
+	img text,
 	primary key (idvehiculeneuf),
 	foreign key (idfacture) references facture (idfacture)
 );
