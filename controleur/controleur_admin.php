@@ -35,7 +35,7 @@
                         $erreur = "Erreur : Véhicule introuvable !";
                     }
                 } else {
-                    $erreur = "Erreur : Veuillez remplire tous les champs !";
+                    $erreur = "Erreur : Veuillez remplir tous les champs !";
                 }
             }
             if(isset($erreur)) {

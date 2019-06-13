@@ -390,29 +390,46 @@ background-color: #000000;
 
 .block-panel_admin h3 {
 	text-align: center;
-	margin-bottom: 20px;
+	margin-bottom: 50px;
 }
 
-.form-panel_admin div{
+.block-panel_admin label {
+	margin-bottom: 50px;
+}
+
+.ajout_vehicule_type select {
+	margin-left: 5px;
+}
+
+.form-panel_admin div {
 	display: flex;
 	justify-content: space-between;
 	padding: 0 50px;
-	margin: 10px 0;
+}
+
+.form-panel_admin label {
+	margin-left: 30%;
+	position: relative;
+	top: 10px;
 }
 
 .form-panel_admin input {
 	width: 300px;
 	height: 40px;
+	margin-right: 33%;
 }
 
 .form-panel_admin textarea {
 	width: 300px;
 	height: 120px;
+	margin-right: 33%;
+	margin-bottom: 50px;
 }
 
 .form-panel_admin select {
 	width: 300px;
 	height: 40px;
+	margin-right: 33%;
 }
 
 .form-panel_admin input[type='submit'] {
@@ -422,10 +439,13 @@ background-color: #000000;
 	border-radius: 3px;
 	color: #fff;
 	background-color: #FF1B17;
+	width: 20%;
+	margin-left: 40%;
+	margin-top: 50px;
 }
 
 .form-panel_admin input[type='submit']:hover {
-	background-color: #ff2e2b;
+	background-color: #E61815;
 }
 
 

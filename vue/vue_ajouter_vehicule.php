@@ -23,11 +23,11 @@
                 <div class="form-panel_admin">
                     <form action="" method="POST">
                         <div>
-                            <label for="immatriculation">Immatriculation : </label>
+                            <label for="immatriculation"> Immatriculation : </label>
                             <input type="text" id="immatriculation" name="immatriculation" />
                         </div>
                         <div>
-                            <label>Type : </label>
+                            <label> Type : </label>
                             <select name="type">
                                 <option value=""></option>
                                 <option value="2 Roues">2 Roues</option>
@@ -35,19 +35,19 @@
                             </select>
                         </div>
                         <div>
-                            <label for="modele">Modele : </label>
+                            <label for="modele"> Modèle : </label>
                             <input type="text" id="modele" name="modele" />
                         </div>
                         <div>
-                            <label for="millesime">Millesime : </label>
+                            <label for="millesime"> Millesime : </label>
                             <input type="text" id="millesime" name="millesime" />
                         </div>
                         <div>
-                            <label for="cylindree">Cylindree : </label>
+                            <label for="cylindree" > Cylindrée : </label>
                             <input type="text" id="cylindree" name="cylindree" />
                         </div>
                         <div>
-                            <label>energie : </label>
+                            <label> Énergie : </label>
                             <select name="energie">
                                 <option value=""></option>
                                 <option value="Essence">Essence</option>
@@ -57,7 +57,7 @@
                             </select>
                         </div>
                         <div>
-                            <label>Type de boite : </label>
+                            <label> Type de boîte : </label>
                             <select name="typeBoite">
                                 <option value=""></option>
                                 <option value="Manuelle">Manuelle</option>
@@ -65,15 +65,15 @@
                             </select>
                         </div>
                         <div>
-                            <label for="prix">Prix : </label>
+                            <label for="prix"> Prix : </label>
                             <input type="text" id="prix" name="prix" />
                         </div>
                         <div>
-                            <label for="dateImma">Date 1er immatriculation : </label>
+                            <label for="dateImma">Date 1ère immatriculation : </label>
                             <input type="date" id="dateImma" name="dateImma" />
                         </div>
                         <div>
-                            <label for="img_vehicule">Url de l'image : </label>
+                            <label for="img_vehicule"> URL de l'image : </label>
                             <input type="text" id="img_vehicule" name="img_vehicule" />
                         </div>
                         <div>
@@ -88,11 +88,11 @@
                 <div class="form-panel_admin">
                     <form action="" method="POST">
                         <div>
-                            <label for="immatriculation">Immatriculation : </label>
+                            <label for="immatriculation"> Immatriculation : </label>
                             <input type="text" id="immatriculation" name="immatriculation" />
                         </div>
                         <div>
-                            <label>Type : </label>
+                            <label> Type : </label>
                             <select name="type">
                                 <option value=""></option>
                                 <option value="2 Roues">2 Roues</option>
@@ -100,29 +100,29 @@
                             </select>
                         </div>
                         <div>
-                            <label for="modele">Modele : </label>
+                            <label for="modele"> Modèle : </label>
                             <input type="text" id="modele" name="modele" />
                         </div>
                         <div>
-                            <label for="millesime">Millesime : </label>
+                            <label for="millesime"> Millesime : </label>
                             <input type="text" id="millesime" name="millesime" />
                         </div>
                         <div>
-                            <label for="cylindree">Cylindree : </label>
+                            <label for="cylindree"> Cylindrée : </label>
                             <input type="text" id="cylindree" name="cylindree" />
                         </div>
                         <div>
-                            <label>energie : </label>
+                            <label> Énergie : </label>
                             <select name="energie">
                                 <option value=""></option>
                                 <option value="Essence">Essence</option>
-                                <option value="Electrique">Electrique</option>
+                                <option value="Electrique">Électrique</option>
                                 <option value="Diesel">Diesel</option>
                                 <option value="Hybride">Hybride</option>
                             </select>
                         </div>
                         <div>
-                            <label>Type de boite : </label>
+                            <label> Type de boîte : </label>
                             <select name="typeBoite">
                                 <option value=""></option>
                                 <option value="Manuelle">Manuelle</option>
@@ -130,23 +130,23 @@
                             </select>
                         </div>
                         <div>
-                            <label for="km">Kilométrage : </label>
+                            <label for="km"> Kilométrage : </label>
                             <input type="text" id="km" name="km" />
                         </div>
                         <div>
-                            <label for="prix">Prix : </label>
+                            <label for="prix"> Prix : </label>
                             <input type="text" id="prix" name="prix" />
                         </div>
                         <div>
-                            <label for="dateImma">Date 1er immatriculation : </label>
+                            <label for="dateImma"> Date 1ère immatriculation : </label>
                             <input type="date" id="dateImma" name="dateImma" />
                         </div>
                         <div>
-                            <label for="descriptif">Descriptif : </label>
+                            <label for="descriptif"> Descriptif : </label>
                             <textarea name="descriptif" id="descriptif"></textarea>
                         </div>
                         <div>
-                            <label>Vehicule Valide : </label>
+                            <label> Véhicule Valide : </label>
                             <select name="valide_vehicule">
                                 <option value=""></option>
                                 <option value="Oui">Oui</option>
@@ -154,7 +154,7 @@
                             </select>
                         </div>
                         <div>
-                            <label for="img_vehicule">Url de l'image : </label>
+                            <label for="img_vehicule">URL de l'image : </label>
                             <input type="text" id="img_vehicule" name="img_vehicule" />
                         </div>
                         <div>
@@ -170,8 +170,8 @@
                 <div class="form-panel_admin">
                     <form action="" method="POST">
                         <div class="users_select">
-                            <label>Ajouter un véhicule Pour : </label>
-                            <select name="user"'>
+                            <label> Ajouter un véhicule pour : </label>
+                            <select name="user">
                                 <option value=""><?php if(isset($_POST['user'])) { echo $_POST['user']; } ?></option>
                                 <?php
                                 $users = $unControleur->selectAllUsers();
@@ -181,11 +181,11 @@
                             </select>
                         </div>
                         <div>
-                            <label for="immatriculation">Immatriculation : </label>
+                            <label for="immatriculation"> Immatriculation : </label>
                             <input type="text" id="immatriculation" name="immatriculation" />
                         </div>
                         <div>
-                            <label>Type : </label>
+                            <label> Type : </label>
                             <select name="type">
                                 <option value=""></option>
                                 <option value="2 Roues">2 Roues</option>
@@ -193,19 +193,19 @@
                             </select>
                         </div>
                         <div>
-                            <label for="modele">Modele : </label>
+                            <label for="modele"> Modèle : </label>
                             <input type="text" id="modele" name="modele" />
                         </div>
                         <div>
-                            <label for="millesime">Millesime : </label>
+                            <label for="millesime"> Millesime : </label>
                             <input type="text" id="millesime" name="millesime" />
                         </div>
                         <div>
-                            <label for="cylindree">Cylindree : </label>
+                            <label for="cylindree"> Cylindrée : </label>
                             <input type="text" id="cylindree" name="cylindree" />
                         </div>
                         <div>
-                            <label>energie : </label>
+                            <label> Énergie : </label>
                             <select name="energie">
                                 <option value=""></option>
                                 <option value="Essence">Essence</option>
@@ -215,7 +215,7 @@
                             </select>
                         </div>
                         <div>
-                            <label>Type de boite : </label>
+                            <label> Type de boîte : </label>
                             <select name="typeBoite">
                                 <option value=""></option>
                                 <option value="Manuelle">Manuelle</option>
@@ -223,23 +223,23 @@
                             </select>
                         </div>
                         <div>
-                            <label for="km">Kilométrage : </label>
+                            <label for="km"> Kilométrage : </label>
                             <input type="text" id="km" name="km" />
                         </div>
                         <div>
-                            <label for="prix">Prix : </label>
+                            <label for="prix"> Prix : </label>
                             <input type="text" id="prix" name="prix" />
                         </div>
                         <div>
-                            <label for="dateImma">Date 1er immatriculation : </label>
+                            <label for="dateImma"> Date 1ère immatriculation : </label>
                             <input type="date" id="dateImma" name="dateImma" />
                         </div>
                         <div>
-                            <label for="descriptif">Descriptif : </label>
+                            <label for="descriptif"> Descriptif : </label>
                             <textarea name="descriptif" id="descriptif"></textarea>
                         </div>
                         <div>
-                            <label>Vehicule Valide : </label>
+                            <label> Véhicule Valide : </label>
                             <select name="valide_vehicule">
                                 <option value=""></option>
                                 <option value="Oui">Oui</option>
@@ -247,7 +247,7 @@
                             </select>
                         </div>
                         <div>
-                            <label for="img_vehicule">Url de l'image : </label>
+                            <label for="img_vehicule">URL de l'image : </label>
                             <input type="text" id="img_vehicule" name="img_vehicule" />
                         </div>
                         <div>

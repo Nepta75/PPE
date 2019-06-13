@@ -1,11 +1,11 @@
 <div class="form-panel_admin">
     <form action="" method="POST">
         <div>
-            <label for="immatriculation">Immatriculation : </label>
+            <label for="immatriculation"> Immatriculation : </label>
             <input type="text" readonly value="<?= $resultat['immatriculation'] ?>" id="immatriculation" name="immatriculation" />
         </div>
         <div>
-            <label>Type : </label>
+            <label> Type : </label>
             <select name="type">
                 <option value="<?= $resultat['type_vehicule'] ?>">--- <?= $resultat['type_vehicule'] ?> ---</option>
                 <option value="2 Roues">2 Roues</option>
@@ -13,19 +13,19 @@
             </select>
         </div>
         <div>
-            <label for="modele">Modele : </label>
+            <label for="modele"> Modèle : </label>
             <input type="text" id="modele" value="<?= $resultat['modele'] ?>" name="modele" />
         </div>
         <div>
-            <label for="millesime">Millesime : </label>
+            <label for="millesime"> Millesime : </label>
             <input type="text" id="millesime" name="millesime" value="<?= $resultat['millesime'] ?>" />
         </div>
         <div>
-            <label for="cylindree">Cylindree : </label>
+            <label for="cylindree"> Cylindrée : </label>
             <input type="text" id="cylindree" name="cylindree" value="<?= $resultat['cylindree'] ?>" />
         </div>
         <div>
-            <label>energie : </label>
+            <label> Énergie : </label>
             <select name="energie">
                 <option value="<?= $resultat['energie'] ?>">--- <?= $resultat['energie'] ?> ---</option>
                 <option value="Essence">Essence</option>
@@ -35,7 +35,7 @@
             </select>
         </div>
         <div>
-            <label>Type de boite : </label>
+            <label> Type de boîte : </label>
             <select name="typeBoite">
                 <option value="<?= $resultat['type_boite'] ?>">--- <?= $resultat['type_boite'] ?> ---</option>
                 <option value="Manuelle">Manuelle</option>
@@ -43,23 +43,23 @@
             </select>
         </div>
         <div>
-            <label for="km">Kilométrage : </label>
+            <label for="km"> Kilométrage : </label>
             <input type="text" id="km" name="km" value="<?= $resultat['kilometrage'] ?>"/>
         </div>
         <div>
-            <label for="prix">Prix : </label>
+            <label for="prix"> Prix : </label>
             <input type="text" id="prix" name="prix" value="<?= $resultat['prix'] ?>"/>
         </div>
         <div>
-            <label for="dateImma">Date 1er immatriculation : </label>
+            <label for="dateImma"> Date 1ère immatriculation : </label>
             <input type="date" id="dateImma" name="dateImma" value="<?= $resultat['date_immat'] ?>" />
         </div>
         <div>
-            <label for="descriptif">Descriptif : </label>
+            <label for="descriptif"> Descriptif : </label>
             <textarea name="descriptif" id="descriptif"><?= $resultat['descriptif'] ?></textarea>
         </div>
         <div>
-            <label>Vehicule Valide : </label>
+            <label> Véhicule Valide : </label>
             <select name="valide_vehicule">
                 <option value="<?= $resultat['valide'] ?>"><?= $resultat['valide'] ?></option>
                 <option value="Oui">Oui</option>
@@ -67,7 +67,7 @@
             </select>
         </div>
         <div>
-            <label for="img_vehicule">Url de l'image : </label>
+            <label for="img_vehicule">URL de l'image : </label>
             <input type="text" id="img_vehicule" name="img_vehicule" value="<?= $resultat['img'] ?>" />
         </div>
         <div>
