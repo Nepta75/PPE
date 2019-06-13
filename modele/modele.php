@@ -35,6 +35,22 @@ class Modele
 			return $select;
 	}
 
+	public function selectVehiculeClient($iduser) {
+		$requete = "
+		SELECT v.idvehiculeclient, u.pseudo, v.iduser, v.immatriculation, v.type_vehicule, v.modele, v.millesime,
+		v.kilometrage, v.cylindree, v.energie, v.type_boite, v.date_immat, v.descriptif, v.valide, v.prix,
+		v.img, v.date_rdv, v.heure_rdv, v.type_rdv
+		FROM utilisateur u
+		JOIN vehicule_client v on v.iduser = u.iduser
+		WHERE v.iduser = :iduser
+		";
+
+		$select = $this->unPdo->prepare($requete);
+		$select->execute(array(":iduser"=>$iduser));
+		$resultat = $select->fetch();
+		return $resultat;
+	}
+
 	public function insertEvent($tab)
 	{
 		if ($this->unPdo!=null)

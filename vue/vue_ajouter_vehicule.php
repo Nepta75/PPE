@@ -3,7 +3,7 @@
 ?>
 
 <div class="block-panel_admin">
-    <?php if(isset($error)){ echo "<div class='error-message'>".$error."</div>";} ?>
+    <?php if(isset($erreur)){ echo "<div class='error-message'>".$erreur."</div>";} ?>
     <h3>Ajouter un véhicule</h3>
     <form action="" method="POST">
         <div class="ajout_vehicule_type">

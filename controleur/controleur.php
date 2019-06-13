@@ -35,5 +35,9 @@
 			$resultat = $this->unModele->selectAllUsers();
 			return $resultat;
 		}
+
+		public function selectVehiculeClient($iduser) {
+			return $this->unModele->selectVehiculeClient($iduser);
+		}
 	}
  ?>
