@@ -75,9 +75,9 @@ $admin = $unControler->verifAdmin();
 						<?php } ?>
 					<?php
 						if ($admin != null) {
-							echo '<a href="deconnexion.php"> Se déconnecter </a>';
+							echo '<a href="deconnexion.php" class="connexionmenu"> Se déconnecter </a>';
 						} else {
-							echo '<a href="gestionclient.php" id="connexionmenu"> Se connecter</a>';
+							echo '<a href="gestionclient.php" class="connexionmenu"> Se connecter</a>';
 						}
 					?>
 						<li class="monvehicule"> <a href="#"> Mon véhicule </a>
