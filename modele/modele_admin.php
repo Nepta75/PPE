@@ -205,7 +205,6 @@ class ModeleAdmin
     //SUPPRESSION VEHICULE
 
     public function deleteVehiculeNeuf($immat) {
-        echo $immat;
         $requete = "Delete from vehicule_neuf where immatriculation = :immatriculation";
         $delete = $this->unPdo->prepare($requete);
         $delete->execute(array(":immatriculation"=>$immat));
