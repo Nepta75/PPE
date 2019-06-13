@@ -442,6 +442,14 @@ hr.separator {
 	text-align: center;
 	margin: 15px;
 }
+
+/* -- modifier vehicule -- */
+
+.modif_vehicule_immat {
+	padding: 50px;
+	display: flex;
+	justify-content: center;
+}
 /* -------------- FOOTER ----------------- */
 
 #footer {
