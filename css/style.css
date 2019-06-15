@@ -450,6 +450,115 @@ hr.separator {
 	display: flex;
 	justify-content: center;
 }
+
+/* --------------- GESTION DEVIS ----------------- */
+
+.header_gestiondevis {
+	height: auto;
+	width: 100%;
+	margin: 100px 0 0 0;
+	padding: 100px 25px;
+	background-color: rgba(230, 230, 230, 0.2);
+}
+
+.header_gestiondevis h2 {
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+.header_gestiondevis div {
+	margin: auto;
+	display: flex;
+	justify-content: space-between;
+	width: 600px;
+	padding: 10px 25px 0 25px;
+}
+
+.header_gestiondevis label {
+	align-self: center;
+	padding: 10px;
+	margin-bottom: 0;
+}
+
+.header_gestiondevis select {
+	cursor: pointer;
+	background-color: #161616;
+	color :#fff;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding: 10px;
+	border: none;
+	width: 300px;
+}
+
+.header_gestiondevis select:hover {
+	background-color: unset !important;
+	color: #161616;
+}
+
+.header_gestiondevis input {
+	margin: auto;
+	width: 100%;
+	border: none;
+	color: #fff;
+	padding: 10px;
+	font-weight: bold;
+	background-color: #3DC97F;
+}
+
+.header_gestiondevis input:hover {
+	background-color: rgb(61, 201, 127, 0.8);
+}
+
+.gestiondevis:not(h2) {
+	width: 100%;
+	margin: 100px 0 0 0;
+	padding: 100px 25px;
+	background-color: rgba(230, 230, 230, 0.2);
+}
+
+.gestiondevis-block {
+	display: inline-grid;
+	width: calc(100% / 2 - 2px);
+}
+
+.devis-btn {
+	width: 100%;
+	display: inline-grid;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.devis-btn input {
+	border:none;
+	padding: 20px 0;
+}
+.devis-btn input:hover {
+	background-color: #161616;
+	color: #fff;
+}
+
+.gestiondevis select {
+	cursor: pointer;
+	background-color: #161616;
+	color :#fff;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding: 20px;
+	border: none;
+}
+
+.gestiondevis select:hover {
+	background-color: unset !important;
+	color: #161616;
+}
+
+.gestiondevis h2 {
+	text-align: center;
+	margin-bottom: 50px;
+	width: 100%;
+	align-self: center;
+}
 /* -------------- FOOTER ----------------- */
 
 #footer {

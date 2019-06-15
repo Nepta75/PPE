@@ -30,9 +30,43 @@ class Modele
 	}
 
 	public function selectAllUsers() {
-			$requete = "select * from utilisateur";
+			$requete = "SELECT u.iduser, u.idclient, c.nom, c.prenom, c.adresse_rue, c.adresse_ville, c.adresse_cp,
+			c.tel, u.pseudo, u.mdp, u.email, u.admin_lvl
+			FROM client c
+			JOIN utilisateur u on u.idclient = c.idclient";
 			$select = $this->unPdo->query($requete);
 			return $select;
+	}
+
+	public function selectUser($id) {
+		$requete = "SELECT u.iduser, u.idclient, c.nom, c.prenom, c.adresse_rue, c.adresse_ville, c.adresse_cp,
+		c.tel, u.pseudo, u.mdp, u.email, u.admin_lvl
+		FROM client c
+		JOIN utilisateur u on u.idclient = c.idclient
+		WHERE u.idclient = :idclient";
+
+		$select = $this->unPdo->prepare($requete);
+		$select->execute(array(":idclient"=>$id));
+		$resultat = $select->fetch();
+		return $resultat;
+	}
+
+	public function selectAllVehiculesNeuf() {
+		$requete = "Select * from vehicule_neuf";
+		$select = $this->unPdo->query($requete);
+		return $select;
+	}
+
+	public function selectAllVehiculesOccasion() {
+		$requete = "Select * from vehicule_occasion";
+		$select = $this->unPdo->query($requete);
+		return $select;
+	}
+
+	public function selectAllVehiculesClient() {
+		$requete = "Select * from vehicule_client";
+		$select = $this->unPdo->query($requete);
+		return $select;
 	}
 
 	public function selectVehiculeClient($iduser) {
@@ -51,46 +85,62 @@ class Modele
 		return $resultat;
 	}
 
-	public function insertEvent($tab)
-	{
-		if ($this->unPdo!=null)
-		{
-			$requete = "insert into event values (null, :designation, :date_event, :heure_debut, :prix, :lieu_event, :idcategorie);";
-			$donnees = array(":designation"=>$tab['designation'],
-							 ":date_event"=>$tab['date_event'],
-							 ":heure_debut"=>$tab['heure_debut'],
-							 ":prix"=>$tab['prix'],
-							 ":lieu_event"=>$tab['lieu_event'],
-							 ":idcategorie"=>$tab['idcategorie']);
-			$insert = $this->unPdo->prepare ($requete);
-			$insert->execute($donnees);
+	public function selectVehicule($immatriculation) {
+		$requete1 = "Select * from vehicule_neuf where immatriculation = :immatriculation";
+		$requete2 = "Select * from vehicule_occasion where immatriculation = :immatriculation";
+		$requete3 = "Select * from vehicule_client where immatriculation = :immatriculation";
+
+
+		$select = $this->unPdo->prepare($requete1);
+		$select->execute(array("immatriculation"=>$immatriculation));
+		$resultat = $select->fetch();
+
+		if ($resultat == null) {
+			$select2 = $this->unPdo->prepare($requete2);
+			$select2->execute(array("immatriculation"=>$immatriculation));
+			$resultat2 = $select2->fetch();
+
+			if ($resultat2 == null) {
+				$select3 = $this->unPdo->prepare($requete3);
+				$select3->execute(array("immatriculation"=>$immatriculation));
+				$resultat3 = $select3->fetch();
+				return $resultat3;
+			}
+			return $resultat2;
 		}
+		return $resultat;
 	}
 
-	public function deleteEvent ($idevent)
-	{
-		if ($this->unPdo != null)
-		{
-			$requete = "delete from event where idevent= :idevent;"; 
-			$donnees = array(":idevent"=>$idevent);
-			$delete = $this->unPdo->prepare($requete);
-			$delete->execute($donnees);
-		}
+	//devis
+
+	public function selectDevis($id) {
+		$requete = "Select * from devis where iddevis = :iddevis";
+		$select = $this->unPdo->prepare($requete);
+		$select->execute(array(":iddevis"=>$id));
+		$resultat = $select->fetch();
+		return $resultat;
 	}
 
-	public function verifConnexion ($login , $mdp)
-	{
-		if ($this->unPdo != null)
-		{
-			$requete ="select * from staff where login = :login and mdp = :mdp;";
-			$donnees = array(":login"=>$login, ":mdp"=>$mdp);
-			$select = $this->unPdo->prepare($requete);
-			$select->execute($donnees);
-			$resultat = $select->fetch();
-			//var_dump($resultat);
-			return $resultat ;
-		}
+	public function insertDevis($data) {
+		var_dump($data);
+		$requete = "INSERT INTO devis
+		(iddevis, idclient, idtechnicien, date_devis, sujet, immatriculation) VALUES 
+		(null, :idclient, :user, :date_devis, :sujet, :immatriculation)";
+
+		$insert = $this->unPdo->prepare($requete);
+		$insert->execute(array(
+			":idclient"=> intval($data['idclient']),
+			":user"=>$data['user'],
+			":date_devis"=> date("Y-m-d"),
+			":sujet"=>$data['sujet'],
+			":immatriculation"=>$data['immatriculation'],
+		));
+
+		$lastId = $this->unPdo->lastInsertId();
+		header("Location:traitement_devis.php?id=".$lastId);
 	}
+
+
 	/**************** Categorie *************/
 
 	public function insertCategorie ($tab)
