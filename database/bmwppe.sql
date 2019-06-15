@@ -2,6 +2,21 @@ drop database if exists bmwppe ;
 create database bmwppe ;
 use bmwppe ;
 
+create table utilisateur (
+	iduser int(5) not null auto_increment,
+	idclient int(5) not null,
+	pseudo varchar(50),
+	mdp varchar(255),
+	email varchar(50),
+	admin_lvl int(2) DEFAULT 0,
+	primary key (iduser),
+	foreign key (idclient) references client (idclient)
+);
+
+insert into utilisateur values (null, 1, 'Lokman', '123', 'lokman-hekim@hotmail.fr', 1),
+(null, 2, 'Miguel', '123', 'miguel@hotmail.fr', 1),
+(null, 3, 'Mohamed', '123', 'lmohamed@hotmail.fr', 1);
+
 create table client (
 	idclient int(5) not null auto_increment,
 	nom varchar(50),
@@ -13,19 +28,11 @@ create table client (
 	tel int(10),
 	primary key (idclient)
 );
+insert into client values 
+(null, 'Aydogan', 'Lokman', '19 rue de clery', 'PARIS', '75002', 'lokman-hekim@hotmail.fr', '0662425270'),
+(null, 'Goncavles', 'Miguel', '57 rue la fayette', 'PARIS', '75010', 'miguel@hotmail.fr', '0658745215'),
+(null, 'Refai', 'Mohamed', '11 avenue jean', 'PARIS', '75006', 'mohamed@hotmail.fr', '0754874528');
 
-create table utilisateur (
-	iduser int(5) not null auto_increment,
-	pseudo varchar(50),
-	mdp varchar(255),
-	email varchar(50),
-	admin_lvl int(2) DEFAULT 0,
-	primary key (iduser)
-);
-
-insert into utilisateur values (null, 'Lokman', '123', 'lokman-hekim@hotmail.fr', 1),
-(null, 'Miguel', '123', 'miguel@hotmail.fr', 1),
-(null, 'Mohamed', '123', 'lmohamed@hotmail.fr', 1);
 
 create table technicien (
 	idtechnicien int(5) not null auto_increment,
@@ -101,8 +108,8 @@ create table devis (
 	idclient int(5),
 	idtechnicien int(5),
 	date_devis date,
-	designation varchar(50),
-	prix_total float(6.2),
+	sujet varchar(50),
+	immatriculation varchar(20),
 	primary key (iddevis),
 	foreign key (idclient) references client (idclient),
 	foreign key (idtechnicien) references technicien (idtechnicien)

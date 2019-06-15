@@ -219,7 +219,7 @@ switch($page) {
             }
         }
     break;
-    case 3 : require "vue/vue_ajouter_vehicule.php"; break;
+    case 3 : require "gestiondevis.php"; break;
     case 4 : require "vue/vue_ajouter_vehicule.php"; break;
     case 5 : require "vue/vue_ajouter_vehicule.php"; break;
     default : require "vue/vue_ajouter_vehicule.php";

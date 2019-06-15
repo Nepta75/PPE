@@ -56,8 +56,6 @@ $admin = $unControler->verifAdmin();
 								<li><a href="#"> Véhicules neufs </a></li>								
 							</ul>
 						</li>
-						<li class="menu-devisfactures"> <a href="#"> Devis & Factures </a>
-						</li>
 						<li class="menu-apropos"> <a href="propos.php"> À Propos </a>
 						</li>
 						<li class="menu-contact"> <a href="contact.php"> Contact </a>
