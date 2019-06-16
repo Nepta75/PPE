@@ -73,7 +73,7 @@ $admin = $unControler->verifAdmin();
 							</li>
 						<?php } ?>
 					<?php
-						if ($admin != null) {
+						if (isset($_SESSION['pseudo']) {
 							echo '<a href="deconnexion.php" class="connexionmenu"> Se déconnecter </a>';
 						} else {
 							echo '<a href="gestionclient.php" class="connexionmenu"> Se connecter</a>';
