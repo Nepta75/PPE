@@ -180,6 +180,16 @@ if ($admin == null) {
             $cAdmin->deleteVehiculeClient($_POST['immatriculation']);
             $succes = "Succes : Vous venez de supprimer un Vehicule client d'immatriculation : ".$_POST['immatriculation']." ! ";
         }
+
+        if(isset($_POST['immat'])) {
+            if(empty($_POST['immatriculation'])) {
+                $erreur = "Veuillez saisir une immatriculation !";
+            }
+        }
+
+        if(isset($_POST['annuler'])) {
+            header("Location:admin.php");
+        }
 }
 ?>
 
@@ -191,6 +201,8 @@ if(isset($error)) {
     return;
 } else if(isset($succes)) {
     echo "<div class='succes-message center'>".$succes."</div>";
+} else if(isset($erreur)) {
+    echo "<div class='error-message center'>".$erreur."</div>";
 }
 
 $page = 0;
@@ -198,33 +210,56 @@ if (isset($_GET['page'])) { $page = $_GET['page']; }
 switch($page) {
     case 1 :  require "vue/vue_ajouter_vehicule.php"; break;
     case 2 : 
-        $erreur = $cAdmin->verifVehicule($_POST);
-        $resultat = $cAdmin->selectVehicule($_POST);
-        if (isset($erreur)) {
-            require "vue/vue_modifier_vehicule.php"; 
+        if (isset($_GET['type']) && isset($_GET['immat']) && !empty($_GET['type']) && !empty($_GET['immat']) && !isset($succes) && !isset($_POST['immat'])){
+            $tab = array(
+                "immatriculation"=>$_GET['immat'],
+                "type_modif"=>$_GET['type'],
+            );
+            $erreur = $cAdmin->verifVehicule($tab);
+            $resultat1 = $cAdmin->selectVehicule($tab['immatriculation']);
+            echo $resultat1['type'];
+            $resultat = $resultat1['resultat'];
+            if($resultat1['type'] == "neuf") {
+                echo "<h3 style='margin-top: 100px; text-align:center'>Modification d'un vehicule neuf</h3>";
+                require "vue/vue_modifier_vehicule_neuf.php";
+            } else if ($resultat1['type'] == "occasion") {
+                echo "<h3 style='margin-top: 100px; text-align:center'>Modification d'un vehicule d'occasion</h3>";
+                require "vue/vue_modifier_vehicule_occas.php";
+            }
         } else {
-            require "vue/vue_modifier_vehicule.php"; 
-            if(isset($_POST['type_modif'])) {
-                if($_POST['type_modif'] == "neuf") {
-                    require "vue/vue_modifier_vehicule_neuf.php";
-                } elseif($_POST['type_modif'] == "occasion") {
-                    require "vue/vue_modifier_vehicule_occas.php";
-                } elseif ($_POST['type_modif'] == "client") {
-                    require_once ("controleur/controleur.php");
-                    $unControleur = new Controleur("localhost", "bmwppe", "root", "");
-                    $dataVehicule = $unControleur->selectVehiculeClient($resultat['iduser']);
-                    $users = $unControleur->selectAllUsers();
-                    require "vue/vue_modifier_vehicule_client.php";
+            if (!isset($_POST['immat'])) {
+                require "vue/vue_modifier_vehicule.php"; 
+            }
+            if(isset($_POST['immat'])) {
+                if(!empty($_POST['immatriculation'])) {
+                    $erreur = $cAdmin->verifVehicule($_POST);
+                    $resultat1 = $cAdmin->selectVehicule($_POST['immatriculation']);
+                    $resultat = $resultat1['resultat'];
+                    if($resultat1['type'] == "neuf") {
+                        echo "<h3 style='margin-top: 100px; text-align:center'>Modification d'un vehicule neuf</h3>";
+                        require "vue/vue_modifier_vehicule_neuf.php";
+                    } elseif($resultat1['type'] == "occasion") {
+                        echo "<h3 style='margin-top: 100px; text-align:center'>Modification d'un vehicule d'occasion</h3>";
+                        require "vue/vue_modifier_vehicule_occas.php";
+                    } elseif ($resultat1['type'] == "client") {
+                        echo "<h3 style='margin-top: 100px; text-align:center'>Modification d'un vehicule Client</h3>";
+                        require_once ("controleur/controleur.php");
+                        $unControleur = new Controleur("localhost", "bmwppe", "root", "");
+                        $dataVehicule = $unControleur->selectVehiculeClient($resultat['iduser']);
+                        $users = $unControleur->selectAllUsers();
+                        require "vue/vue_modifier_vehicule_client.php";
+                    }
                 }
             }
         }
     break;
     case 3 : require "gestiondevis.php"; break;
-    case 4 : require "vue/vue_ajouter_vehicule.php"; break;
-    case 5 : require "vue/vue_ajouter_vehicule.php"; break;
+    case 4 : header("Location:gestionvehicules.php"); break;
+    case 5 : header("Location:gestionvehicules.php?dispo=non"); break;
     default : require "vue/vue_ajouter_vehicule.php";
 }
 ?>
+
 
 
 <?php

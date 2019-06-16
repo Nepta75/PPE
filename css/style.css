@@ -204,6 +204,124 @@ a, a:hover{
 	margin: 7% 0 5% 0;
 }
 
+/* --------------- Vehicule page ----------------- */
+
+.vehicule_page {
+	margin-top: 100px;
+	width: 100%;
+	height : auto;
+	background-color: rgb(230, 230, 230, 0.2);
+}
+
+.vehicule-block {
+	display: inline-block;
+	padding: 20px;
+	margin-bottom: 100px;
+	width: calc(100% / 3 - 20px);
+}
+
+.vehicule-block img {
+	width: 100%;
+}
+
+.vehicule-block div {
+	display: flex;
+}
+
+.vehicule-block label:not(.prix_label) {
+	background-color: #2d3436;
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+	width: calc(50% - 5px );
+	align-self: start;
+	margin: 0 5px 0 0;
+}
+
+.vehicule-block span:not(.prix_span) {
+	margin : 0 0 0 5px;
+	text-align: center;
+	width: calc(50% - 5px);
+	align-self: flex-end;
+}
+
+.vehicule-block .reserver a{
+	margin-top: 5px;
+	display: block;
+	width: 100%;
+	text-align: center;
+	line-height: 50px;
+	height: 50px;
+	font-weight: bold;
+	text-transform: uppercase;
+	background-color: rgb(0, 51, 109);
+	border-bottom: 3px solid black;
+	color: #fff;
+}
+
+.vehicule-block .reserver a:hover{
+	background-color: rgb(0, 51, 109,0.7);
+	border-bottom: 3px solid #fff;
+	transition: 0.3s;
+}
+
+.vehicule-block .modifier a{
+	margin-top: 5px;
+	display: block;
+	width: 100%;
+	text-align: center;
+	line-height: 50px;
+	height: 50px;
+	font-weight: bold;
+	text-transform: uppercase;
+	background-color: rgb(230, 24, 21);
+	border-bottom: 3px solid black;
+	color: #fff;
+}
+
+.vehicule-block .modifier a:hover{
+	background-color: rgb(230, 24, 21,);
+	border-bottom: 3px solid #fff;
+	transition: 0.3s;
+}
+
+.vehicule_prix{
+	margin: 5px 0 0 0;
+	width: 100%;
+	height: 40px;
+	line-height: 50px;
+	background-color: rgb(29, 196, 79);
+}
+
+.vehicule_prix label{
+	background-color: rgb(29, 196, 79);
+	color: #fff;
+	font-size: 1.2rem;
+	font-weight: bold;
+	align-self: start;
+	width: 80px;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 5px;
+}
+
+.vehicule_prix span {
+	color: #fff;
+	font-size: 1.2rem;
+	font-weight: bold;
+	position: relative;
+	margin: auto;
+	right: 25px;
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 5px;
+}
+
+.vehicule_header h3 {
+	text-align: center;
+}
+
 /* --------------- CONNEXION ----------------- */
 
 .background-connexion {
@@ -401,14 +519,13 @@ background-color: #000000;
 	margin-left: 5px;
 }
 
-.form-panel_admin div {
+.form-panel_admin div:not(.btn){
 	display: flex;
 	justify-content: space-between;
 	padding: 0 50px;
 }
 
 .form-panel_admin label {
-	margin-left: 30%;
 	position: relative;
 	top: 10px;
 }
@@ -416,45 +533,54 @@ background-color: #000000;
 .form-panel_admin input {
 	width: 300px;
 	height: 40px;
-	margin-right: 33%;
+	margin-bottom: 10px;
 }
 
 .form-panel_admin textarea {
 	width: 300px;
 	height: 120px;
-	margin-right: 33%;
-	margin-bottom: 50px;
+	margin-bottom: 10px;
 }
 
 .form-panel_admin select {
 	width: 300px;
 	height: 40px;
-	margin-right: 33%;
+	margin-bottom: 10px;
 }
 
-.form-panel_admin input[type='submit'] {
-	width: 100%;
+.form-panel_admin .btn {
+	display: flex;
+	justify-content: center;
+}
+
+.form-panel_admin .btn-delete input{
+	padding: 10px 50px;
+	width: 300px;
 	border: none;
 	height: 40px;
 	border-radius: 3px;
 	color: #fff;
 	background-color: #FF1B17;
-	width: 20%;
-	margin-left: 40%;
-	margin-top: 50px;
 }
 
-.form-panel_admin input[type='submit']:hover {
+.form-panel_admin .btn-delete input:hover {
 	background-color: #E61815;
 }
 
-
-/* -- Ajouter vehicule -- */
-
-.ajout_vehicule_type {
-	text-align: center;
-	margin: 15px;
+.form-panel_admin .btn-update input{
+	padding: 10px 50px;
+	width: 300px;
+	border: none;
+	height: 40px;
+	border-radius: 3px;
+	color: #fff;
+	background-color: rgb(6, 143, 70);
 }
+
+.form-panel_admin .btn-update input:hover {
+	background-color: rgb(6, 143, 70, 0.7);
+}
+
 
 /* -- modifier vehicule -- */
 

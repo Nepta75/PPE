@@ -48,6 +48,14 @@
 			return $this->unModele->selectAllVehiculesOccasion();
 		}
 
+		public function selectAllVehiculesOccasionDispo() {
+			return $this->unModele->selectAllVehiculesOccasionDispo();
+		}
+
+		public function selectAllVehiculesOccasionIndispo() {
+			return $this->unModele->selectAllVehiculesOccasionIndispo();
+		}
+
 		public function selectAllVehiculesClient() {
 			return $this->unModele->selectAllVehiculesClient();
 		}

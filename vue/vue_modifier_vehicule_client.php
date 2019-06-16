@@ -80,11 +80,16 @@
             <label for="img_vehicule">URL de l'image : </label>
             <input type="text" value="<?= $resultat['img'] ?>" id="img_vehicule" name="img_vehicule" />
         </div>
-        <div>
-            <input type="submit" value="Mettre à jour" name="update_vehicule_client" />
-        </div>
-        <div>
-            <input type="submit" value="Supprimer" name="supp_vehicule_client" />
+        <div class="btn">
+            <div class="btn-update">
+                <input type="submit" value="Mettre à jour" name="update_vehicule_client" />
+            </div>
+            <div class="btn-delete">
+                <input type="submit" value="Supprimer" name="supp_vehicule_client" />
+            </div>
+            <div class="btn-annul">
+                <input type="submit" value="Annuler" name="annuler" />
+            </div>
         </div>
     </form>
 </div>

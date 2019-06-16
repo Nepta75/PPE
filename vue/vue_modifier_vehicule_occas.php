@@ -70,11 +70,16 @@
             <label for="img_vehicule">URL de l'image : </label>
             <input type="text" id="img_vehicule" name="img_vehicule" value="<?= $resultat['img'] ?>" />
         </div>
-        <div>
-            <input type="submit" value="Mettre à jour" name="update_vehicule_occasion" />
-        </div>
-        <div>
-            <input type="submit" value="Supprimer" name="supp_vehicule_occasion" />
+        <div class="btn">
+            <div class="btn-update">
+                <input type="submit" value="Mettre à jour" name="update_vehicule_occasion" />
+            </div>
+            <div class="btn-delete">
+                <input type="submit" value="Supprimer" name="supp_vehicule_occasion" />
+            </div>
+            <div class="btn-annul">
+                <input type="submit" value="Annuler" name="annuler" />
+            </div>
         </div>
     </form>
 </div>
