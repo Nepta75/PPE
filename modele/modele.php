@@ -18,7 +18,7 @@ class Modele
 		}
 	}
 
-	function connexion ($user, $mdp) {
+	public function connexion ($user, $mdp) {
 		if($this->unPdo != null) {
 			$requete = 'select * from utilisateur where pseudo = :user and mdp = :mdp';
 			$verif = $this->unPdo->prepare($requete);
@@ -27,6 +27,36 @@ class Modele
 			$resultat = $verif->fetch();
 			return $resultat;
 		}
+	}
+
+	public function inscription($tab) {
+		$requete1 = "INSERT INTO client (idclient, nom, prenom, adresse_rue, adresse_ville, adresse_cp, email, tel) VALUES 
+		(null, :nom, :prenom, :adresse_rue, :adresse_ville, :adresse_cp, :email, :tel)";
+
+		$insert = $this->unPdo->prepare($requete1);
+		$insert->execute(array(
+			":nom"=>$tab['nom'],
+			":prenom"=>$tab['prenom'],
+			":adresse_rue"=>$tab['adresse_rue'],
+			":adresse_ville"=>$tab['ville'],
+			":adresse_cp"=>$tab['adresse_cp'],
+			":email"=>$tab['mail'],
+			":tel"=>$tab['tel'],
+		));
+
+		$lastId = $this->unPdo->lastInsertId();
+
+		$requete2 = "INSERT INTO utilisateur(iduser, idclient, pseudo, mdp, email, admin_lvl) VALUES 
+		(null, :idclient, :pseudo, :mdp, :email, 0)";
+		$insert2 = $this->unPdo->prepare($requete2);
+		$insert2->execute(array(
+			":idclient"=>$lastId,
+			":pseudo"=>$tab['pseudo'],
+			":mdp"=>$tab['mdp'],
+			":email"=>$tab['mail'],
+		));
+
+		header("Location:gestionclient.php?succes");
 	}
 
 	public function selectAllUsers() {

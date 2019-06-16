@@ -115,7 +115,7 @@
             <div class="card-image">
                 <span class="card-notify-badge"><?= $resultat['modele']; ?></span>
                 <span class="card-notify-year"><?= $resultat['millesime']; ?></span>
-                <img class="img-fluid" src="img" alt="Alternate Text" />
+                <img class="img-fluid" src="<?= $resultat['img'] ?>" alt="Alternate Text" />
             </div>
             <div class="card-image-overlay m-auto">
                 <span class="card-detail-badge">Occasion</span>
