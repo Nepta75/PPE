@@ -105,21 +105,45 @@ class ModeleAdmin
 
     //Modification vehicule
 
-    public function selectVehicule($data) {
-        $requete = "";
-        if (isset($data['type_modif'])) {
-            if ($data['type_modif'] == "neuf") {
-                $requete = "Select * from vehicule_neuf where immatriculation = :immatriculation";
-            } elseif ($data['type_modif'] == "occasion") {
-                $requete = "Select * from vehicule_occasion where immatriculation = :immatriculation";
-            } elseif ($data['type_modif'] == "client") {
-                $requete = "Select * from vehicule_client where immatriculation = :immatriculation";
-            }
-            $select = $this->unPdo->prepare($requete);
-            $select->execute(array(":immatriculation"=>$data['immatriculation']));
-            $resultat = $select->fetch();
-            return $resultat;
+    public function selectVehicule($immatriculation) {
+		$requete1 = "Select * from vehicule_neuf where immatriculation = :immatriculation";
+		$requete2 = "Select * from vehicule_occasion where immatriculation = :immatriculation";
+		$requete3 = "Select * from vehicule_client where immatriculation = :immatriculation";
+
+
+		$select = $this->unPdo->prepare($requete1);
+        $select->execute(array("immatriculation"=>$immatriculation));
+        $type = "neuf";
+        $resultat = $select->fetch();
+        $array = array(
+            "type"=>$type,
+            "resultat"=>$resultat,
+        );
+
+		if ($resultat == null) {
+			$select2 = $this->unPdo->prepare($requete2);
+			$select2->execute(array("immatriculation"=>$immatriculation));
+            $type2 = "occasion";
+            $resultat2 = $select2->fetch();
+            $array2 = array(
+                "type"=>$type2,
+                "resultat"=>$resultat2,
+            );
+
+			if ($resultat2 == null) {
+				$select3 = $this->unPdo->prepare($requete3);
+				$select3->execute(array("immatriculation"=>$immatriculation));
+                $type3 = "client";
+                $resultat3 = $select3->fetch();
+                $array3 = array(
+                    "type"=>$type3,
+                    "resultat"=>$resultat3,
+                );
+				return $array3;
+			}
+			return $array2;
         }
+		return $array;
     }
 
     public function updateVehiculeNeuf($immatriculation, $type, $modele, $millesime, $cylindree

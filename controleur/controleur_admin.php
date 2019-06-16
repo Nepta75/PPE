@@ -30,7 +30,7 @@
         public function verifVehicule($data) {
             if(isset($data['immatriculation']) && isset($data['type_modif'])) {
                 if (!empty($data['immatriculation']) && !empty($data['type_modif'])) {
-                    $resultat = $this->modeleAdmin->selectVehicule($data);
+                    $resultat = $this->modeleAdmin->selectVehicule($data['immatriculation']);
                     if($resultat == null) {
                         $erreur = "Erreur : Véhicule introuvable !";
                     }

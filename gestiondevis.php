@@ -4,6 +4,7 @@ require 'controleur/controleur.php';
 $unControleur = new Controleur("localhost", "bmwppe", "root", "");
 $users = $unControleur->selectAllUsers();
 $vehiculesNeuf = $unControleur->selectAllVehiculesNeuf();
+$vehiculesOccasion = $unControleur->selectAllVehiculesOccasionDispo();
 
 if (isset($_POST['valid2'])) {
 	if (!empty($_POST['vehicule'])) {
@@ -91,9 +92,9 @@ if(isset($erreur)){ echo "<div class='error-message'>".$erreur."</div>";}
 					<label>Vehicules disponibles (par immatriculation) : </label>
 					<select name="vehicule">
 						<option value="">-- Selectionner un Vehicule --</option>
-					<?php while($data = $vehiculesNeuf->fetch()) { ?>
+					<?php if ($vehiculesNeuf != null ) { while($data = $vehiculesNeuf->fetch()) { ?>
 						<option name="<?= $data['immatriculation'] ?>"><?= $data['immatriculation'] ?></option>
-					<?php } ?>
+					<?php }} ?>
 						<option value="">-- Vehicule d'occasion  --</option>
 					<?php if ($vehiculesOccasion != null ) { while($data = $vehiculesOccasion->fetch()) { ?>
 						<option name="<?= $data['immatriculation'] ?>"><?= $data['immatriculation'] ?></option>

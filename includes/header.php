@@ -50,10 +50,10 @@ $admin = $unControler->verifAdmin();
 					<ul>
 						<li class="menu-accueil"> <a href="index.php"> Accueil </a>
 						</li>
-						<li class="menu-vehicules"> <a href="#"> Véhicules <i class="fas fa-caret-down"></i></a>
+						<li class="menu-vehicules"> <a href="gestionvehicules.php"> Véhicules <i class="fas fa-caret-down"></i></a>
 							<ul class="submenu">
-								<li><a href="#"> Véhicules d'occasion </a></li>
-								<li><a href="#"> Véhicules neufs </a></li>								
+								<li><a href="gestionvehicules.php?#vehiculeoccasion"> Véhicules d'occasion </a></li>
+								<li><a href="gestionvehicules.php?#vehiculeneuf"> Véhicules neufs </a></li>								
 							</ul>
 						</li>
 						<li class="menu-apropos"> <a href="propos.php"> À Propos </a>
@@ -66,8 +66,9 @@ $admin = $unControler->verifAdmin();
 									<li><a href="admin.php?page=1" id="page1">Ajouter un Véhicule</a></li>
 									<li><a href="admin.php?page=2">Modifier un Véhicule</a></li>
 									<li><a href="admin.php?page=3">Devis</a></li>
-									<li><a href="admin.php?page=4">Liste des clients</a></li>
-									<li><a href="admin.php?page=5">Location</a></li>						
+									<li><a href="admin.php?page=4">vehicules Dispos</a></li>
+									<li><a href="admin.php?page=5">vehicules Indispo</a></li>	
+									<li><a href="admin.php?page=6">Liste des clients</a></li>				
 								</ul>
 							</li>
 						<?php } ?>

@@ -6,7 +6,7 @@
     <?php if(isset($erreur)){ echo "<div class='error-message'>".$erreur."</div>";} ?>
     <h3>Ajouter un véhicule</h3>
     <form action="" method="POST">
-        <div class="ajout_vehicule_type">
+        <div style="text-align: center;">
             <label>Ajouter un véhicule de type : </label>
             <select name="type_ajout" onchange='this.form.submit()'>
                 <option value=""><?php if(isset($_POST['type_ajout'])) { echo "----- Ajout de type ".$_POST['type_ajout']." -----"; } ?></option>
@@ -76,8 +76,10 @@
                             <label for="img_vehicule"> URL de l'image : </label>
                             <input type="text" id="img_vehicule" name="img_vehicule" />
                         </div>
-                        <div>
-                            <input type="submit" name="add_vehicule_neuf" />
+                        <div class="btn">
+                            <div class='btn-update'>
+                                <input type="submit" name="add_vehicule_neuf" />
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -157,8 +159,10 @@
                             <label for="img_vehicule">URL de l'image : </label>
                             <input type="text" id="img_vehicule" name="img_vehicule" />
                         </div>
-                        <div>
-                            <input type="submit" name="add_vehicule_occasion" />
+                        <div class="btn">
+                            <div class='btn-update'>
+                                <input type="submit" name="add_vehicule_occasion" />
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -250,8 +254,10 @@
                             <label for="img_vehicule">URL de l'image : </label>
                             <input type="text" id="img_vehicule" name="img_vehicule" />
                         </div>
-                        <div>
-                            <input type="submit" name="add_vehicule_client" />
+                        <div class="btn">
+                            <div class='btn-update'>
+                                <input type="submit" name="add_vehicule_client" />
+                            </div>
                         </div>
                     </form>
                 </div>

@@ -16,6 +16,7 @@ create table utilisateur (
 insert into utilisateur values (null, 1, 'Lokman', '123', 'lokman-hekim@hotmail.fr', 1),
 (null, 2, 'Miguel', '123', 'miguel@hotmail.fr', 1),
 (null, 3, 'Mohamed', '123', 'lmohamed@hotmail.fr', 1);
+(null, 1, 'user', '123', 'user@hotmail.fr', 0);
 
 create table client (
 	idclient int(5) not null auto_increment,
