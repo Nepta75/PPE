@@ -57,10 +57,25 @@ class Modele
 		return $select;
 	}
 
+	public function selecttreeVehiculesNeuf() {
+		$requete = "Select * from vehicule_neuf order by idvehiculeneuf asc limit 3";
+		$select = $this->unPdo->query($requete);
+		return $select;
+
+	}
+
 	public function selectAllVehiculesOccasion() {
 		$requete = "Select * from vehicule_occasion";
 		$select = $this->unPdo->query($requete);
 		return $select;
+	}
+
+	public function selecttreeVehiculesOccasion() {
+		$requete = "Select * from vehicule_occasion where valide = 'oui' order by idvehiculeocc asc limit 3";
+		$select = $this->unPdo->query($requete);
+		$resultat = $select->fetchAll();
+		return $resultat;
+
 	}
 
 	public function selectAllVehiculesOccasionDispo() {
