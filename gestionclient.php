@@ -38,3 +38,7 @@ if(isset($_GET['inscription'])) {
 }
 ?>
 
+<?php
+  include "includes/footer.php";
+?>
+

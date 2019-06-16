@@ -52,7 +52,7 @@
                         <input type="submit" name="inscription" value="inscription" />
                     </div>
                 </div>
-            <div>
+            </div>
         </div>
     </form>
 </div>

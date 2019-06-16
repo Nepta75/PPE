@@ -24,6 +24,6 @@
             <div>
                 <p style="color: #fff">Pas encore inscrit ?</b><a href="gestionclient.php?inscription"> Inscrivez-vous maintenant !</a><b>
             </div>
-        <div>
+        </div>
     </form>
 </div>

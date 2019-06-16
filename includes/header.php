@@ -84,8 +84,10 @@ $admin = $unControler->verifAdmin();
 							echo '<a href="gestionclient.php" class="connexionmenu"> Se connecter</a>';
 						}
 					?>
+					<? if (isset($_SESSION['pseudo']) && isset($_SESSION['admin_lvl']) && $_SESSION['admin_lvl'] == 0) { ?>
 						<li class="monvehicule"> <a href="#"> Mon véhicule </a>
 						</li>
+					<? } ?>
 					</ul>
 				</nav>
 			</div>

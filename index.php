@@ -57,7 +57,7 @@
 
 <div class="container">
     <br>
-    <h4>Nos Véhicules Neufs:</h4>
+    <h4>Nos derniers ajout de vehicule neuf:</h4>
   <br>  
   
 	<div class="row" id="ads"> 
@@ -95,7 +95,7 @@
 </div>
 <div class="container">
     <br>
-    <h4>Nos Véhicules D'occasions :</h4>
+    <h4>Nos derniers ajout de véhicule d'occasion :</h4>
 	<br>
 	<div class="row" id="ads">
     
@@ -127,6 +127,7 @@
     <?php }}else{
   echo "nous n'avons pas de véhicules d'occasion ";
  }  ?>
+</div>
 </div>
 <?php
   include "includes/footer.php";

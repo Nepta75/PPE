@@ -470,9 +470,6 @@ nav a:active {
 	text-transform: uppercase;
 }
 
-<<<<<<< Updated upstream
-/* --------------- contact ----------------- */
-=======
 /* --------------- INSCRIPTION ----------------- */
 
 .background-inscription {
@@ -539,7 +536,6 @@ nav a:active {
 
 
 /* --------------- CONTACT ----------------- */
->>>>>>> Stashed changes
 
 
 .contact-info {
@@ -653,7 +649,6 @@ form h3 {
 }
 
 hr.separator {
-<<<<<<< Updated upstream
 width: 33%;
 margin-bottom: 5%;
 background-color: #000000;
@@ -869,9 +864,3 @@ background-color: #000000;
 	text-align: center;
 }
 
-=======
-	width: 33%;
-	margin-bottom: 4%;
-	background-color: #FF1B17;
-}
->>>>>>> Stashed changes
