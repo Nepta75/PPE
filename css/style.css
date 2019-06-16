@@ -6,11 +6,109 @@ body, html {
 	background-color: #ffffff; 
 }
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 body {
-	/* font-family: 'Noto Sans', sans-serif; */
-	/* font-family: Verdana, Geneva, sans-serif; */
-	font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+
 }
+
+/* Category Ads */
+
+#ads {
+    margin: 30px 0 30px 0;
+   
+}
+
+#ads .card-notify-badge {
+        position: absolute;
+        left: -10px;
+        top: -20px;
+        background: #0099FF;
+        text-align: center;
+        border-radius: 30px 30px 30px 30px; 
+        color: #000;
+        padding: 5px 10px;
+        font-size: 14px;
+
+    }
+
+#ads .card-notify-year {
+        position: absolute;
+        right: -10px;
+        top: -20px;
+        background: #ff4444;
+        border-radius: 50%;
+        text-align: center;
+        color: #fff;      
+        font-size: 14px;      
+        width: 50px;
+        height: 50px;    
+        padding: 15px 0 0 0;
+}
+
+
+#ads .card-detail-badge {      
+        background: #0099FF;
+        text-align: center;
+        border-radius: 30px 30px 30px 30px;
+        color: #000;
+        padding: 5px 10px;
+        font-size: 14px;        
+    }
+
+   
+
+#ads .card:hover {
+            background: #fff;
+            box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+#ads .card-image-overlay {
+        font-size: 20px;
+        
+    }
+
+
+#ads .card-image-overlay span {
+            display: inline-block;              
+        }
+
+
+#ads .ad-btn {
+        text-transform: uppercase;
+        width: 150px;
+        height: 40px;
+        border-radius: 80px;
+        font-size: 16px;
+        line-height: 35px;
+        text-align: center;
+        border: 3px solid #e6de08;
+        display: block;
+        text-decoration: none;
+        margin: 20px auto 1px auto;
+        color: #000;
+        overflow: hidden;        
+        position: relative;
+        background-color: #e6de08;
+    }
+
+#ads .ad-btn:hover {
+            background-color: #e6de08;
+            color: #1e1717;
+            border: 2px solid #e6de08;
+            background: transparent;
+            transition: all 0.3s ease;
+            box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+        }
+
+#ads .ad-title h5 {
+        text-transform: uppercase;
+        font-size: 18px;
+    }
 
 a, a:hover{
 	text-decoration: none;
@@ -36,7 +134,6 @@ a, a:hover{
 }
 
 /* --------------- HEADER ----------------- */
-
 
 .container_header {
 	display: flex;
@@ -70,8 +167,8 @@ a, a:hover{
 	box-shadow: 4px 3px 3px #000000;
 }
 
-.menu {
-	font-weight: 400;
+nav {
+	font-weight: bold;
 	text-transform: uppercase;
 	text-align: center;
 	color: #ffffff;
@@ -81,97 +178,101 @@ a, a:hover{
 	width: 100%;
 }
 
-.menu ul {
+nav ul {
 	margin-left: 2%;
 	padding: 0px;
 }
 
-.menu ul::after {
+nav ul::after {
 	content: "";
 	display: block;
 	clear: both;
 }
 
-.menu li {
+nav li {
 	float: left;
 	position: relative;
-	list-style-type: none;
-	text-decoration: none;
-	display: inline-block;
+	margin-right: 1%;
 	color: #ffffff;
-	transition-property: background-color; 
-    transition-duration: 0.3s; 
+	list-style-type: none;	
 }
 
-.menu li:hover {
-	height: 50px;
-	line-height: 50px;
-	color: #ffffff;
-	background-color: #2990D9;
-}
-
-.menu li:hover .submenu {
+nav li:hover .submenu {
 	display: inline-block;
 	position: absolute;
 	top: 100%;
-	left: -3px;
+	left: 0px;
 	height: 20px;
+	padding-left: 0px;
 	z-index: 1000;
 	margin-bottom: 1%;
 }
 
-.menu a {
-	display: inline-block;
-	list-style-type: none;
-	color: #ffffff;
-	height: 50px;
-	line-height: 50px;
-	padding: 0 30px 0 30px;	
-}
-
-.menu a:hover {
-	list-style-type: none;
-	text-decoration: none;
-	color: #ffffff;
-}
-
-.menu a:active {
-	color: #E6E6E6; 
-}
-
 .submenu {
-	text-align: left;
-	font-size: 14px;
 	display: none;
 	transition-property: background-color; 
-    transition-duration: 2s;
+    transition-duration: 1s;
 }
 
 .submenu li {
-	background-color: #161616;
-	width: 250px;
+	background-color: rgb(59 , 59 , 59);
+	border-left: 1px solid rgb(255 , 255 , 255 , 0.3);
+	border-right: 1px solid rgb(255 , 255 , 255 , 0.3);
+	border-bottom: 1px solid rgb(255 , 255 , 255 , 0.3);
 }
 
-.submenu a:hover {
-	color: #E6E6E6;
+.submenu li a {
+	padding: 0px 0px;
+	font-size: 13px;
+	width: 270px;
+	color: #000000;
 }
 
-.connexionmenu {
+.submenu li:hover a {
+	color: #ffffff;
+	font-weight: bold;
+}
+
+.submenu li a{
+	color: #ffffff;
+}
+
+.submenu:hover a {
+	color: #ffffff;
+}
+
+nav a {
+	text-decoration: none;
+	display: inline-block;
+	color: #ffffff;
+	padding: 0 20px 0 20px;
+	transition-property: background-color; 
+    transition-duration: 0.3s; 
+}
+
+nav a:hover {
+	height: 50px;
+	line-height: 50px;
+	color: #ffffff;
+	background-color: rgba(255 , 255 , 255 , 0.075);
+}
+
+nav a:active {
+	color: #E6E6E6; 
+}
+
+#connexionmenu {
 	float: right;
 	transition-property: background-color; 
-    transition-duration: 1s;
-   	padding: 0 20px 0 20px;
-   	height: 50px;
-   	line-height: 50px;	
+    transition-duration: 1s; 
 }
 
-.connexionmenu:hover {
-	text-decoration: none;
+#connexionmenu:hover {
 	background-color: #076BB3;
-	border-bottom: 2px solid #FF1B17;
 }
 
-/* ----------- CONTENU ACCUEIL ------------ */
+
+/* CONTENU ACCUEIL */
 
 .carousel {
 	position: absolute;
@@ -179,25 +280,20 @@ a, a:hover{
 
 .img_carousel_index {
 	width: 100%;
+	height: calc(100vh - 80px);
 }
 
 .carousel-caption {
 	background-color: rgb(0, 0, 0, 0.5);
 	border-radius: 3px;
-	margin-bottom: 21%;
 }
 
 .carousel-caption p {
-	margin-top: 2%;
 	text-shadow: 1px 1px 20px #000000;
 	font-size: 20px;
 }
 
-.index-content {
-	margin: 10% 0 10% 0;
-}
-
-/* --------------- CONTENU A PROPOS ----------------- */
+/*             CONTENU A PROPOS                */
 
 .about-title {
 	font-weight: bolder;
@@ -374,125 +470,121 @@ a, a:hover{
 	text-transform: uppercase;
 }
 
-/* --------------- CONTACT ----------------- */
+/* --------------- contact ----------------- */
 
 
 .contact-info {
-display: flex;
-justify-content: space-between;
-margin-top: 150px;
-margin-left: 10%;
-margin-bottom: 5%;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 100px;
 }
 
 .sub-block-contact-info {
-padding: 50px;
-margin-top: 33px;
+	padding: 50px;
 }
 
 .googlemap_contact {
-padding : 50px;
+	padding : 50px;
 }
 
 .form_contact {
-margin-top: 100px;
-width: 100%;
-background-image: url("../img/contact-form-background.jpg");
-background-repeat: no-repeat;
-background-size: 100%;
-height: 100%;
+	margin-top: 100px;
+	width: 100%;
+	background-image: url("../img/contact-form-background.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	height: 100%;
 }
 
 .block-contact {
-display: flex;
-justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .test {
-background-color: #3e4446;
-width: 100%;
-justify-content: flex-end;
-padding-bottom: 5px;
+	background-color: rgb(45 , 52 , 54 , 0.5);
+	width: 100%;
+	justify-content: flex-end;
+	padding-bottom: 5px;
 }
 
 .test2 {
-color: #ffffff;
-width: 100%;
-background-color: #3e4446;
-padding-bottom: 5px;
+	color: #ffffff;
+	width: 100%;
+	background-color: rgb(45 , 52 , 54 , 0.5);
+	padding-bottom: 5px;
 }
 
 form h3 {
-margin-top: 3%;
-position: relative;
-bottom : 50px;
-text-transform: uppercase;
-color: #000000;
-font-weight: bolder;
-text-align: center;
+	margin-top: 3%;
+	position: relative;
+	bottom : 50px;
+	text-transform: uppercase;
+	color: #000000;
+	font-weight: bolder;
+	text-align: center;
 }
 
 .form_contact {
-margin-top: 0;
-padding: 100px 0 70px 0;
+	margin-top: 0;
+	padding: 100px 0 70px 0;
 }
 
 .form_contact div {
-margin: 10px 30px;
+	margin: 10px 30px;
 }
 
 .form_contact label {
-color: #ffffff;
+	color: #ffffff;
 }
 
 .form_contact i {
-color:#ffffff;
+	color:#ffffff;
 }
 
 .form_contact input {
-width: 100%;
-border: none;
-border-radius: 2px;
-height: 40px;
+	width: 100%;
+	border: none;
+	border-radius: 2px;
+	height: 40px;
 }
 
 
 .form_contact textarea {
-width: 100%;
-min-height: 100px;
+	width: 100%;
+	min-height: 100px;
 }
 
 .test2-sub-block i {
-color: #ffffff;
+	color: #ffffff;
 }
 
 .test2-sub-block label {
-color: #ffffff;
+	color: #ffffff;
 }
 
 .submit_form_contact  input {
-border: 1px solid #ffffff;
-border-radius: 2px;
-color: #ffffff;
-height: 50px;
-width: 50%;
-background-color: #2787CC;
-margin-top: 15px;
-margin-left: 25%;
+	border: 1px solid #ffffff;
+	border-radius: 2px;
+	color: #ffffff;
+	height: 50px;
+	background-color: #2d3436;
+	margin-top: 15px;
 }
 
 .submit_form_contact input:hover {
-background-color: #2990D9;
+	background-color: #3e4446;
 }
 
 .objet_form_contact i {
-color: #ffffff;
+	color: #ffffff;
 }
 .objet_form_contact label {
-color: #ffffff;
+	color: #ffffff;
 }
 
 hr.separator {
+<<<<<<< Updated upstream
 width: 33%;
 margin-bottom: 5%;
 background-color: #000000;
@@ -708,3 +800,9 @@ background-color: #000000;
 	text-align: center;
 }
 
+=======
+	width: 33%;
+	margin-bottom: 4%;
+	background-color: #FF1B17;
+}
+>>>>>>> Stashed changes

@@ -1,5 +1,10 @@
 <?php
-	include "includes/header.php";
+  include "includes/header.php";
+  require "controleur/controleur.php";
+  $unControleur = new Controleur ("localhost","bmwppe","root","");
+  $vehiculeOccasion = $unControleur->selecttreeVehiculesOccasion();
+  $vehiculeNeuf = $unControleur->selecttreeVehiculesNeuf();
+  
 ?>
 
 <!-- CONTENT -->
@@ -50,10 +55,79 @@
 </div>
 
 
-<div>
-  <h2>Rajouter élement ici</h2>
-</div>
+<div class="container">
+    <br>
+    <h4>Nos Véhicules Neufs:</h4>
+  <br>  
+  
+	<div class="row" id="ads"> 
+    <?php if ($vehiculeNeuf->fetchAll() != null) {
 
+    
+    while ($data = $vehiculeNeuf->fetch ()) {  
+
+        ?>
+    <!-- Category Card -->
+ 
+    <div class="col-md-4">
+        <div class="card rounded">
+            <div class="card-image">
+                <span class="card-notify-badge"><?= $data['modele']; ?></span>
+                <span class="card-notify-year"><?= $data['millesime']; ?></span>
+                <img class="img-fluid" src="<?= $data['img']; ?>" alt="Alternate Text" />
+            </div>
+            <div class="card-image-overlay m-auto">
+              <
+          
+            </div>
+            <div class="card-body text-center">
+                <div class="ad-title m-auto">
+                </div>
+                <a class="ad-btn" href="#">View</a>
+           </div> 
+        </div> 
+    </div>  
+    
+<?php   }}else{
+  echo "nous n'avons pas de véhicules neuf ";
+ }  ?>
+</div>
+</div>
+<div class="container">
+    <br>
+    <h4>Nos Véhicules D'occasions :</h4>
+	<br>
+	<div class="row" id="ads">
+    
+  <?php 
+  $resultat = $vehiculeOccasion;
+   if ($resultat != null) {
+
+    foreach ($resultat as $resultat) {  
+     
+      ?>
+      
+ 
+    <!-- Category Card -->
+    
+    <div class="col-md-4">
+        <div class="card rounded">
+            <div class="card-image">
+                <span class="card-notify-badge"><?= $resultat['modele']; ?></span>
+                <span class="card-notify-year"><?= $resultat['millesime']; ?></span>
+                <img class="img-fluid" src="img" alt="Alternate Text" />
+            </div>
+            <div class="card-image-overlay m-auto">
+                <span class="card-detail-badge">Occasion</span>
+                <span class="card-detail-badge"><?= $resultat['prix']; ?>€</span>
+                <span class="card-detail-badge"><?= $resultat['kilometrage']; ?>KM</span>
+             </div>
+        </div>
+    </div>
+    <?php }}else{
+  echo "nous n'avons pas de véhicules d'occasion ";
+ }  ?>
+</div>
 <?php
   include "includes/footer.php";
 ?>

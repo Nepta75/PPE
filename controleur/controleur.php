@@ -43,9 +43,19 @@
 		public function selectAllVehiculesNeuf() {
 			return $this->unModele->selectAllVehiculesNeuf();
 		}
+		
+        public function selecttreeVehiculesNeuf() {
+			return $this->unModele->selecttreeVehiculesNeuf();
+
+		}
 
 		public function selectAllVehiculesOccasion() {
 			return $this->unModele->selectAllVehiculesOccasion();
+		}
+
+		public function selecttreeVehiculesOccasion() {
+			return $this->unModele->selecttreeVehiculesOccasion();
+			
 		}
 
 		public function selectAllVehiculesOccasionDispo() {
