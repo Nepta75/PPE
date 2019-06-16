@@ -814,7 +814,7 @@ background-color: #000000;
 
 .gestiondevis-block {
 	display: inline-grid;
-	width: calc(100% / 2 - 2px);
+	width: calc(100% / 2 - 3px);
 }
 
 .devis-btn {
