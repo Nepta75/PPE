@@ -9,25 +9,32 @@ if (isset($_POST['connexion'])) {
         if ($unControler->connexion($pseudo, $_POST['mdp']) !== null) {
             $unControler->connexion($pseudo, $_POST['mdp']);
         } else {
-            $error = "Erreur : Veuillez vérifier vos identifiants";
+            $erreur = "Erreur : Veuillez vérifier vos identifiants";
         }
     } else {
-        $error = 'Erreur : Veuillez remplir tous les champs !';
+        $erreur = 'Erreur : Veuillez remplir tous les champs !';
+    }
+}
+
+if(isset($_POST['inscription'])) {
+    if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['adresse_rue']) && !empty($_POST['adresse_cp'])
+    && !empty($_POST['ville']) && !empty($_POST['tel']) && !empty($_POST['pseudo']) && !empty($_POST['mail']) && !empty($_POST['mdp'])) {
+        $unControler->inscription($_POST);
+    } else {
+        $erreur = "Erreur Veuillez remplire tous les champs !";
     }
 }
 ?>
 
 
 <?php
-if(isset($error)) {
-    echo "<div class='error-message'>".$error."</div>";
+if (isset($_GET['succes'])) {
+   $succes = "Succes : Votre insciption c'est bien passé, vous pouvez desormais vous connectez !";
 }
-require 'vue/vueconnexion.php';
-?>
-
-
-    
-<?php
-require_once 'includes/footer.php';
+if(isset($_GET['inscription'])) {
+    require 'vue/vue_inscription.php';
+} else {
+    require 'vue/vueconnexion.php';
+}
 ?>
 

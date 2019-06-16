@@ -418,7 +418,7 @@ nav a:active {
 	text-align: center;
 }
 
-/* --------------- CONNEXION ----------------- */
+/* --------------- connexion ----------------- */
 
 .background-connexion {
 	background-image: url('../img/connexion-background.jpg');
@@ -470,7 +470,76 @@ nav a:active {
 	text-transform: uppercase;
 }
 
+<<<<<<< Updated upstream
 /* --------------- contact ----------------- */
+=======
+/* --------------- INSCRIPTION ----------------- */
+
+.background-inscription {
+	background-image: url('../img/connexion-background.jpg');
+	height: calc(100vh - 80px);
+	background-size: cover;
+	width: 100%;
+}
+
+.header-inscription {
+	margin-top: 40px;
+	background-color: #2d3436;
+	position: absolute;
+	background-color: #2d3436;
+	top: 50%;
+	left: 50%;
+	width: 80%;
+	transform: translate(-50%, -50%);
+}
+
+.inscription {
+	text-align: center;
+	display: flex;
+	justify-content: space-between;
+	border-radius: 5px;
+}
+
+.inscription-block {
+	align-self: center;
+	padding: 50px 50px 20px 50px;
+}
+
+.inscription .element_inscription {
+	display: flex;
+	justify-content: space-between;
+	margin: 5px 5px;
+}
+
+.element_inscription input {
+	border:none;
+	border-radius: 2px;
+}
+
+.inscription label {
+	color: #fff;
+	margin: 5px 20px;
+}
+
+.inscription input[type=submit] {
+	width: 100%;
+	margin-top: 20px;
+	height: 40px;
+}
+
+.inscription input[type=submit]:hover {
+	background-color: #E6E6E6;
+}
+
+.inscription h3 {
+	color : #fff;
+	text-transform: uppercase;
+}
+
+
+
+/* --------------- CONTACT ----------------- */
+>>>>>>> Stashed changes
 
 
 .contact-info {

@@ -31,6 +31,10 @@
 			}
 		}
 
+		public function inscription($tab) {
+			$this->unModele->inscription($tab);
+		}
+
 		public function selectAllUsers(){
 			$resultat = $this->unModele->selectAllUsers();
 			return $resultat;
