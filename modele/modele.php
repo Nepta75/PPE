@@ -56,7 +56,7 @@ class Modele
 			":email"=>$tab['mail'],
 		));
 
-		header("Location:gestionclient.php?succes");
+		header("Location:gestionclient.php?succes=in");
 	}
 
 	public function selectAllUsers() {

@@ -28,8 +28,14 @@ if(isset($_POST['inscription'])) {
 
 
 <?php
-if (isset($_GET['succes'])) {
+if (isset($_GET['succes']) && !isset($erreur)) {
+    $m = $_GET['succes'];
+    if($m = "in") {
    $succes = "Succes : Votre insciption c'est bien passé, vous pouvez desormais vous connectez !";
+    }
+    if ($m = "dc") {
+        $succes = "Succes : Vous vous êtes deconnecté aves succes !";
+    }
 }
 if(isset($_GET['inscription'])) {
     require 'vue/vue_inscription.php';
