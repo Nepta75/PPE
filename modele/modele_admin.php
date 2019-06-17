@@ -245,6 +245,73 @@ class ModeleAdmin
         $delete = $this->unPdo->prepare($requete);
         $delete->execute(array(":immatriculation"=>$immat));
     }
-}
+
+    //CLIENTS
+
+    public function selectAllClients() {
+        $requete = "Select c.nom, c.prenom, c.adresse_rue, c.adresse_cp, c.adresse_ville, c.tel, c.email,
+        u.idclient, u.pseudo, u.mdp, u.email, u.admin_lvl from utilisateur u
+        join client c on u.idclient = c.idclient";
+        $select = $this->unPdo->query($requete);
+        $resultat = $select->fetchAll();
+        return $resultat;
+    }
+
+    public function deleteUser($id) {
+        $requete = "delete from utilisateur where idclient = :idclient";
+        $delete = $this->unPdo->prepare($requete);
+        $delete->execute(array(
+            ":idclient"=>$id,
+        ));
+
+        $requete2 = "delete from client where idclient = :idclient";
+        $delete2 = $this->unPdo->prepare($requete2);
+        $delete2->execute(array(
+            ":idclient"=>$id,
+        ));
+    }
+
+    public function selectUser($id) {
+		$requete = "SELECT u.iduser, u.idclient, c.nom, c.prenom, c.adresse_rue, c.adresse_ville, c.adresse_cp,
+		c.tel, u.pseudo, u.mdp, u.email, u.admin_lvl
+		FROM client c
+		JOIN utilisateur u on u.idclient = c.idclient
+		WHERE u.idclient = :idclient";
+
+		$select = $this->unPdo->prepare($requete);
+		$select->execute(array(":idclient"=>$id));
+        $resultat = $select->fetch();
+		return $resultat;
+    }
+    
+    public function updateInscription($tab, $id) {
+        $requete1 = "UPDATE client set nom = :nom, prenom = :prenom, adresse_rue = :adresse_rue,
+        adresse_ville = :adresse_ville, adresse_cp = :adresse_cp, email = :email, tel = :tel WHERE
+        idclient = :idclient";
+
+		$insert = $this->unPdo->prepare($requete1);
+		$insert->execute(array(
+			":nom"=>$tab['nom'],
+			":prenom"=>$tab['prenom'],
+			":adresse_rue"=>$tab['adresse_rue'],
+			":adresse_ville"=>$tab['ville'],
+			":adresse_cp"=>$tab['adresse_cp'],
+			":email"=>$tab['mail'],
+            ":tel"=>$tab['tel'],
+            ":idclient"=>$id,
+		));
+
+		$requete2 = "UPDATE utilisateur set pseudo = :pseudo, mdp = :mdp, email = :email, admin_lvl = :admin_lvl where 
+		idclient = :idclient";
+		$insert2 = $this->unPdo->prepare($requete2);
+		$insert2->execute(array(
+			":idclient"=>$id,
+			":pseudo"=>$tab['pseudo'],
+			":mdp"=>$tab['mdp'],
+            ":email"=>$tab['mail'],
+            ":admin_lvl"=>$tab['admin_lvl'],
+		));
+    }
+} 
     
 ?>

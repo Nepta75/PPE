@@ -187,6 +187,20 @@ if ($admin == null) {
             }
         }
 
+        if(isset($_GET['action']) && $_GET['action'] == 'x' && isset($_GET['iduser']) && !empty($_GET['iduser'])) {
+            $cAdmin->deleteUser($_GET['iduser']);
+        }
+
+        if(isset($_POST['update_client'])) {
+            if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['adresse_rue']) && !empty($_POST['adresse_cp'])
+            && !empty($_POST['ville']) && !empty($_POST['tel']) && !empty($_POST['pseudo']) && !empty($_POST['mail']) && !empty($_POST['mdp']) && !empty($_POST['admin_lvl'])) {
+                $unControler->updateInscription($_POST, $_GET['iduser']);
+                $succes = $_POST['nom']." ".$_POST['prenom']." Alias ".$_POST['pseudo']." Vien d'être mis à jour !";
+            } else {
+                $erreur = "Erreur Veuillez remplire tous les champs !";
+            }
+        }
+
         if(isset($_POST['annuler'])) {
             header("Location:admin.php");
         }
@@ -256,6 +270,13 @@ switch($page) {
     case 3 : require "gestiondevis.php"; break;
     case 4 : header("Location:gestionvehicules.php"); break;
     case 5 : header("Location:gestionvehicules.php?dispo=non"); break;
+    case 6 :
+    $data = $cAdmin->selectAllClients();
+    if(isset($_GET['action']) && $_GET['action'] == 'm' && isset($_GET['iduser']) && !empty($_GET['iduser'])) {
+        $user = $cAdmin->selectUser($_GET['iduser']);
+        require "vue/vue_update_client.php";
+    }
+    require 'vue/vue_list_clients.php'; break;
     default : require "vue/vue_ajouter_vehicule.php";
 }
 ?>

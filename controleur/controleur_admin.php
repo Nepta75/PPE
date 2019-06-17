@@ -25,6 +25,18 @@
             ,$energie, $typeBoite, $km, $descriptif, $valid, $prix, $date_imma, $url_img);
         }
 
+        public function deleteUser($id){
+            $this->modeleAdmin->deleteUser($id);
+        }
+
+        public function selectUser($id) {
+           return $this->modeleAdmin->selectUser($id);
+        }
+
+        public function updateInscription($tab, $id) {
+            $this->modeleAdmin->updateInscription($tab, $id);
+        }
+
         //MODIFICATION VEHICULE
 
         public function verifVehicule($data) {
@@ -78,6 +90,10 @@
 
         public function selectVehicule($resultat) {
             return $this->modeleAdmin->selectVehicule($resultat);
+        }
+
+        public function selectAllClients() {
+            return $this->modeleAdmin->selectAllClients();
         }
 
         public function verifAdmin() {
