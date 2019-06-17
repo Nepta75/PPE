@@ -4,6 +4,7 @@ body, html {
 	padding: 0px;
 	margin: 0px;
 	background-color: #ffffff; 
+	height: 100%;
 }
 
 body {
@@ -265,6 +266,7 @@ a, a:hover{
 }
 
 .monvehicule {
+	float: right;
 	transition-property: background-color; 
     transition-duration: 1s;
 }

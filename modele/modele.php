@@ -125,6 +125,7 @@ class Modele
 		$select = $this->unPdo->query($requete);
 		return $select;
 	}
+	/* -------------- VEHICULE CLIENT  --------------- */ 
 
 	public function selectVehiculeClient($iduser) {
 		$requete = "
@@ -196,81 +197,6 @@ class Modele
 		$lastId = $this->unPdo->lastInsertId();
 		header("Location:traitement_devis.php?id=".$lastId);
 	}
-
-
-	/**************** Categorie *************/
-
-	public function insertCategorie ($tab)
-	{
-		if($this->unPdo != null)
-		{
-			$requete = "insert into categorie values (null, :libelle);";
-			$donnees = array(":libelle"=>$tab['libelle']);
-			$insert = $this->unPdo->prepare($requete);
-			$insert->execute($donnees);
-		}
-	}
-	public function deleteCategorie ($idcategorie)
-	{
-		if($this->unPdo != null)
-		{
-			$requete = "delete from categorie where idcategorie = :idcategorie;";
-			$donnees = array(":idcategorie"=>$idcategorie);
-			$delete = $this->unPdo->prepare($requete);
-			$delete->execute($donnees);
-		}
-	}
-	public function selectCategories ()
-	{
-		if($this->unPdo != null)
-		{
-			$requete = "select * from categorie ;";
-			$select = $this->unPdo->prepare($requete);
-			$select->execute ();
-			$resultats = $select->fetchAll();
-			return $resultats;
-		}
-	}
-
-	/****************** STAFF *****************/
-
-	public function insertStaff ($tab)
-	{
-		if($this->unPdo != null)
-			{
-				$requete = "insert into staff values (null, :login, :mdp, :nom, :prenom);";
-				$donnees = array(":login"=>$tab['login'],
-								 ":mdp"=>$tab['mdp'],
-								 ":nom"=>$tab['nom'],
-								 ":prenom"=>$tab['prenom']);
-				$insert = $this->unPdo->prepare ($requete);
-				$insert->execute($donnees);
-			}	
-	}
-
-	public function deleteStaff ($idstaff)
-	{
-		if ($this->unPdo != null)
-		{
-			$requete = "delete from staff where idstaff= :idstaff;"; 
-			$donnees = array(":idstaff"=>$idstaff);
-			$delete = $this->unPdo->prepare($requete);
-			$delete->execute($donnees);
-		}
-	}
-
-	public function selectStaff ()
-	{
-		if($this->unPdo != null)
-		{
-			$requete = "select * from staff ;";
-			$select = $this->unPdo->prepare($requete);
-			$select->execute ();
-			$resultats = $select->fetchAll();
-			return $resultats;
-		}
-	}
-
 } 	//fin de la classe
 ?>
 

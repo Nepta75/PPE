@@ -24,9 +24,9 @@ if ($admin == null) {
         !empty($date_imma) && !empty($url_img)) {
             $cAdmin->addVehiculeNeuf($immatriculation, $type, $modele, $millesime, $cylindree
             ,$energie, $typeBoite, $prix, $date_imma, $url_img);
-            $succes = "Succès : Vous venez d'ajoutez un nouveau Véhicule neuf !";
+            $succes = "Succès : Vous venez d'ajouter un nouveau Véhicule neuf !";
         } else {
-            $erreur = "Veuillez remplire tous les champs !";
+            $erreur = "Veuillez remplir tous les champs !";
         }
     }
 
@@ -51,9 +51,9 @@ if ($admin == null) {
         !empty($date_imma) && !empty($url_img)) {
             $cAdmin->addVehiculeOccas($immatriculation, $type, $modele, $millesime, $cylindree
             ,$energie, $typeBoite, $km, $descriptif, $valid, $prix, $date_imma, $url_img);
-            $succes = "Succès : Vous venez d'ajoutez un nouveau Véhicule d'occasion !";
+            $succes = "Succès : Vous venez d'ajouter un nouveau Véhicule d'occasion !";
         } else {
-            $erreur = "Veuillez remplire tous les champs !";
+            $erreur = "Veuillez remplir tous les champs !";
         }
     }
 
@@ -79,9 +79,9 @@ if ($admin == null) {
         !empty($date_imma) && !empty($url_img)) {
             $cAdmin->addVehiculeClient($user, $immatriculation, $type, $modele, $millesime, $cylindree
             ,$energie, $typeBoite, $km, $descriptif, $valid, $prix, $date_imma, $url_img);
-            $succes = "Succès : Vous venez d'ajoutez un nouveau Véhicule pour ".$user." !";
+            $succes = "Succès : Vous venez d'ajouter un nouveau Véhicule pour ".$user." !";
         } else {
-            $erreur = "Veuillez remplire tous les champs !";
+            $erreur = "Veuillez remplir tous les champs !";
         }
     }
 
@@ -106,7 +106,7 @@ if ($admin == null) {
             ,$energie, $typeBoite, $prix, $date_imma, $url_img);
             $succes = "Succès : Vous venez de mettre a jour le Véhicule neuf d'immatriculation : ".$immatriculation." !";
         } else {
-            $erreur = "Veuillez remplire tous les champs !";
+            $erreur = "Veuillez remplir tous les champs !";
         }
     }
 
@@ -134,7 +134,7 @@ if ($admin == null) {
             ,$energie, $typeBoite, $km, $descriptif, $valid, $prix, $date_imma, $url_img);
             $succes = "Succès : Vous venez de mettre a jour le Véhicule d'occasion d'immatriculation : ".$immatriculation." !";
         } else {
-            $erreur = "Veuillez remplire tous les champs !";
+            $erreur = "Veuillez remplir tous les champs !";
         }
     }
 
@@ -162,7 +162,7 @@ if ($admin == null) {
                 ,$energie, $typeBoite, $km, $descriptif, $valid, $prix, $date_imma, $url_img);
                 $succes = "Succès : Vous venez de modifier le vehicule d'immatriculation ".$immatriculation." !";
             } else {
-                $erreur = "Veuillez remplire tous les champs !";
+                $erreur = "Veuillez remplir tous les champs !";
             }
         }
 
