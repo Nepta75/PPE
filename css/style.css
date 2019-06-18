@@ -385,7 +385,7 @@ a, a:hover{
 }
 
 .vehicule-block .modifier a:hover{
-	background-color: rgb(230, 24, 21,);
+	background-color: rgb(230, 24, 21);
 	border-bottom: 3px solid #fff;
 	transition: 0.3s;
 }
