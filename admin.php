@@ -194,13 +194,20 @@ if ($admin == null) {
         if(isset($_GET['page']) && $_GET['page'] == "7" && isset($_GET['action']) && $_GET['action'] == 'c' && isset($_GET['iduser']) && !empty($_GET['iduser']) && !empty($_GET['immat']) && isset($_GET['date']) && isset($_GET['heure'])) {
             $date = $_GET['date'];
             $heure = $_GET['heure'];
+            echo $heure;
             $dataVehicule = $cAdmin->selectVehicule($_GET['immat']);
+            require_once ("controleur/controleur.php");
+            $unControleur = new Controleur("localhost", "bmwppe", "root", "");
+            $user = $unControler->selectUser($_GET['iduser']);
+            var_dump($user);
             $cAdmin->confirmEssai($_GET['idessayer']);
-            $mail = $_SESSION['email'];
-            $nom = $_SESSION['nom'];
-            $prenom = $_SESSION['prenom'];
+            $mail = $user['email'];
+            $nom = $user['nom'];
+            $prenom = $user['prenom'];
+            require 'controleur/controleur_mail.php';
+            $cMail = new Mail ("localhost", "bmwppe", "root", "");
 
-            //$cMail->mail_resa_confirm_status($mail, $nom, $prenom, $dataVehicule['resultat'], $date, $heure);
+            $cMail->mail_resa_confirm_status($mail, $nom, $prenom, $dataVehicule['resultat'], $date, $heure);
         }
 
         if(isset($_GET['page']) && $_GET['page'] == "7" && isset($_GET['action']) && $_GET['action'] == 'x' && isset($_GET['idessayer']) && !empty($_GET['idessayer'])) {

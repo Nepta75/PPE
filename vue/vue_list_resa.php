@@ -30,7 +30,7 @@
                 <td class="column6"><?= $data['heure_essai'] ?></td>
                 <td class="column6"><?= $data['status_essai'] ?></td>
                 <td class="column8"><a href="admin.php?page=7&idessayer=<?= $data['idessayer'] ?>&action=x&iduser=<?= $data['idclient'] ?>"><i style="color: red;" class="fas fa-user-times"></i></a></td>
-                <td class="column8"><a href="admin.php?page=7&idessayer=<?= $data['idessayer'] ?>&action=c&iduser=<?= $data['idclient'] ?>&immat=<?= $data['immatriculation'] ?>&date=<?= $data['date_essai'] ?>&heure=<? $data ['heure_essai'] ?>"><i style="color: green;" class="fas fa-check-circle"></i></a></td>
+                <td class="column8"><a href="admin.php?page=7&idessayer=<?= $data['idessayer'] ?>&action=c&iduser=<?= $data['idclient'] ?>&immat=<?= $data['immatriculation'] ?>&date=<?= $data['date_essai'] ?>&heure=<? $data['heure_essai'] ?>"><i style="color: green;" class="fas fa-check-circle"></i></a></td>
             </tr>
     <?php } ?>
     </tbody>

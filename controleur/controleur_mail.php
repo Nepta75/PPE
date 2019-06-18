@@ -201,7 +201,7 @@ class Mail {
         $message_html = "<html><head></head><body>
         <img src='https://image.noelshack.com/fichiers/2019/23/4/1559830408-mail-bmw.jpg' alt='banniere_bmw' width='100%' />
         <br></br>
-        Bonjour <b>".$nom." ".$prenom."</b>, 
+        Bonjour <b>".$nom." ".$prenom."</b>,
         <br></br>Nous vous confirmons votre demande d'essai de vehicule de modele ".$datavehicule['modele']." au près de chez nous Le ".$date." à ".$heure.".
         <br></br>
         Nous reprendrons contact avec vous sous un délai de 24 heures pour vous confirmer votre demande. <br></br>Cordialement l'équipe BMW Paris.

@@ -26,8 +26,8 @@ if(isset($_POST['reserver'])) {
         $prenom = $_SESSION['prenom'];
         $telephone = $_SESSION['tel'];
 
-        //$cMail->mail_contact_info($mail, $message2, $objet, $nom, $prenom, $telephone);
-        //$cMail->mail_resa_confirm($mail, $nom, $prenom, $dataVehicule['resultat']);
+        $cMail->mail_contact_info($mail, $message2, $objet, $nom, $prenom, $telephone);
+        $cMail->mail_resa_confirm($mail, $nom, $prenom, $dataVehicule['resultat']);
         $succes = "Succès : Votre demande de reservation à bien été envoyé ! Vous allez recevoir un mail de confirmation";
     } else {
         $erreur = "Veuillez remplir tous les champs !";
