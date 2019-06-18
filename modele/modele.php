@@ -114,6 +114,16 @@ class Modele
 
 	}
 
+
+
+	
+	public function selectAllVehiculeNeuf() {
+		$requete = "Select * from vehicule_neuf";
+		$select = $this->unPdo->query($requete);
+		$resultat = $select->fetchAll();
+		return $resultat;
+	}
+
 	public function selectAllVehiculesOccasionDispo() {
 		$requete = "Select * from vehicule_occasion where valide = 'oui'";
 		$select = $this->unPdo->query($requete);

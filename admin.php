@@ -304,7 +304,14 @@ switch($page) {
     $data = $cAdmin->selectAllEssai();
     echo "<h3 style='text-align: center; margin-top: 100px;'>List des demandes d'essais</h3>";
     require 'vue/vue_list_resa.php'; break;
-    default : require "vue/vue_ajouter_vehicule.php";
+    default : 
+    require_once ("controleur/controleur.php");
+    $unControleur = new Controleur("localhost", "bmwppe", "root", "");
+    $nbEssai = count($cAdmin->selectAllEssai());
+    $nbClient = count($cAdmin->selectAllClients());
+    $nbVehiculeOcc = $unControleur->selectAllVehiculesOccasion()->fetchAll();
+    $nbVehiculeNeuf = $unControleur->selectAllVehiculesNeuf()->fetchAll();
+    require "vue/vue_admin_recap.php";
 }
 ?>
 
