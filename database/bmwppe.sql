@@ -95,11 +95,13 @@ create table acheter2 (
 );
 
 create table essayer (
-	idvehiculeneuf int(5) not null,
-	idclient int(5) not null,
+	idessayer int(5) not null auto_increment,
+	idvehiculeneuf int(5),
+	idclient int(5),
 	date_essai date,
 	heure_essai time,
-	primary key (idvehiculeneuf, idclient),
+	status_essai enum("Confirmer", "En Attente"),
+	primary key (idessayer),
 	foreign key (idvehiculeneuf) references vehicule_neuf (idvehiculeneuf),
 	foreign key (idclient) references client (idclient)
 );

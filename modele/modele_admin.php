@@ -312,6 +312,48 @@ class ModeleAdmin
             ":admin_lvl"=>$tab['admin_lvl'],
 		));
     }
+
+    //ESSAYER VEHICULE
+
+    public function insertEssayer($tab, $idVehicule, $idclient) {
+        $requete = "INSERT INTO essayer (idvehiculeneuf, idclient, date_essai, heure_essai, status_essai) 
+        VALUES (:idvehicule, :idclient, :date_essai, :heure_essai, 'En Attente')";
+
+		$insert = $this->unPdo->prepare($requete);
+		$insert->execute(array(
+			":idvehicule"=>$idVehicule,
+			":idclient"=>$idclient,
+			":date_essai"=>$tab['d'],
+			":heure_essai"=>$tab['t'],
+		));
+
+    }
+
+    public function selectAllEssai(){
+        $requete = "SELECT e.idessayer, e.idvehiculeneuf, e.idclient, e.date_essai, e.heure_essai, e.status_essai, c.nom, c.prenom, c.email, c.tel, c.adresse_rue, c.adresse_cp, c.adresse_ville,
+        v.modele, v.immatriculation, v.idvehiculeneuf
+        FROM client c inner join essayer e
+            on c.idclient = e.idclient
+        inner join vehicule_neuf v
+            on e.idvehiculeneuf = v.idvehiculeneuf
+        ";
+
+        $select = $this->unPdo->query($requete);
+        $resultat = $select->fetchAll();
+        return $resultat;
+    }
+
+    public function confirmEssai($idessayer) {
+        $requete = "UPDATE essayer SET status_essai = 'Confirmer' WHERE idessayer = :idessayer";
+        $update = $this->unPdo->prepare($requete);
+        $update->execute(array(":idessayer"=>$idessayer));
+    }
+
+    public function deleteEssayer($id) {
+        $requete = "delete from essayer where idessayer = :id";
+        $delete = $this->unPdo->prepare($requete);
+        $delete->execute(array(":id"=>$id));
+    }
 } 
     
 ?>

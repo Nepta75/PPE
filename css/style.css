@@ -864,6 +864,80 @@ background-color: #000000;
 	text-align: center;
 }
 
+/* -------------- RESA PAGE ----------------- */
+
+.gestionresa_page {
+	margin-top: 100px;
+	padding: 100px 30px;
+	width: 100%;
+	text-align: center;
+	background-color: rgb(230, 230, 230, 0.4);
+}
+
+.gestionresa_page h3 {
+
+}
+
+.gestionresa-header {
+	padding: 50px;
+	width: 80%;
+	margin: auto;
+}
+
+.gestionresa-header .modele {
+	width: 400px;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 0 10px 20px 10px;
+}
+
+.gestionresa-header .modele label {
+	width: 150px;
+	color: green;
+	font-weight: bold;
+}
+
+.gestionresa-header .modele input {
+	width: 250px;
+}
+
+.gestionresa-header img {
+	margin-bottom: 20px;
+	width: 400px;
+}
+
+.gestionresa-header div {
+	margin: auto;
+	width: 400px;
+}
+
+.gestionresa-header label {
+	text-align: left;
+	width: 100px;
+}
+
+.gestionresa-header input {
+	text-align: center;
+	width: 280px;
+}
+
+.gestionresa-header input[type='submit'] {
+	margin-top: 20px;
+	height: 50px;
+	line-height: 50px;
+	border: none;
+	color: #fff;
+	background-color: #161616;
+	font-size: 1.3em;
+	text-transform: uppercase;
+	font-weight: bold;
+	width: 400px;
+}
+
+.gestionresa-header input[type='submit']:hover {
+	background-color: rgb(22, 22, 22, 0.7);
+}
+
 /* -------------- List Clients ----------------- */
   
   table {

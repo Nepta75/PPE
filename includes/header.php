@@ -73,7 +73,8 @@ $admin = $unControler->verifAdmin();
 									<li><a href="admin.php?page=3">Devis</a></li>
 									<li><a href="admin.php?page=4">vehicules Dispos</a></li>
 									<li><a href="admin.php?page=5">vehicules Indispo</a></li>	
-									<li><a href="admin.php?page=6">Liste des clients</a></li>				
+									<li><a href="admin.php?page=6">Liste des clients</a></li>
+									<li><a href="admin.php?page=7">Liste des réservations</a></li>				
 								</ul>
 							</li>
 						<?php } ?>

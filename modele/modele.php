@@ -20,7 +20,11 @@ class Modele
 
 	public function connexion ($user, $mdp) {
 		if($this->unPdo != null) {
-			$requete = 'select * from utilisateur where pseudo = :user and mdp = :mdp';
+			$requete = 'SELECT u.iduser, u.idclient, c.nom, c.prenom, c.adresse_rue, c.adresse_ville, c.adresse_cp,
+			c.tel, u.pseudo, u.mdp, u.email, u.admin_lvl
+			FROM client c
+			JOIN utilisateur u on u.idclient = c.idclient
+			WHERE u.pseudo = :user AND u.mdp = :mdp';
 			$verif = $this->unPdo->prepare($requete);
 			$verif->execute(array(":user"=>$user, ":mdp"=>$mdp));
 
@@ -28,6 +32,8 @@ class Modele
 			return $resultat;
 		}
 	}
+
+
 
 	public function inscription($tab) {
 		$requete1 = "INSERT INTO client (idclient, nom, prenom, adresse_rue, adresse_ville, adresse_cp, email, tel) VALUES 

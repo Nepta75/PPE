@@ -16,6 +16,10 @@
 			} else {
 				$resultat = $this->unModele->connexion($user, $mdp);
 				$_SESSION['pseudo'] = $resultat['pseudo'];
+				$_SESSION['nom'] = $resultat['nom'];
+				$_SESSION['prenom'] = $resultat['prenom'];
+				$_SESSION['tel'] = $resultat['tel'];
+				$_SESSION['idclient'] = $resultat['idclient'];
 				$_SESSION['id_user'] = $resultat['iduser'];
 				$_SESSION['mdp'] = $resultat['mdp'];
 				$_SESSION['email'] = $resultat['email'];
