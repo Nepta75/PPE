@@ -186,7 +186,6 @@ class Modele
 	}
 
 	public function insertDevis($data) {
-		var_dump($data);
 		$requete = "INSERT INTO devis
 		(iddevis, idclient, idtechnicien, date_devis, sujet, immatriculation) VALUES 
 		(null, :idclient, :user, :date_devis, :sujet, :immatriculation)";

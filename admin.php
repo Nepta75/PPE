@@ -199,7 +199,6 @@ if ($admin == null) {
             require_once ("controleur/controleur.php");
             $unControleur = new Controleur("localhost", "bmwppe", "root", "");
             $user = $unControler->selectUser($_GET['iduser']);
-            var_dump($user);
             $cAdmin->confirmEssai($_GET['idessayer']);
             $mail = $user['email'];
             $nom = $user['nom'];
