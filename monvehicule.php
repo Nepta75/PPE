@@ -4,12 +4,10 @@
 	{
 		require_once("controleur/controleur.php");
 		$unControleur = new Controleur("localhost", "bmwppe", "root", "");
-        $resultats = $unControleur->selectVehiculeClient($_SESSION['id_user']);
         $users = $unControleur->selectAllUsers();
 
-        $resultats = $unControleur->selectVehiculeClient($_SESSION['id_user']);
+        $resultat = $unControleur->selectVehiculeClient($_SESSION['id_user']);
         require_once("vue/vue_mon_vehicule.php");
-        var_dump($_SESSION)
 ?>
 
 
