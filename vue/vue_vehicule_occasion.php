@@ -15,7 +15,7 @@
             <?php if (isset($_SESSION['admin_lvl']) && $_SESSION['admin_lvl'] > 0) { ?>
                 <div class="modifier"><a href="admin.php?page=2&immat=<?= $data['immatriculation']?>&type=occasion">Modifier</a></div>
             <?php } else { ?>
-                <div class="reserver"><a href="gestionresa.php?immat=<?= $data['immatriculation']?>">Reserver</a></div>
+                <div class="reserver"><a href="gestionresa.php?demande=essai&modele=<?= $data['modele'] ?>&immat=<?= $data['immatriculation']?>">Essayer</a></div>
             <?php } ?>
         </div>
         <?php } ?>

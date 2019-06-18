@@ -187,9 +187,26 @@ if ($admin == null) {
             }
         }
 
-        if(isset($_GET['action']) && $_GET['action'] == 'x' && isset($_GET['iduser']) && !empty($_GET['iduser'])) {
+        if(isset($_GET['page']) && $_GET['page'] == "6" && isset($_GET['action']) && $_GET['action'] == 'x' && isset($_GET['iduser']) && !empty($_GET['iduser'])) {
             $cAdmin->deleteUser($_GET['iduser']);
         }
+
+        if(isset($_GET['page']) && $_GET['page'] == "7" && isset($_GET['action']) && $_GET['action'] == 'c' && isset($_GET['iduser']) && !empty($_GET['iduser']) && !empty($_GET['immat']) && isset($_GET['date']) && isset($_GET['heure'])) {
+            $date = $_GET['date'];
+            $heure = $_GET['heure'];
+            $dataVehicule = $cAdmin->selectVehicule($_GET['immat']);
+            $cAdmin->confirmEssai($_GET['idessayer']);
+            $mail = $_SESSION['email'];
+            $nom = $_SESSION['nom'];
+            $prenom = $_SESSION['prenom'];
+
+            //$cMail->mail_resa_confirm_status($mail, $nom, $prenom, $dataVehicule['resultat'], $date, $heure);
+        }
+
+        if(isset($_GET['page']) && $_GET['page'] == "7" && isset($_GET['action']) && $_GET['action'] == 'x' && isset($_GET['idessayer']) && !empty($_GET['idessayer'])) {
+            $cAdmin->deleteEssayer($_GET['idessayer']);
+        }
+
 
         if(isset($_POST['update_client'])) {
             if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['adresse_rue']) && !empty($_POST['adresse_cp'])
@@ -277,6 +294,10 @@ switch($page) {
         require "vue/vue_update_client.php";
     }
     require 'vue/vue_list_clients.php'; break;
+    case 7 :
+    $data = $cAdmin->selectAllEssai();
+    echo "<h3 style='text-align: center; margin-top: 100px;'>List des demandes d'essais</h3>";
+    require 'vue/vue_list_resa.php'; break;
     default : require "vue/vue_ajouter_vehicule.php";
 }
 ?>

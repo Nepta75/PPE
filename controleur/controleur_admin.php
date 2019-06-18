@@ -96,6 +96,24 @@
             return $this->modeleAdmin->selectAllClients();
         }
 
+        // ESSAYER VEHICULE
+
+        public function insertEssayer($tab, $idVehicule, $idclient) {
+            $this->modeleAdmin->insertEssayer($tab, $idVehicule, $idclient);
+        }
+
+        public function selectAllEssai(){
+            return $this->modeleAdmin->selectAllEssai();
+        }
+
+        public function confirmEssai($idessayer) {
+            $this->modeleAdmin->confirmEssai($idessayer);
+        }
+
+        public function deleteEssayer($id) {
+            $this->modeleAdmin->deleteEssayer($id);
+        }
+
         public function verifAdmin() {
 			if(isset($_SESSION['admin_lvl'])) {
 				if($_SESSION['admin_lvl'] > 0) {
