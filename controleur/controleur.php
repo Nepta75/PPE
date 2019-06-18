@@ -95,5 +95,13 @@
 		public function insertDevis($data) {
 			$this->unModele->insertDevis($data);
 		}
+		
+		public function insertVehiculeClient($tab) {
+			$this->unModele->insertVehiculeClient($tab);
+		}
+
+		public function deleteVehiculeClient($idvehiculeclient) {
+			$this->unModele->deleteVehiculeClient($idvehiculeclient);
+		}
 	}
  ?>
