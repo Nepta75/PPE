@@ -198,14 +198,14 @@ if ($admin == null) {
             echo $heure;
             $dataVehicule = $cAdmin->selectVehicule($_GET['immat']);
             require_once ("controleur/controleur.php");
-            $unControleur = new Controleur("localhost", "bmwppe", "root", "");
+            $unControleur = new Controleur($env, $database, $user, $mdp);
             $user = $unControler->selectUser($_GET['iduser']);
             $cAdmin->confirmEssai($_GET['idessayer']);
             $mail = $user['email'];
             $nom = $user['nom'];
             $prenom = $user['prenom'];
             require 'controleur/controleur_mail.php';
-            $cMail = new Mail ("localhost", "bmwppe", "root", "");
+            $cMail = new Mail ($env, $database, $user, $mdp);
 
             $cMail->mail_resa_confirm_status($mail, $nom, $prenom, $dataVehicule['resultat'], $date, $heure);
         }
@@ -282,7 +282,7 @@ switch($page) {
                     } elseif ($resultat1['type'] == "client") {
                         echo "<h3 style='margin-top: 100px; text-align:center'>Modification d'un vehicule Client</h3>";
                         require_once ("controleur/controleur.php");
-                        $unControleur = new Controleur("localhost", "bmwppe", "root", "");
+                        $unControleur = new Controleur($env, $database, $user, $mdp);
                         $dataVehicule = $unControleur->selectVehiculeClient($resultat['iduser']);
                         $users = $unControleur->selectAllUsers();
                         require "vue/vue_modifier_vehicule_client.php";
@@ -307,7 +307,7 @@ switch($page) {
     require 'vue/vue_list_resa.php'; break;
     default : 
     require_once ("controleur/controleur.php");
-    $unControleur = new Controleur("localhost", "bmwppe", "root", "");
+    $unControleur = new Controleur($env, $database, $user, $mdp);
     $nbEssai = count($cAdmin->selectAllEssai());
     $nbClient = count($cAdmin->selectAllClients());
     $nbVehiculeOcc = $unControleur->selectAllVehiculesOccasion()->fetchAll();

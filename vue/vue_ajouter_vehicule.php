@@ -1,5 +1,5 @@
 <?php
-
+require_once 'includes/identifiants_bdd.php';
 ?>
 
 <div class="block-panel_admin">
@@ -169,7 +169,7 @@
                 <?php
             } elseif ($_POST['type_ajout'] == "client") {
                 require ('controleur/controleur.php');
-                $unControleur = new Controleur("localhost", "bmwppe", "root", "");
+                $unControleur = new Controleur($env, $database, $user, $mdp);;
                 ?>
                 <div class="form-panel_admin">
                     <form action="" method="POST">

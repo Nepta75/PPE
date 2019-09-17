@@ -1,7 +1,8 @@
 <?php
 require ('includes/header.php');
+require_once 'includes/identifiants_bdd.php';
 if(isset($_GET['demande']) && isset($_GET['modele']) && isset($_GET['immat'])) {
-    $cAdmin = new Administrateur ("localhost", "bmwppe", "root", "");
+    $cAdmin = new Administrateur ($env, $database, $user, $mdp);
     $dataVehicule = $cAdmin->selectVehicule($_GET['immat']);
    if ($_GET['demande'] == "resa") {
        $objet = "Demande de reservation";
@@ -18,7 +19,7 @@ if(isset($_POST['reserver'])) {
     if(!empty($_POST['d']) && !empty($_POST['t'])) {
         $cAdmin->insertEssayer($_POST, $dataVehicule['resultat']['idvehiculeneuf'], $_SESSION['idclient']);
         require 'controleur/controleur_mail.php';
-        $cMail = new Mail ("localhost", "bmwppe", "root", "");
+        $cMail = new Mail ($env, $database, $user, $mdp);
 
         $mail = $_SESSION['email'];
         $message2 = $_SESSION['pseudo']." a fait une demande réservation du véhicule d'immatriculation ".$_GET['immat'].", modele : ".$_GET['modele']." Pour le : ".$_POST['d']." à ".$_POST['t'];
