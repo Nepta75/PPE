@@ -1,6 +1,6 @@
 <?php
     $user = 'root';
-    $mdp = '';
+    $mdp = 'd';
     $database = 'bmwppe';
     $env = 'localhost';
 ?>
