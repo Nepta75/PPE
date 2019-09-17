@@ -2,22 +2,6 @@ drop database if exists bmwppe ;
 create database bmwppe ;
 use bmwppe ;
 
-create table utilisateur (
-	iduser int(5) not null auto_increment,
-	idclient int(5) not null,
-	pseudo varchar(50),
-	mdp varchar(255),
-	email varchar(50),
-	admin_lvl int(2) DEFAULT 0,
-	primary key (iduser),
-	foreign key (idclient) references client (idclient)
-);
-
-insert into utilisateur values (null, 1, 'Lokman', '123', 'lokman-hekim@hotmail.fr', 1),
-(null, 2, 'Miguel', '123', 'miguel@hotmail.fr', 1),
-(null, 3, 'Mohamed', '123', 'lmohamed@hotmail.fr', 1),
-(null, 1, 'user', '123', 'user@hotmail.fr', 0);
-
 create table client (
 	idclient int(5) not null auto_increment,
 	nom varchar(50),
@@ -33,6 +17,22 @@ insert into client values
 (null, 'Aydogan', 'Lokman', '19 rue de clery', 'PARIS', '75002', 'lokman-hekim@hotmail.fr', '0662425270'),
 (null, 'Goncavles', 'Miguel', '57 rue la fayette', 'PARIS', '75010', 'miguel@hotmail.fr', '0658745215'),
 (null, 'Refai', 'Mohamed', '11 avenue jean', 'PARIS', '75006', 'mohamed@hotmail.fr', '0754874528');
+
+create table utilisateur (
+	iduser int(5) not null auto_increment,
+	idclient int(5) not null,
+	pseudo varchar(50),
+	mdp varchar(255),
+	email varchar(50),
+	admin_lvl int(2) DEFAULT 0,
+	primary key (iduser),
+	foreign key (idclient) references client (idclient)
+);
+
+insert into utilisateur values (null, 1, 'Lokman', '123', 'lokman-hekim@hotmail.fr', 1),
+(null, 2, 'Miguel', '123', 'miguel@hotmail.fr', 1),
+(null, 3, 'Mohamed', '123', 'lmohamed@hotmail.fr', 1),
+(null, 1, 'user', '123', 'user@hotmail.fr', 0);
 
 
 create table technicien (
@@ -74,36 +74,6 @@ create table vehicule_client (
 	type_rdv enum (""),
 	primary key (idvehiculeclient),
 	foreign key(iduser) references utilisateur (iduser)
-);
-
-create table acheter (
-	idvehiculeneuf int(5) not null,
-	idclient int(5) not null,
-	date_achat date,
-	primary key (idvehiculeneuf , idclient),
-	foreign key (idvehiculeneuf) references vehicule_neuf (idvehiculeneuf),
-	foreign key (idclient) references client (idclient)
-);
-
-create table acheter2 (
-	idvehiculeocc int(5) not null,
-	idclient int(5) not null,
-	date_achat date,
-	primary key (idvehiculeocc , idclient),
-	foreign key (idvehiculeocc) references vehicule_occasion (idvehiculeocc),
-	foreign key (idclient) references client (idclient)
-);
-
-create table essayer (
-	idessayer int(5) not null auto_increment,
-	idvehiculeneuf int(5),
-	idclient int(5),
-	date_essai date,
-	heure_essai time,
-	status_essai enum("Confirmer", "En Attente"),
-	primary key (idessayer),
-	foreign key (idvehiculeneuf) references vehicule_neuf (idvehiculeneuf),
-	foreign key (idclient) references client (idclient)
 );
 
 create table devis (
@@ -169,6 +139,36 @@ create table vehicule_neuf (
 	img text,
 	primary key (idvehiculeneuf),
 	foreign key (idfacture) references facture (idfacture)
+);
+
+create table essayer (
+	idessayer int(5) not null auto_increment,
+	idvehiculeneuf int(5),
+	idclient int(5),
+	date_essai date,
+	heure_essai time,
+	status_essai enum("Confirmer", "En Attente"),
+	primary key (idessayer),
+	foreign key (idvehiculeneuf) references vehicule_neuf (idvehiculeneuf),
+	foreign key (idclient) references client (idclient)
+);
+
+create table acheter (
+	idvehiculeneuf int(5) not null,
+	idclient int(5) not null,
+	date_achat date,
+	primary key (idvehiculeneuf , idclient),
+	foreign key (idvehiculeneuf) references vehicule_neuf (idvehiculeneuf),
+	foreign key (idclient) references client (idclient)
+);
+
+create table acheter2 (
+	idvehiculeocc int(5) not null,
+	idclient int(5) not null,
+	date_achat date,
+	primary key (idvehiculeocc , idclient),
+	foreign key (idvehiculeocc) references vehicule_occasion (idvehiculeocc),
+	foreign key (idclient) references client (idclient)
 );
 
 create table deposer (
