@@ -1,7 +1,8 @@
 <?php
 require_once ("includes/header.php");
 require_once ("controleur/controleur.php");
-$unControler = new Controleur("localhost", "bmwppe", "root", "");
+require_once 'includes/identifiants_bdd.php';
+$unControler = new Controleur($env, $database, $user, $mdp);
 if (isset($_POST['connexion'])) {
     if(!empty($_POST['pseudo']) && !empty($_POST['mdp'])) {
         $pseudo = htmlspecialchars($_POST['pseudo']);

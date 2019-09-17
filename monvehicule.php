@@ -3,7 +3,8 @@
 	if(isset($_SESSION['pseudo']))
 	{
 		require_once("controleur/controleur.php");
-		$unControleur = new Controleur("localhost", "bmwppe", "root", "");
+		require_once 'includes/identifiants_bdd.php';
+		$unControleur = new Controleur($env, $database, $user, $mdp);
         $users = $unControleur->selectAllUsers();
 
         $resultat = $unControleur->selectVehiculeClient($_SESSION['id_user']);

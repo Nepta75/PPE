@@ -1,7 +1,8 @@
 <?php
 require_once 'includes/header.php';
 require 'controleur/controleur.php';
-$unControleur = new Controleur("localhost", "bmwppe", "root", "");
+require_once 'includes/identifiants_bdd.php';
+$unControleur = new Controleur($env, $database, $user, $mdp);
 $users = $unControleur->selectAllUsers();
 $vehiculesNeuf = $unControleur->selectAllVehiculesNeuf();
 $vehiculesOccasion = $unControleur->selectAllVehiculesOccasionDispo();

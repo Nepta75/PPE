@@ -1,7 +1,8 @@
 <?php
 require_once 'includes/header.php';
-require_once ("controleur/controleur_admin.php");
-$cAdmin = new Administrateur("localhost", "bmwppe", "root", "");
+require_once 'controleur/controleur_admin.php';
+require_once 'includes/identifiants_bdd.php';
+$cAdmin = new Administrateur($env, $database, $user, $mdp);
 $admin = $cAdmin->verifAdmin();
 if ($admin == null) {
    $error = "Erreur - 404. Page introuvable";

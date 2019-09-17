@@ -1,7 +1,8 @@
 <?php
     require_once 'includes/header.php';
     require 'controleur/controleur_mail.php';
-    $cMail = new Mail ("localhost", "bmwppe", "root", "");
+    require_once 'includes/identifiants_bdd.php';
+    $cMail = new Mail ($env, $database, $user, $mdp);
     if (isset($_POST['envoyer'])) {
         if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['numero'])
         && !empty($_POST['objet']) && !empty($_POST['message'])) {

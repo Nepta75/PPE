@@ -6,7 +6,8 @@ use Spipu\Html2Pdf\Exception\ExceptionFormatter;
 
 require_once("includes/topdf/html2pdf-master/src/Html2Pdf.php");
 require("controleur/controleur.php");
-$controleur = new Controleur("localhost", "bmwppe", "root", "");
+require_once 'includes/identifiants_bdd.php';
+$controleur = new Controleur($env, $database, $user, $mdp);
 
 $user = array(
     "id" => 1,
