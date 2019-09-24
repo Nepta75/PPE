@@ -1,7 +1,8 @@
 <?php
 session_start();
 require_once ("controleur/controleur_admin.php");
-$unControler = new Administrateur("localhost", "bmwppe", "root", "");
+require_once 'includes/identifiants_bdd.php';
+$unControler = new Administrateur($env, $database, $user, $mdp);
 $admin = $unControler->verifAdmin();
 ?>
 
