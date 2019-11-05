@@ -43,7 +43,7 @@ ul {
 
 div.header {
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: row nowrap;
 	background-color: #ffffff;/*#1e272e*/
 	color: #171d22;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
@@ -75,8 +75,8 @@ nav.navbar {
 	flex-flow: row wrap;
 	flex-grow: 1;
 	justify-content: flex-end;
-	align-content: flex-start;
-	margin: 15px 10px 0 0;
+	align-content: center;
+	margin: 0 10px 0 0;
 	padding: 0;
 	text-transform: uppercase;
 }
@@ -87,12 +87,14 @@ li.menu-button {
 
 a.menu-link {
 	color: #171d22;
-	padding: 0px 10px;	
+	padding: 7px 10px;	
+	transition: 0.08s;
 }
 
 a.menu-link:hover {
 	color: #171d22;
-	box-shadow: -2px 0px 0px 0px #2e86de;
+	/*box-shadow: -2px 0px 0px 0px #2e86de;*/
+	border-bottom: solid 2px #2e86de;
 	text-decoration: none;
 }
 
@@ -110,8 +112,16 @@ ul.menu {
 
 /* -------- MENU DEROULANT -------- */
 
-a#vehiculemenu-link {
-	padding-bottom: 4px;
+a.deroulant-link {
+	color: #171d22;
+	padding: 15px 5px;	
+	transition: 0.05s;
+	margin-bottom: 15px; 
+}
+
+a.deroulant-link:hover {
+	color: #171d22;
+	text-decoration: none;
 }
 
 nav > ul li:hover .submenu {
@@ -119,42 +129,88 @@ nav > ul li:hover .submenu {
 	position: absolute;
 	top: 100%;
 	left: 0px;
-	padding: 0px;
 	z-index: 1000;
-	margin-top: 3px;
 }
 
 ul.submenu {
 	display: none;
-	padding: 0px;
 	width: 225px;
-	height: 50px;
-	line-height: 50px;
+	height: 35px;
+	line-height: 35px;
 }
 
 ul.submenu li {
-	background-color: rgba(0, 0, 0, 0.3);
-	margin: 0px;
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 35px;
+	line-height: 35px;
 	width: 100%;
 	height: 100%;
-	position: relative;
-	transition: 0.2s;
-	right: 2px;
 }
 
 ul.submenu li:hover {
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0.6);
 	box-shadow: -2px 0px 0px 0px #2e86de;
 }
 
-ul.submenu a {
+a.submenu-link {
+	padding: 7px 10px;
 	color: #FFFFFF;
-	padding: 13px 0px 14px 15px;
-	transition: 0.1s;	
+	transition: 0.1s;
 }
 
 a.submenu-link:hover {
 	text-decoration: none;
+	color: #FFFFFF;
+}
+
+/* ------ MENU ADMIN ------- */
+
+li.deroulant {
+	padding: 0 10px 7px 10px;
+}
+
+li.deroulant a {
+	text-decoration: none;
+}
+
+ul.admin-submenu {	
+	display: none;
+	width: 225px;
+	color: #FFFFFF;
+}
+
+nav > ul li:hover .admin-submenu {
+	display: inline-block;
+	position: absolute;
+	top: 100%;
+	left: 0px;
+	z-index: 1000;
+	margin-top: 0;
+}
+
+ul.admin-submenu a {
+	color: #FFFFFF;
+	padding: 0px 10px;
+	transition: 0.1s;
+}
+
+ul.admin-submenu li {
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 30px;
+	line-height: 30px;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+
+ul.admin-submenu li:hover {
+	background-color: rgba(0, 0, 0, 0.8);
+	box-shadow: -2px 0px 0px 0px #2e86de;
+}
+
+a.admin-submenu-link:hover {
+	text-decoration: none;
+	color: #FFFFFF;
 }
 
 /* ----- BOUTON DE CONNEXION/DECONNEXION ----- */
@@ -165,7 +221,7 @@ a.connexion-link {
 	background-color: #2e86de; 
 	color: #FFFFFF;
 	padding: 6px 10px;
-	margin-left: 5px;
+	margin: 0 50px 0 10px;
 	transition: 0.2s;
 }
 
