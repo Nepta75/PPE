@@ -130,152 +130,6 @@ a, a:hover{
         font-size: 18px;
     }
 
-/* --------------- HEADER ----------------- */
-
-.container_header {
-	display: flex;
-	justify-content: space-between;
-	margin-left: 125px;
-}
-
-.header1 {
-	height: 15px;
-	line-height: 15px;
-	background-color: #FF1B17; 
-}
-
-.header2 {
-	height: 15px;
-	line-height: 15px;
-	background-color: #076BB3; 
-}
-
-.header {
-	height: 50px;
-	line-height: 50px;
-	background-color: #2787CC;
-}
-
-.logo {
-	z-index: 10000;
-	position: absolute;
-	top: 7px;
-	left: 15px;
-	box-shadow: 4px 3px 3px #000000;
-}
-
-.menu {
-	font-weight: 400;
-	text-transform: uppercase;
-	text-align: center;
-	color: #ffffff;
-	height: 50px;
-	line-height: 50px;
-	padding: 0 20px;
-	width: 100%;
-}
-
-.menu ul {
-	margin-left: 2%;
-	padding: 0px;
-}
-
-.menu ul::after {
-	content: "";
-	display: block;
-	clear: both;
-}
-
-.menu li {
-	float: left;
-	position: relative;
-	list-style-type: none;
-	text-decoration: none;
-	display: inline-block;
-	color: #ffffff;
-	transition-property: background-color; 
-    transition-duration: 0.3s; 
-}
-
-.menu li:hover {
-	height: 50px;
-	line-height: 50px;
-	color: #ffffff;
-	background-color: #2990D9;
-}
-
-.menu li:hover .submenu {
-	display: inline-block;
-	position: absolute;
-	top: 100%;
-	left: -3px;
-	height: 20px;
-	z-index: 1000;
-	margin-bottom: 1%;
-}
-
-.menu a {
-	display: inline-block;
-	list-style-type: none;
-	color: #ffffff;
-	height: 50px;
-	line-height: 50px;
-	padding: 0 30px 0 30px;	
-}
-
-.menu a:hover {
-	list-style-type: none;
-	text-decoration: none;
-	color: #ffffff;
-}
-
-.menu a:active {
-	color: #E6E6E6; 
-}
-
-.submenu {
-	text-align: left;
-	font-size: 14px;
-	display: none;
-	transition-property: background-color; 
-    transition-duration: 2s;
-}
-
-.submenu li {
-	background-color: #161616;
-	width: 250px;
-}
-
-.submenu a:hover {
-	color: #E6E6E6;
-}
-
-#connexionmenu {
-	float: right;
-	transition-property: background-color; 
-    transition-duration: 1s;
-   	padding: 0 20px 0 20px;
-   	height: 50px;
-   	line-height: 50px;	
-}
-
-#connexionmenu:hover {
-	text-decoration: none;
-	background-color: #076BB3;
-	border-bottom: 2px solid #FF1B17;
-}
-
-.monvehicule {
-	float: right;
-	transition-property: background-color; 
-    transition-duration: 1s;
-}
-
-.monvehicule:hover {
-	background-color: #076BB3;
-	border-bottom: 2px solid #FF1B17;
-}
-
 /* Mon vehicule page */
 
 .mon_vehicule_page {
@@ -306,7 +160,7 @@ a, a:hover{
 	list-style: none;
 	background-color: rgb(22, 22, 22, 0.7);
 	color: #fff;
-}
+} 
 
 /* CONTENU ACCUEIL */
 
@@ -334,12 +188,50 @@ a, a:hover{
 	margin: 10% 0 10% 0;
 }
 
-/*             CONTENU A PROPOS                */
+/*               A PROPOS                */
 
-.about-title {
-	font-weight: bolder;
-	margin: 7% 0 5% 0;
+div.about {
+	width: 100%;
+	display: flex;
+	flex-flow: column;
+	align-content: space-around;
 }
+
+div.about-banner {
+	display: flex;
+	justify-content: center;
+}
+
+div.about-section1 {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	margin-top: 50px;
+}
+
+div.aboutsection1-text {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	flex-flow: column;
+}
+
+div.about-section2 {
+	margin: 100px 50px;
+	text-align: center;
+}
+
+div.about-section2 img {
+	margin: 50px 0;
+}
+
+div.about-section2 h6 {
+	margin-bottom: 30px;
+}
+
+
+
+
 
 /* --------------- Vehicule page ----------------- */
 
@@ -608,7 +500,7 @@ a, a:hover{
 }
 
 .test {
-	background-color: rgb(45 , 52 , 54 , 0.5);
+	background-color: rgb(45 , 52 , 54);
 	width: 100%;
 	justify-content: flex-end;
 	padding-bottom: 5px;
@@ -617,7 +509,7 @@ a, a:hover{
 .test2 {
 	color: #ffffff;
 	width: 100%;
-	background-color: rgb(45 , 52 , 54 , 0.5);
+	background-color: rgb(45 , 52 , 54);
 	padding-bottom: 5px;
 }
 
@@ -670,16 +562,17 @@ form h3 {
 }
 
 .submit_form_contact  input {
-	border: 1px solid #ffffff;
-	border-radius: 2px;
+	border-radius: 3px;
 	color: #ffffff;
 	height: 50px;
-	background-color: #2d3436;
+	background-color: #2e86de; 
 	margin-top: 15px;
+	width: 50%;
+	float: right;
 }
 
 .submit_form_contact input:hover {
-	background-color: #3e4446;
+	background-color: #54a0ff;
 }
 
 .objet_form_contact i {

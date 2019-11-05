@@ -4,7 +4,26 @@ require_once ("controleur/controleur_admin.php");
 require_once 'includes/identifiants_bdd.php';
 $unControler = new Administrateur($env, $database, $user, $mdp);
 $admin = $unControler->verifAdmin();
-?>
+
+/* // Program to display URL of current page. 
+  
+if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') 
+    $link = "https"; 
+else
+    $link = "http"; 
+  
+// Here append the common URL characters. 
+$link .= "://"; 
+  
+// Append the host(domain name, ip) to the URL. 
+$link .= $_SERVER['HTTP_HOST']; 
+  
+// Append the requested resource location to the URL 
+$link .= $_SERVER['REQUEST_URI']; 
+      
+// Print the link 
+echo $link; */
+?> 
 
 <!DOCTYPE html>
 <html>
@@ -25,6 +44,8 @@ $admin = $unControler->verifAdmin();
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<link href="css/fontawesome/css/all.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/header.css"/>
+	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -38,61 +59,50 @@ $admin = $unControler->verifAdmin();
 	<link rel="shortcut icon" type="image/ico" href="img/icons/favicon.ico" />
 
 	</head>
-
-	<!-- Contenu du site -->
-
 	<body>
 
 	<!-- Header -->
 
-	<div id="header_menu">
-		<div class="header1">
+	<div class="header">
+		<div class="logo">
+			<a href="index.php"><img src="img/logo2.png"></a>
+			<a href="index.php"><h4>BMW Paris<br/>Automobiles & Moto</h4></a>
 		</div>
-		<div class="header2">	
-		</div>
-		<header class="container-fluid header">
-			<div class="container_header">
-				<nav class="menu">
-					<ul>
-						<li class="menu-accueil"> <a href="index.php"> Accueil </a>
-						</li>
-						<li class="menu-vehicules"> <a href="gestionvehicules.php"> Véhicules <i class="fas fa-caret-down"></i></a>
-							<ul class="submenu">
-								<li><a href="gestionvehicules.php?#vehiculeoccasion"> Véhicules d'occasion </a></li>
-								<li><a href="gestionvehicules.php?#vehiculeneuf"> Véhicules neufs </a></li>								
-							</ul>
-						</li>
-						<li class="menu-apropos"> <a href="propos.php"> À Propos </a>
-						</li>
-						<li class="menu-contact"> <a href="contact.php"> Contact </a>
-						</li>
-						<?php if(isset($_SESSION['admin_lvl']) && $_SESSION['admin_lvl'] > 0) { ?>
-							<li class="menu-admin"> <a href="admin.php"> Admin <i class="fas fa-caret-down"></i></a>
-								<ul class="submenu">
-									<li><a href="admin.php?page=1" id="page1">Ajouter un Véhicule</a></li>
-									<li><a href="admin.php?page=2">Modifier un Véhicule</a></li>
-									<li><a href="admin.php?page=3">Devis</a></li>
-									<li><a href="admin.php?page=4">vehicules Dispos</a></li>
-									<li><a href="admin.php?page=5">vehicules Indispo</a></li>	
-									<li><a href="admin.php?page=6">Liste des clients</a></li>
-									<li><a href="admin.php?page=7">Liste des réservations</a></li>				
-								</ul>
-							</li>
-						<?php } ?>
-					<?php
-						if (isset($_SESSION['pseudo'])) {
-							echo '<a href="deconnexion.php" class="connexionmenu"> Se déconnecter </a>';
-						} else {
-							echo '<a href="gestionclient.php" class="connexionmenu"> Se connecter</a>';
-						}
-					?>
-					<?php if (!$admin && isset($_SESSION['pseudo'])) { ?>
-						<li class="monvehicule"> <a href="monvehicule.php"> Mon véhicule </a>
-						</li>
-					<?php } ?>
-					</ul>
-				</nav>
-			</div>
-		</header>	
+        <nav class="navbar">
+          <ul class="menu">
+            <li class="menu-button"><a href="index.php" class="menu-link">Accueil</a></li>
+            <li class="menu-button deroulant">
+              <a href="gestionvehicules.php" class="menu-link" id="vehiculemenu-link">Véhicules <i class="fas fa-caret-down"></i></a>
+              <ul class="submenu">
+                <li class="submenu-button"><a href="gestionvehicules.php?#vehiculeoccasion" class="submenu-link">Véhicules d'occasion</a></li>
+                <li class="submenu-button"><a href="gestionvehicules.php?#vehiculeneuf" class="submenu-link">Véhicules neufs</a></li>
+              </ul>
+            </li>
+            <li class="menu-button"><a href="propos.php" class="menu-link">À Propos</a></li>
+            <li class="menu-button"><a href="contact.php" class="menu-link">Contact</a></li>
+		  <?php if(isset($_SESSION['admin_lvl']) && $_SESSION['admin_lvl'] > 0) { ?>
+		  	<li class="menu menu-admin"> <a href="admin.php">Admin <i class="fas fa-caret-down"></i></a>
+				<ul class="submenu">
+					<li><a href="admin.php?page=1" id="page1">Ajouter un Véhicule</a></li>
+					<li><a href="admin.php?page=2">Modifier un Véhicule</a></li>
+					<li><a href="admin.php?page=3">Devis</a></li>
+					<li><a href="admin.php?page=4">vehicules Dispos</a></li>
+					<li><a href="admin.php?page=5">vehicules Indispo</a></li>	
+					<li><a href="admin.php?page=6">Liste des clients</a></li>
+					<li><a href="admin.php?page=7">Liste des réservations</a></li>				
+				</ul>
+			</li>
+			<?php } ?>
+			<?php
+			if (isset($_SESSION['pseudo'])) {
+				echo '<li class="connexion-button"><a href="deconnexion.php" class="connexion-link">Se déconnecter</a></li>';
+			} else {
+				echo '<li class="connexion-button"><a href="gestionclient.php" class="connexion-link">Se connecter</a></li>';
+			}
+			?>
+			<?php if (!$admin && isset($_SESSION['pseudo'])) { ?>
+				<li class="monvehicule"><a href="monvehicule.php">Mon véhicule</a></li>
+			<?php } ?>
+			</ul>
+        </nav>
 	</div>
-	<img src="img/logo2.png" id="logo" class="logo" width="110"/>

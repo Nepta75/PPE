@@ -22,7 +22,7 @@
         <img src="img/carousel.jpg" class="d-block w-100 img_carousel_index" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h3> BMW AUTO & MOTO </h3>
-          <p> Notre concession BMW & BMW Motorrad s'occupe autant des automobiles que des deux roues. Pas de favoritisme. </p>
+          <p> Notre concession BMW & BMW Motorrad s'occupe aussi bien des automobiles que des deux roues. Pas de favoritisme. </p>
         </div>
       </div>
       <div class="carousel-item">
