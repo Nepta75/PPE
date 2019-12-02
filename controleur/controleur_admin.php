@@ -3,8 +3,8 @@
     class Administrateur {
         private $modeleAdmin;
         
-        public function __construct ($serveur, $bdd, $user, $mdp) {
-            $this->modeleAdmin = new ModeleAdmin ($serveur, $bdd, $user, $mdp);
+        public function __construct () {
+            $this->modeleAdmin = new ModeleAdmin ();
         }
 
         public function addVehiculeNeuf($immatriculation, $type, $modele, $millesime, $cylindree,

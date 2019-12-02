@@ -1,8 +1,7 @@
 <?php
 require_once 'includes/header.php';
 require_once 'controleur/controleur_admin.php';
-require_once 'includes/identifiants_bdd.php';
-$cAdmin = new Administrateur($env, $database, $user, $mdp);
+$cAdmin = new Administrateur();
 $admin = $cAdmin->verifAdmin();
 if ($admin == null) {
    $error = "Erreur - 404. Page introuvable";
@@ -282,7 +281,7 @@ switch($page) {
                     } elseif ($resultat1['type'] == "client") {
                         echo "<h3 style='margin-top: 100px; text-align:center'>Modification d'un vehicule Client</h3>";
                         require_once ("controleur/controleur.php");
-                        $unControleur = new Controleur($env, $database, $user, $mdp);
+                        $unControleur = new Controleur();
                         $dataVehicule = $unControleur->selectVehiculeClient($resultat['iduser']);
                         $users = $unControleur->selectAllUsers();
                         require "vue/vue_modifier_vehicule_client.php";

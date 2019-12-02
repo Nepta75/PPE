@@ -88,7 +88,7 @@ li.menu-button {
 a.menu-link {
 	color: #171d22;
 	padding: 7px 10px;	
-	transition: 0.08s;
+	transition: 0.05s;
 }
 
 a.menu-link:hover {
