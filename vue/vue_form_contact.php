@@ -1,7 +1,7 @@
 <form action="" method="POST">
-    <h3>Nous contacter</h3>
-    <hr class="separator">
     <div class="form_contact">
+        <h3>Nous contacter</h3>
+        <hr class="separator">
         <div class="block-contact">
             <div class="test">
                 <div>

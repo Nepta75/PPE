@@ -22,6 +22,15 @@
             return $this->modeleAdmin->selectAllClients();
         }
 
+        public function selectAllTechniciens(){
+			$resultat = $this->modeleAdmin->selectAllTechniciens();
+			return $resultat;
+        }
+        
+        public function selectAllAdmins(){
+            $resultat = $this->modeleAdmin->selectAllAdmins();
+            return $resultat;
+        }
 
         //---------------------- Ajout Véchicule -----------------------\\
 

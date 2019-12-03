@@ -56,8 +56,8 @@
         <div>Samedi : fermé</div>
         <div>Dimanche : fermé</div>
         <hr>
-        <div><i class="fas fa-phone-square-alt"> Tel : </i><b> 01 85 53 09 07</b></div>
-        <div><i class="fas fa-phone-square-alt"> Service client : </i><b> 0 800 26 98 00</b></div>
+        <div><i class="fas fa-phone-square-alt"></i><b> Tel : 01 85 53 09 07</b></div>
+        <div><i class="fas fa-phone-square-alt"></i><b> Service client : 0 800 26 98 00</b></div>
     </div>
     <div class="googlemap_contact">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9428952031553!2d2.346209615201703!3d48.85929930859748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1ef1899367%3A0x58637dd65480b424!2sBMW+BYmyCAR+Paris+Rivoli!5e0!3m2!1sfr!2sfr!4v1559820921417!5m2!1sfr!2sfr" width="800" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>

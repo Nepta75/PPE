@@ -27,7 +27,19 @@ class ModeleAdmin
 
     public function selectAllClients() {
         $requete = "select * from view_client";
-        $select = $this->unPdo->prepare($requete);
+        $select = $this->unPdo->query($requete);
+        return $select->fetchAll();
+    }
+
+    public function selectAllTechniciens() {
+        $requete = "select * from view_technicien";
+        $select = $this->unPdo->query($requete);
+        return $select->fetchAll();
+    }
+
+    public function selectAllAdmins() {
+        $requete = "select * from view_admin";
+        $select = $this->unPdo->query($requete);
         return $select->fetchAll();
     }
 

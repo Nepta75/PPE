@@ -180,15 +180,13 @@ switch($page) {
     case 2 : $cAdmin->updateVehicule($_POST); break;
     case 3 : require "gestiondevis.php"; break;
     case 4 : header("Location:gestionvehicules.php"); break;
-    case 5 : header("Location:gestionvehicules.php?dispo=non"); break;
-    case 6 :
+    case 5 :
     $data = $cAdmin->selectAllClients();
     if(isset($_GET['action']) && $_GET['action'] == 'm' && isset($_GET['iduser']) && !empty($_GET['iduser'])) {
         $user = $cAdmin->selectUser($_GET['iduser']);
         require "vue/vue_update_client.php";
-    }
-    require 'vue/vue_list_clients.php'; break;
-    case 7 :
+    } require "pages/admin/lists/list.php"; break;
+    case 6 :
     $data = $cAdmin->selectAllEssai();
     echo "<h3 style='text-align: center; margin-top: 100px;'>List des demandes d'essais</h3>";
     require 'vue/vue_list_resa.php'; break;

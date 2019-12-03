@@ -86,10 +86,9 @@ echo $link; */
 					<li><a href="admin.php?page=1" class="admin-submenu-link" id="page1">Ajouter un Véhicule</a></li>
 					<li><a href="admin.php?page=2" class="admin-submenu-link">Modifier un Véhicule</a></li>
 					<li><a href="admin.php?page=3" class="admin-submenu-link">Devis</a></li>
-					<li><a href="admin.php?page=4" class="admin-submenu-link">vehicules Dispos</a></li>
-					<li><a href="admin.php?page=5" class="admin-submenu-link">vehicules Indispo</a></li>	
-					<li><a href="admin.php?page=6" class="admin-submenu-link">Liste des clients</a></li>
-					<li><a href="admin.php?page=7" class="admin-submenu-link">Liste des réservations</a></li>				
+					<li><a href="admin.php?page=4" class="admin-submenu-link">Liste des véhicules</a></li>
+					<li><a href="admin.php?page=5" class="admin-submenu-link">Liste des clients</a></li>
+					<li><a href="admin.php?page=6" class="admin-submenu-link">Liste des réservations</a></li>				
 				</ul>
 			</li>
 			<?php } ?>

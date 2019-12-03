@@ -22,7 +22,7 @@ $admin = $cAdmin->verifAdmin();
 	</div>
 		<?php
 			$data = $cAdmin->selectAllClients();
-			require ('vue/vue_list_clients.php');
+			require ('vue/vue_lists/vue_list_clients.php');
 		?>
 	<div>
 

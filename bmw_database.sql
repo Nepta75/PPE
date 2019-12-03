@@ -8,6 +8,7 @@ create table user (
 	prenom  Varchar (50) NOT NULL ,
 	mail    Varchar (100) NOT NULL ,
 	adresse Varchar (200) NOT NULL ,
+	tel 	Varchar (10), 
 	mdp     Varchar (200) NOT NULL,
 	PRIMARY KEY (id_user)
 );
@@ -134,19 +135,19 @@ CREATE VIEW view_devis as (
 );
 
 CREATE VIEW view_client as (
-	select u.id_user, u.nom, u.prenom, u.mail, u.adresse, u.mdp
+	select u.id_user, u.nom, u.prenom, u.mail, u.adresse, u.tel, u.mdp
 	from user u
 	inner join client c on u.id_user = c.id_user
 );
 
 CREATE VIEW view_admin as (
-	select u.id_user, u.nom, u.prenom, u.mail, u.adresse, u.mdp, a.admin_lvl
+	select u.id_user, u.nom, u.prenom, u.mail, u.adresse, u.tel, u.mdp, a.admin_lvl
 	from user u
 	inner join admin a on u.id_user = a.id_user
 );
 
 CREATE VIEW view_technicien as (
-	select u.id_user, u.nom, u.prenom, u.mail, u.adresse, u.mdp, t.technicien_lvl, t.diplome
+	select u.id_user, u.nom, u.prenom, u.mail, u.adresse, u.tel, u.mdp, t.technicien_lvl, t.diplome
 	from user u
 	inner join technicien t on u.id_user = t.id_user
 );
@@ -176,26 +177,26 @@ CREATE VIEW view_veh_neuf as (
 /* ------------ PROCEDURES --------------- */
 
 delimiter $ 
-create PROCEDURE insert_client (IN nom varchar(50), IN prenom varchar(50), IN mmail varchar(100), IN adresse varchar(200), IN mdp varchar(200))
+create PROCEDURE insert_client (IN nom varchar(50), IN prenom varchar(50), IN mmail varchar(100), IN adresse varchar(200), IN tel varchar(10), IN mdp varchar(200))
 BEGIN
 	DECLARE id int(5);
-	insert into user values (null,nom,prenom, mmail, adresse, mdp);
+	insert into user values (null,nom,prenom, mmail, adresse, tel, mdp);
 	select id_user into id from user where mail = mmail;
 	insert into client values (id);
 END $
 
-create PROCEDURE insert_admin (IN nom varchar(50), IN prenom varchar(50), IN mmail varchar(100), IN adresse varchar(200), IN mdp varchar(200), IN admin_lvl int(5))
+create PROCEDURE insert_admin (IN nom varchar(50), IN prenom varchar(50), IN mmail varchar(100), IN adresse varchar(200), IN tel varchar(10), IN mdp varchar(200), IN admin_lvl int(5))
 BEGIN
 	DECLARE id int(5);
-	insert into user values (null,nom,prenom, mmail, adresse, mdp);
+	insert into user values (null,nom,prenom, mmail, adresse, tel, mdp);
 	select id_user into id from user where mail = mmail;
 	insert into admin values (id, admin_lvl);
 END $
 
-create PROCEDURE insert_technicien (IN nom varchar(50), IN prenom varchar(50), IN mmail varchar(100), IN adresse varchar(200), IN mdp varchar(200), IN technicien_lvl int(5), IN diplome varchar(50))
+create PROCEDURE insert_technicien (IN nom varchar(50), IN prenom varchar(50), IN mmail varchar(100), IN adresse varchar(200), IN tel varchar(10), IN mdp varchar(200), IN technicien_lvl int(5), IN diplome varchar(50))
 BEGIN
 	DECLARE id int(5);
-	insert into user values (null, nom, prenom, mmail, adresse, mdp);
+	insert into user values (null, nom, prenom, mmail, adresse, tel, mdp);
 	select id_user into id from user where mail = mmail;
 	insert into technicien values (id, technicien_lvl, diplome);
 END $
@@ -234,11 +235,11 @@ delimiter ;
 
 /* --------- INSERTION --------- */
 
-call insert_admin('Aydogan', 'Lokman', 'lokman-hekim@hotmail.fr', '2 rue de clery', '123', 3);
-call insert_admin('Goncalves', 'Miguel', 'migueldsg0904@gmail.com', '3 rue de clery', '123', 3);
-call insert_client('Du Bois', 'Alber', 'neptashow@gmail.com', '6 rue de clery', '123');
-call insert_client('Goncalves 2', 'Miguel 2', 'miguou94700@hotmail.fr', '9 rue de clery', '123');
-call insert_technicien('Sanchez', 'Romain', 'romain@gmail.com', '23 rue de clery', '123', 3, 'bac +2');
+call insert_admin('Aydogan', 'Lokman', 'lokman-hekim@hotmail.fr', '2 rue de clery', '0661957329', '123', 3);
+call insert_admin('Goncalves', 'Miguel', 'migueldsg0904@gmail.com', '3 rue de clery', '0138216498', '123', 3);
+call insert_client('Du Bois', 'Alber', 'neptashow@gmail.com', '6 rue de clery', '0618316586','123');
+call insert_client('Goncalves 2', 'Miguel 2', 'miguou94700@hotmail.fr', '9 rue de clery', '0731569853','123');
+call insert_technicien('Sanchez', 'Romain', 'romain@gmail.com', '23 rue de clery', '0613469872', '123', 3, 'bac +2');
 
 call insert_veh_client(3, 'bmw', 'x6', '2018-09-24', 'ef-458-de', '4 Roues', 1600, 'essence', 'manuelle', 'bon etat', '', 78500, "x6_1.jpg", "x6_2.jpg");
 call insert_veh_client(4, 'bmw', 'x4', '2019-09-24', 'zf-587-aa', '4 Roues', 1600, 'essence', 'manuelle', 'bon etat', '', 77459, "x6_1.jpg", "x6_2.jpg");
