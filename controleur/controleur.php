@@ -39,13 +39,13 @@
 			$this->unModele->inscription($tab);
 		}
 
-		public function selectAllUsers(){
-			$resultat = $this->unModele->selectAllUsers();
+		public function selectAllClients(){
+			$resultat = $this->unModele->selectAllClients();
 			return $resultat;
 		}
 
-		public function selectUser($id) {
-			return $this->unModele->selectUser($id);
+		public function selectClient($id) {
+			return $this->unModele->selectClient($id);
 		}
 
 		public function selectAllVehiculesNeuf() {

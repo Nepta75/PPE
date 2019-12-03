@@ -1,11 +1,10 @@
 <?php
 require_once 'includes/header.php';
 require 'controleur/controleur.php';
-require_once 'includes/identifiants_bdd.php';
-$unControleur = new Controleur($env, $database, $user, $mdp);
-$users = $unControleur->selectAllUsers();
-$vehiculesNeuf = $unControleur->selectAllVehiculesNeuf();
-$vehiculesOccasion = $unControleur->selectAllVehiculesOccasionDispo();
+$unControleur = new Controleur('localhost', 'bmwv2', 'root', '');
+$clients = $unControleur->selectAllClients();
+$vehiculesNeufs = $unControleur->selectAllVehiculesNeuf();
+$vehiculesOccasions = $unControleur->selectAllVehiculesOccasion();
 
 if (isset($_POST['valid2'])) {
 	if (!empty($_POST['vehicule'])) {
@@ -46,7 +45,7 @@ if(isset($erreur)){ echo "<div class='error-message'>".$erreur."</div>";}
 ?>
 
 <div>
-	<?php if (empty($_GET['user']) ||empty($_GET['sujet']) ) { ?>
+	<?php if (empty($_GET['user']) || empty($_GET['sujet'])) { ?>
 		<div class="header_gestiondevis">
 			<h2>Etape 1 : </h2>
 			<form action="" method="POST">
@@ -54,8 +53,8 @@ if(isset($erreur)){ echo "<div class='error-message'>".$erreur."</div>";}
 					<label> Faire un devis pour : </label>
 					<select name="user">
 						<option value="">--- Selectionner un client ---</option>
-						<?php while($data = $users->fetch()){ ?>
-							<option value="<?= $data['idclient']?>"><?= $data['pseudo'] ?></option>
+						<?php foreach($clients as $client){ ?>
+							<option value="<?= $client['id_user']?>"><?= $client['nom'].', '.$client['prenom'] ?></option>
 						<?php } ?>
 					</select>
 				</div>
@@ -75,7 +74,7 @@ if(isset($erreur)){ echo "<div class='error-message'>".$erreur."</div>";}
 		</div>
 	<?php 
 	if (isset($_GET['sujet']) && !empty($_GET['sujet']) && isset($_GET['user']) && !empty($_GET['user'])) {
-		$user = $unControleur->selectUser($_GET['user']);
+		$user = $unControleur->selectClient($_GET['user']);
 	?>
 		<div class="gestiondevis">
 			<h2>Etape 2 :</h2>
@@ -84,7 +83,7 @@ if(isset($erreur)){ echo "<div class='error-message'>".$erreur."</div>";}
 					<div><h4><label>Info Client : </label></h4></div>
 					<div>nom : <b><?= $user['nom'] ?></b></div>
 					<div>prenom : <b><?= $user['prenom'] ?></b></div>
-					<div>adresse : <b><?= $user['adresse_rue'].", ".$user['adresse_cp']." ".$user['adresse_ville'] ?></b></div>
+					<div>adresse : <b><?= $user['adresse'] ?></b></div>
 					<div>tel : <b><?= "+33 ".$user['tel'] ?></b></div>
 				</div>
 			<?php if ($_GET['sujet'] == 'vente') { ?>
@@ -93,12 +92,12 @@ if(isset($erreur)){ echo "<div class='error-message'>".$erreur."</div>";}
 					<label>Vehicules disponibles (par immatriculation) : </label>
 					<select name="vehicule">
 						<option value="">-- Selectionner un Vehicule --</option>
-					<?php if ($vehiculesNeuf != null ) { while($data = $vehiculesNeuf->fetch()) { ?>
-						<option name="<?= $data['immatriculation'] ?>"><?= $data['immatriculation'] ?></option>
+					<?php if ($vehiculesNeufs != null ) { foreach($vehiculesNeufs as $vehiculeNeuf) { ?>
+						<option name="<?= $vehiculeNeuf['immatriculation'] ?>"><?= $vehiculeNeuf['immatriculation'] ?></option>
 					<?php }} ?>
 						<option value="">-- Vehicule d'occasion  --</option>
-					<?php if ($vehiculesOccasion != null ) { while($data = $vehiculesOccasion->fetch()) { ?>
-						<option name="<?= $data['immatriculation'] ?>"><?= $data['immatriculation'] ?></option>
+					<?php if ($vehiculesOccasions != null ) { foreach($vehiculesOccasions as $vehiculesOccasion) { ?>
+						<option name="<?= $vehiculesOccasion['immatriculation'] ?>"><?= $vehiculesOccasion['immatriculation'] ?></option>
 					<?php }} ?>
 					</select>
 				</div>

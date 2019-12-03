@@ -65,24 +65,16 @@ class Modele
 		header("Location:gestionclient.php?succes=in");
 	}
 
-	public function selectAllUsers() {
-			$requete = "SELECT u.iduser, u.idclient, c.nom, c.prenom, c.adresse_rue, c.adresse_ville, c.adresse_cp,
-			c.tel, u.pseudo, u.mdp, u.email, u.admin_lvl
-			FROM client c
-			JOIN utilisateur u on u.idclient = c.idclient";
-			$select = $this->unPdo->query($requete);
-			return $select;
+	public function selectAllClients() {
+		$requete = "SELECT * from view_client";
+		$select = $this->unPdo->query($requete);
+		return $select->fetchAll();
 	}
 
-	public function selectUser($id) {
-		$requete = "SELECT u.iduser, u.idclient, c.nom, c.prenom, c.adresse_rue, c.adresse_ville, c.adresse_cp,
-		c.tel, u.pseudo, u.mdp, u.email, u.admin_lvl
-		FROM client c
-		JOIN utilisateur u on u.idclient = c.idclient
-		WHERE u.idclient = :idclient";
-
+	public function selectClient($id) {
+		$requete = "SELECT * FROM view_client WHERE id_user = :id_user";
 		$select = $this->unPdo->prepare($requete);
-		$select->execute(array(":idclient"=>$id));
+		$select->execute(array(":id_user"=>$id));
 		$resultat = $select->fetch();
 		return $resultat;
 	}
