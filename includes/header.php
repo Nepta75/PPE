@@ -72,7 +72,7 @@ echo $link; */
           <ul class="menu">
             <li class="menu-button"><a href="index.php" class="menu-link">Accueil</a></li>
             <li class="menu-button deroulant">
-              <a href="gestionvehicules.php" class="menu-link" id="vehiculemenu-link">Véhicules <i class="fas fa-caret-down"></i></a>
+              <a href="gestionvehicules.php" class="deroulant-link"> Véhicules <i class="fas fa-caret-down"></i></a>
               <ul class="submenu">
                 <li class="submenu-button"><a href="gestionvehicules.php?#vehiculeoccasion" class="submenu-link">Véhicules d'occasion</a></li>
                 <li class="submenu-button"><a href="gestionvehicules.php?#vehiculeneuf" class="submenu-link">Véhicules neufs</a></li>
@@ -81,17 +81,20 @@ echo $link; */
             <li class="menu-button"><a href="propos.php" class="menu-link">À Propos</a></li>
             <li class="menu-button"><a href="contact.php" class="menu-link">Contact</a></li>
 		  <?php if(isset($_SESSION['admin_lvl']) && $_SESSION['admin_lvl'] > 0) { ?>
-		  	<li class="menu menu-admin"> <a href="admin.php">Admin <i class="fas fa-caret-down"></i></a>
-				<ul class="submenu">
-					<li><a href="admin.php?page=1" id="page1">Ajouter un Véhicule</a></li>
-					<li><a href="admin.php?page=2">Modifier un Véhicule</a></li>
-					<li><a href="admin.php?page=3">Devis</a></li>
-					<li><a href="admin.php?page=4">vehicules Dispos</a></li>
-					<li><a href="admin.php?page=5">vehicules Indispo</a></li>	
-					<li><a href="admin.php?page=6">Liste des clients</a></li>
-					<li><a href="admin.php?page=7">Liste des réservations</a></li>				
+		  	<li class="menu-button deroulant"> <a href="admin.php" class="deroulant-link">Admin <i class="fas fa-caret-down"></i></a>
+				<ul class="admin-submenu">
+					<li><a href="admin.php?page=1" class="admin-submenu-link" id="page1">Ajouter un Véhicule</a></li>
+					<li><a href="admin.php?page=2" class="admin-submenu-link">Modifier un Véhicule</a></li>
+					<li><a href="admin.php?page=3" class="admin-submenu-link">Devis</a></li>
+					<li><a href="admin.php?page=4" class="admin-submenu-link">vehicules Dispos</a></li>
+					<li><a href="admin.php?page=5" class="admin-submenu-link">vehicules Indispo</a></li>	
+					<li><a href="admin.php?page=6" class="admin-submenu-link">Liste des clients</a></li>
+					<li><a href="admin.php?page=7" class="admin-submenu-link">Liste des réservations</a></li>				
 				</ul>
 			</li>
+			<?php } ?>
+			<?php if (!$admin && isset($_SESSION['pseudo'])) { ?>
+				<li class="monvehicule" class="menu-button menu-monvehicule"><a href="monvehicule.php" class="menu-link">Mon véhicule</a></li>
 			<?php } ?>
 			<?php
 			if (isset($_SESSION['pseudo'])) {
@@ -100,9 +103,6 @@ echo $link; */
 				echo '<li class="connexion-button"><a href="gestionclient.php" class="connexion-link">Se connecter</a></li>';
 			}
 			?>
-			<?php if (!$admin && isset($_SESSION['pseudo'])) { ?>
-				<li class="monvehicule"><a href="monvehicule.php">Mon véhicule</a></li>
-			<?php } ?>
 			</ul>
         </nav>
 	</div>
