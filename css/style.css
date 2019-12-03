@@ -687,7 +687,6 @@ form h3 {
 .header_gestiondevis {
 	height: auto;
 	width: 100%;
-	margin: 100px 0 0 0;
 	padding: 100px 25px;
 	background-color: rgba(230, 230, 230, 0.2);
 }
@@ -743,7 +742,6 @@ form h3 {
 
 .gestiondevis:not(h2) {
 	width: 100%;
-	margin: 100px 0 0 0;
 	padding: 100px 25px;
 	background-color: rgba(230, 230, 230, 0.2);
 }
