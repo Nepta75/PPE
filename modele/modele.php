@@ -88,9 +88,9 @@ class Modele
 	}
 
 	public function selectAllVehiculesNeuf() {
-		$requete = "Select * from vehicule_neuf";
+		$requete = "Select * from view_veh_neuf";
 		$select = $this->unPdo->query($requete);
-		return $select;
+		return $select->fetchAll();
 	}
 
 	public function selecttreeVehiculesNeuf() {
@@ -101,39 +101,22 @@ class Modele
 	}
 
 	public function selectAllVehiculesOccasion() {
-		$requete = "Select * from vehicule_occasion";
+		$requete = "Select * from view_veh_occas";
 		$select = $this->unPdo->query($requete);
-		return $select;
+		return $select->fetchAll();
 	}
 
 	public function selecttreeVehiculesOccasion() {
 		$requete = "Select * from vehicule_occasion where valide = 'oui' order by idvehiculeocc asc limit 3";
 		$select = $this->unPdo->query($requete);
-		$resultat = $select->fetchAll();
-		return $resultat;
+		return $select->fetchAll();
 
 	}
 
-
-
-	
 	public function selectAllVehiculeNeuf() {
 		$requete = "Select * from vehicule_neuf";
 		$select = $this->unPdo->query($requete);
-		$resultat = $select->fetchAll();
-		return $resultat;
-	}
-
-	public function selectAllVehiculesOccasionDispo() {
-		$requete = "Select * from vehicule_occasion where valide = 'oui'";
-		$select = $this->unPdo->query($requete);
-		return $select;
-	}
-
-	public function selectAllVehiculesOccasionIndispo() {
-		$requete = "Select * from vehicule_occasion where valide = 'non'";
-		$select = $this->unPdo->query($requete);
-		return $select;
+		return $select->fetchAll();
 	}
 
 	public function selectAllVehiculesClient() {
