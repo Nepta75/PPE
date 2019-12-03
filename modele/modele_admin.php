@@ -17,133 +17,128 @@ class ModeleAdmin
 			echo $exp->getMessage();
 		}
     }
-
-    public function addVehiculeNeuf($immatriculation, $type, $modele, $millesime, $cylindree,
-    $energie, $typeBoite, $prix, $date_imma, $url_img) {
-        $requete = "INSERT INTO vehicule_neuf 
-        (idvehiculeneuf, idfacture, immatriculation, type_vehicule, modele, millesime, cylindree, energie,
-         type_boite, prix, date_immat, img) VALUES 
-        (null, null, :immatriculation, :type_vehicule, :modele, :millesime, :cylindree, :energie, :type_boite, :prix, :date_immat, :img)
-        ";
-
-        $insert = $this->unPdo->prepare($requete);
-        $insert->execute(array(
-            ":immatriculation"=>$immatriculation,
-            ":type_vehicule"=>$type,
-            ":modele"=>$modele,
-            ":millesime"=>$millesime,
-            ":cylindree"=>$cylindree,
-            ":energie"=>$energie,
-            ":type_boite"=>$typeBoite,
-            ":prix"=>$prix,
-            ":date_immat"=>$date_imma,
-            ":img"=>$url_img,
-
-        ));
+    
+    public function verifImmat($immat) {
+        $requete = "select immatriculation from vehicule where immatriculation = :immat";
+        $select = $this->unPdo->prepare($requete);
+        $select->execute(array(":immat"=>$immat));
+        return $select->fetchAll();
     }
 
-    public function addVehiculeOccas($immatriculation, $type, $modele, $millesime, $cylindree
-    ,$energie, $typeBoite, $km, $descriptif, $valid, $prix, $date_imma, $url_img) {
-        $requete = "INSERT INTO vehicule_occasion
-        (idvehiculeocc, idclient, idtechnicien, idfacture, immatriculation, type_vehicule,
-        modele, millesime, kilometrage, cylindree, energie, type_boite, prix, date_immat,
-        descriptif, valide, img) VALUES 
-        (null, null, null, null, :immatriculation, :type_vehicule, :modele, :millesime, :kilometrage,
-        :cylindree, :energie, :type_boite, :prix, :date_immat, :descriptif, :valide, :img)";
-
-        $insert = $this->unPdo->prepare($requete);
-        $insert->execute(array(
-            ":immatriculation"=>$immatriculation,
-            ":type_vehicule"=>$type,
-            ":modele"=>$modele,
-            ":millesime"=>$millesime,
-            ":kilometrage"=>$km,
-            ":cylindree"=>$cylindree,
-            ":energie"=>$energie,
-            ":type_boite"=>$typeBoite,
-            ":prix"=>$prix,
-            ":date_immat"=>$date_imma,
-            ":descriptif"=>$descriptif,
-            ":valide"=>$valid,
-            ":img"=>$url_img,
-        ));
+    public function selectAllClients() {
+        $requete = "select * from view_client";
+        $select = $this->unPdo->prepare($requete);
+        return $select->fetchAll();
     }
 
-    public function addVehiculeClient($user, $immatriculation, $type, $modele, $millesime, $cylindree
-    ,$energie, $typeBoite, $km, $descriptif, $valid, $prix, $date_imma, $url_img) {
-         $selectid = $this->unPdo->prepare("select iduser from utilisateur where pseudo = ?");
-        $selectid->execute(array($user));
-        $idUser = $selectid->fetch();
-
-        $requete = "INSERT INTO vehicule_client
-        (idvehiculeclient, iduser, immatriculation, type_vehicule, modele, millesime,
-        kilometrage, cylindree, energie, type_boite, prix, date_immat, descriptif, valide, img,
-        date_rdv, heure_rdv, type_rdv) 
-        VALUES (null, :user, :immatriculation, :type_vehicule, :modele, :millesime, :kilometrage,
-        :cylindree, :energie, :type_boite, :prix, :date_immat, :descriptif, :valide, :img,
-        null, null, null)";
-
-        $insert = $this->unPdo->prepare($requete);
-        $insert->execute(array(
-            ":user"=>intval($idUser['iduser']),
-            ":immatriculation"=>$immatriculation,
-            ":type_vehicule"=>$type,
-            ":modele"=>$modele,
-            ":millesime"=>$millesime,
-            ":kilometrage"=>$km,
-            ":cylindree"=>$cylindree,
-            ":energie"=>$energie,
-            ":type_boite"=>$typeBoite,
-            ":prix"=>$prix,
-            ":date_immat"=>$date_imma,
-            ":descriptif"=>$descriptif,
-            ":valide"=>$valid,
-            ":img"=>$url_img,
-        ));
+    public function addVehiculeNeuf($marque, $immatriculation, $type, $modele, $cylindree,
+    $energie, $typeBoite, $prix, $img1, $img2)
+    {
+        $requete = 'call insert_veh_neuf(:marque, :modele, :immatriculation, :type, :cylindree, 
+        :energie, :typeBoite, :prix, :img1, :img2)';
+        try {
+            $insert = $this->unPdo->prepare($requete);
+            $insert->execute(array(
+                ":marque"=>$marque,
+                ":modele"=>$modele,
+                ":immatriculation"=>$immatriculation,
+                ":type"=>$type,
+                ":cylindree"=>$cylindree,
+                ":energie"=>$energie,
+                ":typeBoite"=>$typeBoite,
+                ":prix"=>$prix,
+                ":img1"=>$img1,
+                ":img2"=>$img2,
+            ));
+        } catch (\PDOException $e) {
+            echo $e->getCode();
+            echo $e->getMessage();
+        }
     }
+
+    public function addVehiculeOccas($marque, $modele, $date_imma, $immatriculation,
+    $type, $cylindree ,$energie, $typeBoite, $etat, $info, $km, $prix, $img1, $img2) {
+        $requete = "call insert_veh_occas(:marque, :modele, :date_imma, :immatriculation, :type, :cylindree,
+        :energie, :typeBoite, :etat, :info, :km, :prix, :img1, :img2)";
+        try {
+            $insert = $this->unPdo->prepare($requete);
+            $insert->execute(array(
+                ":marque"=>$marque,
+                ":modele"=>$modele,
+                ":date_imma"=>$date_imma,
+                ":immatriculation"=>$immatriculation,
+                ":type"=>$type,
+                ":cylindree"=>$cylindree,
+                ":energie"=>$energie,
+                ":typeBoite"=>$typeBoite,
+                ":etat"=>$etat,
+                ":info"=>$info,
+                ":km"=>$km,
+                ":prix"=>$prix,
+                ":img1"=>$img1,
+                ":img2"=>$img2,
+            ));
+        } catch (\PDOException $e) {
+            echo $e->getCode();
+            echo $e->getMessage();
+        }
+    }
+
+    
+    public function addVehiculeClient($user, $marque, $modele, $date_imma, $immatriculation, $type
+    ,$cylindree, $energie, $typeBoite, $etat, $info, $km, $img1, $img2) {
+        $requete = "call insert_veh_client(:user, :marque, :modele, :date_imma, :immatriculation, 
+            :type, :cylindree, :energie, :typeBoite, :etat, :info, :km, :img1, :img2)";
+        try {
+            $insert = $this->unPdo->prepare($requete);
+            $insert->execute(array(
+                ":user"=>$user,
+                ":marque"=>$marque,
+                ":modele"=>$modele,
+                ":date_imma"=>$date_imma,
+                ":immatriculation"=>$immatriculation,
+                ":type"=>$type,
+                ":cylindree"=>$cylindree,
+                ":energie"=>$energie,
+                ":typeBoite"=>$typeBoite,
+                ":etat"=>$etat,
+                ":info"=>$info,
+                ":km"=>$km,
+                ":img1"=>$img1,
+                ":img2"=>$img2,
+            ));
+        } catch (\PDOException $e) {
+            echo $e->getCode();
+            echo $e->getMessage();
+        }
+    }
+
+
 
 
     //Modification vehicule
 
     public function selectVehicule($immatriculation) {
-		$requete1 = "Select * from vehicule_neuf where immatriculation = :immatriculation";
-		$requete2 = "Select * from vehicule_occasion where immatriculation = :immatriculation";
-		$requete3 = "Select * from vehicule_client where immatriculation = :immatriculation";
+        if ($this->verifImmat($immatriculation)) {
+            $type = ["0"=>'neuf', "1"=>'occas', "2"=>'client'];
+            $result = ["type"=>'', "data"=>[]];
+            $requete = [
+                "0"=>"Select * from view_veh_neuf where immatriculation = :immatriculation",
+                "1"=>"Select * from view_veh_occas where immatriculation = :immatriculation",
+                "2"=>"Select * from view_veh_client where immatriculation = :immatriculation",
+            ];
 
-
-		$select = $this->unPdo->prepare($requete1);
-        $select->execute(array("immatriculation"=>$immatriculation));
-        $type = "neuf";
-        $resultat = $select->fetch();
-        $array = array(
-            "type"=>$type,
-            "resultat"=>$resultat,
-        );
-
-		if ($resultat == null) {
-			$select2 = $this->unPdo->prepare($requete2);
-			$select2->execute(array("immatriculation"=>$immatriculation));
-            $type2 = "occasion";
-            $resultat2 = $select2->fetch();
-            $array2 = array(
-                "type"=>$type2,
-                "resultat"=>$resultat2,
-            );
-
-			if ($resultat2 == null) {
-				$select3 = $this->unPdo->prepare($requete3);
-				$select3->execute(array("immatriculation"=>$immatriculation));
-                $type3 = "client";
-                $resultat3 = $select3->fetch();
-                $array3 = array(
-                    "type"=>$type3,
-                    "resultat"=>$resultat3,
-                );
-				return $array3;
-			}
-			return $array2;
+            for($i=0; $i < 3; $i++) {
+                if (!empty($result['data'])) return $result;
+                $select = $this->unPdo->prepare($requete[$i]);
+                $select->execute(array("immatriculation"=>$immatriculation));
+                $result = [
+                    'type'=>$type[$i], 
+                    'data'=>$select->fetch(),
+                ];
+            }
+            return $result;
         }
-		return $array;
     }
 
     public function updateVehiculeNeuf($immatriculation, $type, $modele, $millesime, $cylindree
@@ -247,15 +242,6 @@ class ModeleAdmin
     }
 
     //CLIENTS
-
-    public function selectAllClients() {
-        $requete = "Select c.nom, c.prenom, c.adresse_rue, c.adresse_cp, c.adresse_ville, c.tel, c.email,
-        u.idclient, u.pseudo, u.mdp, u.email, u.admin_lvl from utilisateur u
-        join client c on u.idclient = c.idclient";
-        $select = $this->unPdo->query($requete);
-        $resultat = $select->fetchAll();
-        return $resultat;
-    }
 
     public function deleteUser($id) {
         $requete = "delete from utilisateur where idclient = :idclient";

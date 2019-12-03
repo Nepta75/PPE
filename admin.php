@@ -1,89 +1,19 @@
 <?php
 require_once 'includes/header.php';
 require_once 'controleur/controleur_admin.php';
-require_once 'includes/identifiants_bdd.php';
-$cAdmin = new Administrateur($env, $database, $user, $mdp);
+$cAdmin = new Administrateur("localhost", "bmwv2", "root", "");
 $admin = $cAdmin->verifAdmin();
 if ($admin == null) {
    $error = "Erreur - 404. Page introuvable";
 } else {
-    // AJOUT VEHICULE NEUF
     if(isset($_POST['add_vehicule_neuf'])) {
-        $immatriculation = htmlspecialchars($_POST['immatriculation']);
-        $type = $_POST['type'];
-        $modele = htmlspecialchars($_POST['modele']);
-        $millesime = intval($_POST['millesime']);
-        $cylindree = intval($_POST['cylindree']);
-        $energie = $_POST['energie'];
-        $typeBoite = $_POST['typeBoite'];
-        $prix = floatval($_POST['prix']);
-        $date_imma = $_POST['dateImma'];
-        $url_img = $_POST['img_vehicule'];
-
-        if(!empty($immatriculation) && !empty($type) && !empty($modele) && !empty($millesime)
-        && !empty($cylindree) && !empty($energie) && !empty($typeBoite) && !empty($prix) && 
-        !empty($date_imma) && !empty($url_img)) {
-            $cAdmin->addVehiculeNeuf($immatriculation, $type, $modele, $millesime, $cylindree
-            ,$energie, $typeBoite, $prix, $date_imma, $url_img);
-            $succes = "Succès : Vous venez d'ajouter un nouveau Véhicule neuf !";
-        } else {
-            $erreur = "Veuillez remplir tous les champs !";
-        }
+        $cAdmin->addVehiculeNeuf($_POST);
     }
-
-     // AJOUT VEHICULE OCCASION
     if(isset($_POST['add_vehicule_occasion'])) {
-        $immatriculation = htmlspecialchars($_POST['immatriculation']);
-        $type = $_POST['type'];
-        $modele = htmlspecialchars($_POST['modele']);
-        $millesime = intval($_POST['millesime']);
-        $cylindree = intval($_POST['cylindree']);
-        $energie = $_POST['energie'];
-        $typeBoite = $_POST['typeBoite'];
-        $km = intval($_POST['km']);
-        $descriptif = $_POST['descriptif'];
-        $valid = $_POST['valide_vehicule'];
-        $prix = floatval($_POST['prix']);
-        $date_imma = $_POST['dateImma'];
-        $url_img = $_POST['img_vehicule'];
-
-        if(!empty($immatriculation) && !empty($type) && !empty($modele) && !empty($millesime)
-        && !empty($cylindree) && !empty($energie) && !empty($typeBoite) && !empty($prix) && 
-        !empty($date_imma) && !empty($url_img)) {
-            $cAdmin->addVehiculeOccas($immatriculation, $type, $modele, $millesime, $cylindree
-            ,$energie, $typeBoite, $km, $descriptif, $valid, $prix, $date_imma, $url_img);
-            $succes = "Succès : Vous venez d'ajouter un nouveau Véhicule d'occasion !";
-        } else {
-            $erreur = "Veuillez remplir tous les champs !";
-        }
+        $cAdmin->addVehiculeOccas($_POST);
     }
-
-    // AJOUT VEHICULE ClIENT
     if(isset($_POST['add_vehicule_client'])) {
-        $user = htmlspecialchars($_POST['user']);
-        $immatriculation = htmlspecialchars($_POST['immatriculation']);
-        $type = $_POST['type'];
-        $modele = htmlspecialchars($_POST['modele']);
-        $millesime = intval($_POST['millesime']);
-        $cylindree = intval($_POST['cylindree']);
-        $energie = $_POST['energie'];
-        $typeBoite = $_POST['typeBoite'];
-        $km = intval($_POST['km']);
-        $descriptif = $_POST['descriptif'];
-        $valid = $_POST['valide_vehicule'];
-        $prix = floatval($_POST['prix']);
-        $date_imma = $_POST['dateImma'];
-        $url_img = $_POST['img_vehicule'];
-
-        if(!empty($user) && !empty($immatriculation) && !empty($type) && !empty($modele) && !empty($millesime)
-        && !empty($cylindree) && !empty($energie) && !empty($typeBoite) && !empty($prix) && 
-        !empty($date_imma) && !empty($url_img)) {
-            $cAdmin->addVehiculeClient($user, $immatriculation, $type, $modele, $millesime, $cylindree
-            ,$energie, $typeBoite, $km, $descriptif, $valid, $prix, $date_imma, $url_img);
-            $succes = "Succès : Vous venez d'ajouter un nouveau Véhicule pour ".$user." !";
-        } else {
-            $erreur = "Veuillez remplir tous les champs !";
-        }
+        $cAdmin->addVehiculeClient($_POST);
     }
 
     //Update vehicule neuf
@@ -246,51 +176,8 @@ if(isset($error)) {
 $page = 0;
 if (isset($_GET['page'])) { $page = $_GET['page']; }
 switch($page) {
-    case 1 :  require "vue/vue_ajouter_vehicule.php"; break;
-    case 2 : 
-        if (isset($_GET['type']) && isset($_GET['immat']) && !empty($_GET['type']) && !empty($_GET['immat']) && !isset($succes) && !isset($_POST['immat'])){
-            $tab = array(
-                "immatriculation"=>$_GET['immat'],
-                "type_modif"=>$_GET['type'],
-            );
-            $erreur = $cAdmin->verifVehicule($tab);
-            $resultat1 = $cAdmin->selectVehicule($tab['immatriculation']);
-            echo $resultat1['type'];
-            $resultat = $resultat1['resultat'];
-            if($resultat1['type'] == "neuf") {
-                echo "<h3 style='margin-top: 100px; text-align:center'>Modification d'un vehicule neuf</h3>";
-                require "vue/vue_modifier_vehicule_neuf.php";
-            } else if ($resultat1['type'] == "occasion") {
-                echo "<h3 style='margin-top: 100px; text-align:center'>Modification d'un vehicule d'occasion</h3>";
-                require "vue/vue_modifier_vehicule_occas.php";
-            }
-        } else {
-            if (!isset($_POST['immat'])) {
-                require "vue/vue_modifier_vehicule.php"; 
-            }
-            if(isset($_POST['immat'])) {
-                if(!empty($_POST['immatriculation'])) {
-                    $erreur = $cAdmin->verifVehicule($_POST);
-                    $resultat1 = $cAdmin->selectVehicule($_POST['immatriculation']);
-                    $resultat = $resultat1['resultat'];
-                    if($resultat1['type'] == "neuf") {
-                        echo "<h3 style='margin-top: 100px; text-align:center'>Modification d'un vehicule neuf</h3>";
-                        require "vue/vue_modifier_vehicule_neuf.php";
-                    } elseif($resultat1['type'] == "occasion") {
-                        echo "<h3 style='margin-top: 100px; text-align:center'>Modification d'un vehicule d'occasion</h3>";
-                        require "vue/vue_modifier_vehicule_occas.php";
-                    } elseif ($resultat1['type'] == "client") {
-                        echo "<h3 style='margin-top: 100px; text-align:center'>Modification d'un vehicule Client</h3>";
-                        require_once ("controleur/controleur.php");
-                        $unControleur = new Controleur($env, $database, $user, $mdp);
-                        $dataVehicule = $unControleur->selectVehiculeClient($resultat['iduser']);
-                        $users = $unControleur->selectAllUsers();
-                        require "vue/vue_modifier_vehicule_client.php";
-                    }
-                }
-            }
-        }
-    break;
+    case 1 : require "vue/vue_ajouter_vehicule.php"; break;
+    case 2 : $cAdmin->updateVehicule($_POST); break;
     case 3 : require "gestiondevis.php"; break;
     case 4 : header("Location:gestionvehicules.php"); break;
     case 5 : header("Location:gestionvehicules.php?dispo=non"); break;
