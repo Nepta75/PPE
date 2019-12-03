@@ -1,18 +1,9 @@
 <?php
 include 'includes/header.php';
 require 'controleur/controleur.php';
-require_once 'includes/identifiants_bdd.php';
-$controleur = new Controleur ($env, $database, $user, $mdp);
-$vehiculesNeuf = $controleur->selectAllVehiculesNeuf();
-$vehiculesOccasion = $controleur->selectAllVehiculesOccasionDispo();
-$vehiculesIndispo = $controleur->selectAllVehiculesOccasionIndispo();
-?>
-
-<?php
-if (isset($_GET['dispo']) && $_GET['dispo'] == "non") {
-    require ("vue/vue_vehicule_indispo.php");
-    return;
-}
+$controleur = new Controleur ('localhost', 'bmwv2', 'root','');
+$vehiculesNeufs = $controleur->selectAllVehiculesNeuf();
+$vehiculesOccasions = $controleur->selectAllVehiculesOccasion();
 ?>
 
 <div class="vehicule_page" id=vehiculeneuf>
@@ -21,7 +12,6 @@ if (isset($_GET['dispo']) && $_GET['dispo'] == "non") {
     require ('vue/vue_vehicule_occasion.php');
     ?>
 </div>
-
 
 <?php
 include 'includes/footer.php';
