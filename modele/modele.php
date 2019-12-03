@@ -113,12 +113,6 @@ class Modele
 
 	}
 
-	public function selectAllVehiculeNeuf() {
-		$requete = "Select * from vehicule_neuf";
-		$select = $this->unPdo->query($requete);
-		return $select->fetchAll();
-	}
-
 	public function selectAllVehiculesClient() {
 		$requete = "Select * from vehicule_client";
 		$select = $this->unPdo->query($requete);
