@@ -1,13 +1,15 @@
 <?php
-
-include '../includes/identifiants_bdd.php';
-
 class ModeleAdmin
 {
 	private $unPdo ;
 
-	public function __construct ()
-	{/	}
+	public function __construct ($serveur, $bdd, $user, $mdp)
+	{
+		$this->unPdo = null;
+		try{
+		//connexion à la base de données en utlisant la classe PDO
+		$this->unPdo = new PDO ("mysql:host=".$serveur.";dbname=".$bdd,$user,$mdp);
+		}
 		catch (PDOException $exp)
 		{
 			echo "Erreur de connexion à la base de données";
