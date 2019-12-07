@@ -26,6 +26,17 @@ $controleur = new Administrateur('localhost', 'bmwv2', 'root', '');
         {
             $value = 3;
         }
+    } elseif (isset($_GET['select'])) {
+        if($_GET['select'] == 'client')
+        {
+            $value = 1;
+        } elseif ($_GET['select'] == 'technicien') 
+        {
+            $value = 2;
+        } elseif ($_GET['select'] == 'admin')
+        {
+            $value = 3;
+        }
     }
     switch($value)
     {

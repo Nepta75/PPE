@@ -29,7 +29,7 @@
 					header("Location:index.php");
 					exit();
 				} elseif ($resultat['admin_lvl'] > 0) {
-					header("Location:admin.php?c=1");
+					header("Location:admin.php");
 					exit();
 				}
 			}

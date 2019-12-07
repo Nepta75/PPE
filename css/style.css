@@ -593,9 +593,33 @@ form h3 {
 
 /* --------------- ADMIN ----------------- */
 
-.block-panel_admin {
-	padding: 30px 20px;
-	position: relative;
+.admin-container {
+	padding: 50px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.admin-container__admin-stats {
+	margin: 10px;
+	width: 180px;
+	height: 160px;
+	text-align: center;
+	box-shadow: 0px 0px 10px 1px rgba(198, 198, 198, 0.75);
+	-moz-box-shadow: 0px 0px 10px 1px rgba(198, 198, 198, 0.75);
+	-webkit-box-shadow: 0px 0px 10px 1px rgba(198, 198, 198, 0.75);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+.admin-container__admin-stats p {
+	padding: 0 5px;
+	margin: 0;
+}
+
+.admin-container__admin-stats a {
+	padding: 5px;
 }
 
 .block-panel_admin h3 {

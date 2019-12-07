@@ -43,6 +43,12 @@ class ModeleAdmin
         return $select->fetchAll();
     }
 
+    public function countFromTable($table) {
+        $requete = "select count(*) from $table";
+        $select = $this->unPdo->query($requete);
+        return $select->fetchColumn();
+    }
+
     public function addVehiculeNeuf($marque, $immatriculation, $type, $modele, $cylindree,
     $energie, $typeBoite, $prix, $img1, $img2)
     {

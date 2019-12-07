@@ -32,6 +32,10 @@
             return $resultat;
         }
 
+        public function countFromTable($table) {
+            return $this->modeleAdmin->countFromTable($table);
+        }
+
         //---------------------- Ajout Véchicule -----------------------\\
 
         public function addVehiculeNeuf($data) {
