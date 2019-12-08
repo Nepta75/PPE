@@ -1027,4 +1027,11 @@ form h3 {
 	tbody tr {
 	  font-size: 14px;
 	}
-  }
+
+/* ---------- LISTE DES VEHICULES -------------- */
+
+	.title_viewVehNeufs {
+		margin-top: 50px;
+		text-align: center;
+	}
+}

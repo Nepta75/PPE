@@ -72,9 +72,17 @@ class ModeleAdmin
     }
 
     public function selectAllDevis() {
-        $requete = "select * from view_devis";
+        $requete = "select * from devis";
         $select = $this->unPdo->query($requete);
         return $select->fetchAll();
+    }
+
+    //---------------------- Suppressions de véhicule -----------------\\
+
+    public function deleteVehicule($idVeh) {
+        $requete = "delete from vehicule where id_vehicule = :id";
+        $delete = $this->unPdo->prepare($requete);
+        $delete->execute(array(":id"=>$idVeh));
     }
 
     //---------------------- Ajout Véchicule -----------------------\\
@@ -267,26 +275,6 @@ class ModeleAdmin
             ":img"=>$url_img,
             ":immatriculation"=>$immatriculation,
         ));
-    }
-
-    //SUPPRESSION VEHICULE
-
-    public function deleteVehiculeNeuf($immat) {
-        $requete = "Delete from vehicule_neuf where immatriculation = :immatriculation";
-        $delete = $this->unPdo->prepare($requete);
-        $delete->execute(array(":immatriculation"=>$immat));
-    }
-
-    public function deleteVehiculeOccasion($immat) {
-        $requete = "Delete from vehicule_occasion where immatriculation = :immatriculation";
-        $delete = $this->unPdo->prepare($requete);
-        $delete->execute(array(":immatriculation"=>$immat));
-    }
-
-    public function deleteVehiculeClient($immat) {
-        $requete = "Delete from vehicule_client where immatriculation = :immatriculation";
-        $delete = $this->unPdo->prepare($requete);
-        $delete->execute(array(":immatriculation"=>$immat));
     }
 
     //CLIENTS

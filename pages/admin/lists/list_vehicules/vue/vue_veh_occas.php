@@ -1,30 +1,43 @@
+<h2> Liste des véhicules d'occasion </h2>
 <table>
     <thead>
         <tr class="table100-head">
-            <th class="column1">Nom</th>
-            <th class="column2">Prénom</th>
-            <th class="column3">Adresse</th>
-            <th class="column4">Téléphone</th>
-            <th class="column5">Diplôme</th>
-            <th class="column6">Mail</th>
-            <th class="column7">Mdp</th>
-            <th class="column8">LVL Technicien</th>
-            <th class="column9">Action</th>
+            <th class="column1">Marque</th>
+            <th class="column2">Modèle</th>
+            <th class="column3">Immatriculation</th>
+            <th class="column4">Type de véhicule</th>
+            <th class="column5">Cylindrée</th>
+            <th class="column6">Énergie</th>
+            <th class="column7">Boite</th>
+            <th class="column8">État</th>
+            <th class="column9">Kilométrage</th>
+            <th class="column10">Prix</th>
+            <th class="column11">Action</th>
+
         </tr>
     </thead>
     <tbody>
     <?php foreach($data as $data) { ?>
-            <tr onclick="document.location = 'admin.php?page=6&action=m&iduser=<?= $data['id_user'] ?>'";>
-                <td class="column1"><?= $data['nom'] ?></td>
-                <td class="column2"><?= $data['prenom'] ?></td>
-                <td class="column3"><?= $data['adresse'] ?></td>
-                <td class="column4"><?= $data['tel'] ?></td>
-                <td class="column5"><?= $data['diplome'] ?></td>
-                <td class="column6"><?= $data['mail'] ?></td>  
-                <td class="column7"><?= $data['mdp'] ?></td>
-                <td class="column8"><?= $data['technicien_lvl'] ?></td>
-                <td class="column9"><a href="admin.php?page=6&action=x&iduser=<?= $data['id_user'] ?>"><i style="color: red;" class="fas fa-user-times"></i></a></td>
-            </tr>
+        <tr onclick="document.location = 'admin.php?page=6&action=m&iduser=<?= $data['id_vehicule'] ?>'";>
+            <td class="column1"><?= $data['marque'] ?></td>
+            <td class="column2"><?= $data['modele'] ?></td>
+            <td class="column3"><?= $data['immatriculation'] ?></td>
+            <td class="column4"><?= $data['type_vehicule'] ?></td>
+            <td class="column5"><?= $data['cylindree'] ?></td>
+            <td class="column6"><?= $data['energie'] ?></td>  
+            <td class="column7"><?= $data['type_boite'] ?></td>
+            <td class="column8"><?= $data['etat'] ?></td>
+            <td class="column9"><?= $data['km'] ?></td>
+            <td class="column10"><?= $data['prix'] ?></td>
+            <td class="column11"><a href="admin.php?page=5&select=occas&delete=<?= $data['id_vehicule'] ?>"><i style="color: red;" class="fas fa-user-times"></i></a></td>
+        </tr>
     <?php } ?>
     </tbody>
 </table>
+
+<style type="text/css">
+h2 {
+    margin-top: 50px;
+    text-align: center;
+}    
+</style>
