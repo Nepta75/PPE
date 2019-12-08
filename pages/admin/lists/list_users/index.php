@@ -12,41 +12,24 @@ $controleur = new Administrateur('localhost', 'bmwv2', 'root', '');
     </select>
 </form>
 
-<?php  
-    $value = 0;    
+<?php
+    $array = ['client', 'technicien', 'admin'];
+    $value = null;
     if(isset($_POST['list']))
     {
-        if($_POST['list'] == 'client')
-        {
-            $value = 1;
-        } elseif ($_POST['list'] == 'technicien') 
-        {
-            $value = 2;
-        } elseif ($_POST['list'] == 'admin')
-        {
-            $value = 3;
-        }
+       $value = array_search($_POST['list'], $array);
     } elseif (isset($_GET['select'])) {
-        if($_GET['select'] == 'client')
-        {
-            $value = 1;
-        } elseif ($_GET['select'] == 'technicien') 
-        {
-            $value = 2;
-        } elseif ($_GET['select'] == 'admin')
-        {
-            $value = 3;
-        }
+        $value = array_search($_GET['select'], $array);
     }
     switch($value)
     {
-        case 1 :  
+        case 0 :  
             $data = $controleur->selectAllClients();
             require "vue/vue_list_clients.php" ; break ;
-        case 2 :  
+        case 1 :  
             $data = $controleur->selectAllTechniciens();
             require "vue/vue_list_techniciens.php" ; break ;
-        case 3 :  
+        case 2 :  
             $data = $controleur->selectAllAdmins();
             require "vue/vue_list_admins.php" ; break ;
         default : require "vue/vue_list_clients.php" ; break ;

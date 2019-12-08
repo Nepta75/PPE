@@ -17,6 +17,8 @@ class ModeleAdmin
 			echo $exp->getMessage();
 		}
     }
+
+    //---------------------- Utils -----------------------\\
     
     public function verifImmat($immat) {
         $requete = "select immatriculation from vehicule where immatriculation = :immat";
@@ -24,6 +26,14 @@ class ModeleAdmin
         $select->execute(array(":immat"=>$immat));
         return $select->fetchAll();
     }
+
+    public function countFromTable($table) {
+        $requete = "select count(*) from $table";
+        $select = $this->unPdo->query($requete);
+        return $select->fetchColumn();
+    }
+
+    //-------------------- Les sélections --------------------\\
 
     public function selectAllClients() {
         $requete = "select * from view_client";
@@ -43,11 +53,31 @@ class ModeleAdmin
         return $select->fetchAll();
     }
 
-    public function countFromTable($table) {
-        $requete = "select count(*) from $table";
+    public function selectAllVehNeufs() {
+        $requete = "select * from view_veh_neuf";
         $select = $this->unPdo->query($requete);
-        return $select->fetchColumn();
+        return $select->fetchAll();
     }
+    
+    public function selectAllVehOccas() {
+        $requete = "select * from view_veh_occas";
+        $select = $this->unPdo->query($requete);
+        return $select->fetchAll();
+    }
+
+    public function selectAllVehClients() {
+        $requete = "select * from view_veh_client";
+        $select = $this->unPdo->query($requete);
+        return $select->fetchAll();
+    }
+
+    public function selectAllDevis() {
+        $requete = "select * from view_devis";
+        $select = $this->unPdo->query($requete);
+        return $select->fetchAll();
+    }
+
+    //---------------------- Ajout Véchicule -----------------------\\
 
     public function addVehiculeNeuf($marque, $immatriculation, $type, $modele, $cylindree,
     $energie, $typeBoite, $prix, $img1, $img2)

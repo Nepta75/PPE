@@ -18,6 +18,12 @@
             return true;
         }
 
+        public function countFromTable($table) {
+            return $this->modeleAdmin->countFromTable($table);
+        }
+
+        //-------------------- Les sélections --------------------\\
+
         public function selectAllClients() {
             return $this->modeleAdmin->selectAllClients();
         }
@@ -32,8 +38,24 @@
             return $resultat;
         }
 
-        public function countFromTable($table) {
-            return $this->modeleAdmin->countFromTable($table);
+        public function selectAllVehNeufs(){
+            $resultat = $this->modeleAdmin->selectAllVehNeufs();
+            return $resultat;
+        }
+
+        public function selectAllVehOccas(){
+            $resultat = $this->modeleAdmin->selectAllVehOccas();
+            return $resultat;
+        }
+
+        public function selectAllVehClients(){
+            $resultat = $this->modeleAdmin->selectAllVehClients();
+            return $resultat;
+        }
+
+        public function selectAllDevis(){
+            $resultat = $this->modeleAdmin->selectAllDevis();
+            return $resultat;
         }
 
         //---------------------- Ajout Véchicule -----------------------\\
