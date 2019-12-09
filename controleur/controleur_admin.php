@@ -58,7 +58,13 @@
             return $resultat;
         }
 
-        //---------------------- Ajout Véchicule -----------------------\\
+        //------------------ Suppresion de véhicule ---------------- \\ 
+
+        public function deleteVehicule($id) {
+            $this->modeleAdmin->deleteVehicule($id);
+        }
+
+        //---------------------- Ajout Véhicule -----------------------\\
 
         public function addVehiculeNeuf($data) {
             $marque = htmlspecialchars($data['marque']);

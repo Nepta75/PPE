@@ -28,10 +28,15 @@ $controleur = new Administrateur('localhost', 'bmwv2', 'root', '');
             require "vue/vue_veh_neufs.php" ; break ;
         case 1 :  
             $data = $controleur->selectAllVehOccas();
-            require "vue/vue_veh_occas" ; break ;
+            require "vue/vue_veh_occas.php" ; break ;
         case 2 :  
             $data = $controleur->selectAllVehClients();
-            require "vue/vue_list_clients.php" ; break ;
+            require "vue/vue_veh_clients.php" ; break ;
         default : require "vue/vue_list_clients.php" ; break ;
+    }
+    if(isset($_GET["delete"]) && !empty($_GET["delete"])) {
+        $controleur->deleteVehicule($_GET["delete"]);
+        $url = "admin.php?page=5&select=".$array[$value];
+        echo "<script> window.location.href = ".$url."; </script>";
     }
 ?>
