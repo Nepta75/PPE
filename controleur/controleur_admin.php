@@ -58,13 +58,18 @@
             return $resultat;
         }
 
+        public function selectIdVehicule($immatriculation) {
+            $resultat = $this->modeleAdmin->selectIdVehicule($immatriculation);
+            return $resultat;
+        }
+
         //------------------ Suppresion de véhicule ---------------- \\ 
 
         public function deleteVehicule($id) {
             $this->modeleAdmin->deleteVehicule($id);
         }
 
-        //---------------------- Ajout Véhicule -----------------------\\
+        //---------------------- Ajout Véchicule -----------------------\\
 
         public function addVehiculeNeuf($data) {
             $marque = htmlspecialchars($data['marque']);
@@ -77,7 +82,6 @@
             $prix = floatval($data['prix']);
             $img1 = htmlspecialchars($data['img1']);
             $img2 = htmlspecialchars($data['img2']);
-            echo $this->verifImmat($immatriculation);
             if(!empty($marque) && !empty($immatriculation) && !empty($type) && !empty($modele)
                 && !empty($cylindree) && !empty($energie) && !empty($typeBoite) && !empty($prix) 
                 && !empty($img1)
@@ -172,68 +176,85 @@
 
         //--------------------- Modification d'un vehicule par immatriculation ----------------------- \\
 
-        public function updateVehicule() {
-            if (isset($_POST['immatriculation'])) {
-                if (isset($_POST['immatriculation'])) {
-                    if ($this->verifImmat($_POST['immatriculation']) !== false) {
-                        $result = $this->modeleAdmin->selectVehicule($_POST['immatriculation']);
-                        if($result != null) {
-                            echo "<h3 style='margin-top: 100px; text-align:center'>Modification d'un vehicule ".$result['type']."</h3>";
-                            $resultat = $result['data'];
-                            if ($result['type'] == 'neuf') {
-                                require "vue/vue_modifier_vehicule_neuf.php";
-                            } elseif ($result['type'] == 'occas') {
-                                require "vue/vue_modifier_vehicule_occas.php";
-                            } else {
-                                $clients = $this->selectAllClients();
-                                require "vue/vue_modifier_vehicule_client.php";
-                            }
-                        } else {
-                            $erreur = "Erreur : Véhicule introuvable !";
-                        }
-                    }
-                } else {
-                    $erreur = "Erreur : L'immatriculation est manquante";
-                }
-                if (isset($erreur)) {
-                    echo $erreur;
-                    require "vue/vue_modifier_vehicule.php";
-                }
+        public function updateVehiculeNeuf($data) {
+            $marque = htmlspecialchars($data['marque']);
+            $immatriculation = htmlspecialchars($data['immatriculation']);
+            $type = $data['type'];
+            $modele = htmlspecialchars($data['modele']);
+            $cylindree = intval($data['cylindree']);
+            $energie = $data['energie'];
+            $typeBoite = $data['typeBoite'];
+            $prix = floatval($data['prix']);
+            $img1 = htmlspecialchars($data['img1']);
+            $img2 = htmlspecialchars($data['img2']);
+            $id = $this->selectIdVehicule($immatriculation);
+            if(!empty($marque) && !empty($immatriculation) && !empty($type) && !empty($modele)
+                && !empty($cylindree) && !empty($energie) && !empty($typeBoite) && !empty($prix) 
+                && !empty($img1)
+            )
+            {
+                $this->modeleAdmin->updateVehiculeNeuf($id, $marque, $immatriculation, $type, $modele, $cylindree,
+                    $energie, $typeBoite, $prix, $img1, $img2
+                );
+                echo "<div class='succes'>Succès : Modification réussi !</div>";
             } else {
-                require "vue/vue_modifier_vehicule.php";
+                echo "<div class='erreur'>Erreur : Veuillez remplir tous les champs !</div>";
             }
         }
 
-        public function updateVehiculeNeuf($immatriculation, $type, $modele, $millesime, $cylindree
-        ,$energie, $typeBoite, $prix, $date_imma, $url_img) {
-            $this->modeleAdmin->updateVehiculeNeuf($immatriculation, $type, $modele, $millesime, $cylindree
-            ,$energie, $typeBoite, $prix, $date_imma, $url_img);
+        public function updateVehiculeOccas($data) {
+            $marque = htmlspecialchars($data['marque']);
+            $immatriculation = htmlspecialchars($data['immatriculation']);
+            $type = $data['type'];
+            $modele = htmlspecialchars($data['modele']);
+            $cylindree = intval($data['cylindree']);
+            $energie = $data['energie'];
+            $typeBoite = $data['typeBoite'];
+            $km = intval($data['km']);
+            $etat = $data['etat'];
+            $info = $data['info'];
+            $prix = floatval($data['prix']);
+            $date_imma = $data['dateImma'];
+            $img1 = htmlspecialchars($data['img1']);
+            $img2 = htmlspecialchars($data['img2']);
+            $id = $this->selectIdVehicule($immatriculation);
+            if (!empty($marque) && !empty($immatriculation) && !empty($type) && !empty($modele)
+                && !empty($cylindree) && !empty($energie) && !empty($typeBoite) && !empty($km) && !empty($etat)
+                && !empty($prix) && !empty($date_imma) && !empty($img1)) {
+                $this->modeleAdmin->updateVehiculeOccas($id, $marque, $modele, $date_imma, $immatriculation,
+                    $type, $cylindree ,$energie, $typeBoite, $etat, $info, $km, $prix, $img1, $img2);
+                echo "<div class='succes'>Succès : Modification réussi !</div>";
+            } else {
+                echo "<div class='erreur'>Erreur : Veuillez remplir tous les champs !</div>";
+            }
         }
 
-        public function updateVehiculeOccas($immatriculation, $type, $modele, $millesime, $cylindree
-        ,$energie, $typeBoite, $km, $descriptif, $valid, $prix, $date_imma, $url_img) {
-            $this->modeleAdmin->updateVehiculeOccas($immatriculation, $type, $modele, $millesime, $cylindree
-            ,$energie, $typeBoite, $km, $descriptif, $valid, $prix, $date_imma, $url_img);
-        }
+        public function updateVehiculeClient($data) {
+            $user = htmlspecialchars($data['user']);
+            $marque = htmlspecialchars($data['marque']);
+            $modele = htmlspecialchars($data['modele']);
+            $date_imma = $data['dateImma'];
+            $immatriculation = htmlspecialchars($data['immatriculation']);
+            $type = $data['type'];
+            $cylindree = intval($data['cylindree']);
+            $energie = $data['energie'];
+            $typeBoite = $data['typeBoite'];
+            $etat = $data['etat'];
+            $info = $data['info'];
+            $km = intval($data['km']);
+            $img1 = $data['img1'];
+            $img2 = $data['img2'];
+            $id = $this->selectIdVehicule($immatriculation);
 
-        public function updateVehiculeClient($user, $immatriculation, $type, $modele, $millesime, $cylindree
-        ,$energie, $typeBoite, $km, $descriptif, $valid, $prix, $date_imma, $url_img) {
-            $this->modeleAdmin->updateVehiculeClient($user, $immatriculation, $type, $modele, $millesime, $cylindree
-            ,$energie, $typeBoite, $km, $descriptif, $valid, $prix, $date_imma, $url_img);
-        }
-
-        // SUPRESSION VEHICULE
-
-        public function deleteVehiculeNeuf($immat) {
-            $this->modeleAdmin->deleteVehiculeNeuf($immat);
-        }
-
-        public function deleteVehiculeOccasion($immat) {
-            $this->modeleAdmin->deleteVehiculeOccasion($immat);
-        }
-
-        public function deleteVehiculeClient($immat) {
-            $this->modeleAdmin->deleteVehiculeClient($immat);
+            if (!empty($user) && !empty($marque) && !empty($modele) && !empty($date_imma) && !empty($immatriculation)
+                && !empty($type) && !empty($cylindree) && !empty($energie) && !empty($typeBoite) && !empty($etat) 
+                && !empty($km) && !empty($img1)) {
+                    $this->modeleAdmin->updateVehiculeClient($user, $id, $marque, $modele, $date_imma, $immatriculation, $type
+                        ,$cylindree, $energie, $typeBoite, $etat, $info, $km, $img1, $img2);
+                    echo "<div class='succes'>Succès : Modification réussi !</div>";
+            } else {
+                    echo "<div class='erreur'>Veuillez remplir tous les champs !</div>";
+            }
         }
 
         public function selectVehicule($resultat) {

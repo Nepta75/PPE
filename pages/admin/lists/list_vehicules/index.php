@@ -1,8 +1,3 @@
-<?php
-include_once "controleur/controleur_admin.php";
-$controleur = new Administrateur('localhost', 'bmwv2', 'root', '');
-?>
-
 <form method="POST" action="">
     <select name="list" onchange="this.form.submit()"> 
         <option value="">Choisissez une option :</option>
@@ -13,30 +8,34 @@ $controleur = new Administrateur('localhost', 'bmwv2', 'root', '');
 </form>
 
 <?php
-    $array = ['neuf', 'occas', 'client'];
-    $value = null;
-    if(isset($_POST['list']))
-    {
-       $value = array_search($_POST['list'], $array);
-    } elseif (isset($_GET['select'])) {
-        $value = array_search($_GET['select'], $array);
-    }
+if(isset($_GET["delete"]) && !empty($_GET["delete"])) {
+    $cAdmin->deleteVehicule($_GET["delete"]);
+    $url = "admin.php?page=5&select=".$array[$value];
+    echo "<script> window.location.href = ".$url."; </script>";
+}
+$array = ['neuf', 'occas', 'client'];
+if(isset($_POST['list']))
+{
+    $value = array_search($_POST['list'], $array);
+} elseif (isset($_GET['select'])) {
+    $value = array_search($_GET['select'], $array);
+}
+
+if (isset($value)) {
     switch($value)
     {
         case 0 :  
-            $data = $controleur->selectAllVehNeufs();
+            $data = $cAdmin->selectAllVehNeufs();
             require "vue/vue_veh_neufs.php" ; break ;
         case 1 :  
-            $data = $controleur->selectAllVehOccas();
+            $data = $cAdmin->selectAllVehOccas();
             require "vue/vue_veh_occas.php" ; break ;
         case 2 :  
-            $data = $controleur->selectAllVehClients();
+            $data = $cAdmin->selectAllVehClients();
             require "vue/vue_veh_clients.php" ; break ;
-        default : require "vue/vue_list_clients.php" ; break ;
     }
-    if(isset($_GET["delete"]) && !empty($_GET["delete"])) {
-        $controleur->deleteVehicule($_GET["delete"]);
-        $url = "admin.php?page=5&select=".$array[$value];
-        echo "<script> window.location.href = ".$url."; </script>";
-    }
+} else {
+    $data = $cAdmin->selectAllVehClients();
+    require "vue/vue_veh_clients.php" ;
+}
 ?>

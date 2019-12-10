@@ -70,18 +70,18 @@
         </div>
         <div>
             <label for="img1">* img 1 : </label>
-            <input type="text" id="img1" name="img_1" />
+            <input type="text" id="img1" name="img1" value=<?= $resultat['img_1'] ?> />
         </div>
         <div>
             <label for="img2"> img 2 : </label>
-            <input type="text" id="img2" name="img_2" />
+            <input type="text" id="img2" name="img2" value="<?= $resultat['img_2'] ?>" />
         </div>
         <div class="btn">
             <div class="btn-update">
                 <input type="submit" value="Mettre à jour" name="update_vehicule_client" />
             </div>
             <div class="btn-delete">
-                <input type="submit" value="Supprimer" name="supp_vehicule_client" />
+                <input type="submit" value="Supprimer" name="delete_veh" />
             </div>
             <div class="btn-annul">
                 <input type="submit" value="Annuler" name="annuler" />

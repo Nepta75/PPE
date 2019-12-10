@@ -3,7 +3,7 @@
     <thead>
     <tr class="table100-head">
         <th class="column1">Nom du client</th>
-        <th class="column2">Prénom du client/th>
+        <th class="column2">Prénom du client</th>
         <th class="column3">Marque</th>
         <th class="column4">Modèle</th>
         <th class="column5">Date d'immatriculation</th>

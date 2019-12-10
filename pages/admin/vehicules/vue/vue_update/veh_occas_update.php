@@ -1,8 +1,12 @@
 <div class="form-panel_admin">
     <form action="" method="POST">
         <div>
+            <label for="Marque"> Marque : </label>
+            <input type="text" id="marque" name="marque" value="<?= $resultat['marque'] ?>"/>
+        </div>
+        <div>
             <label for="immatriculation">* Immatriculation : </label>
-            <input name="immatriculation" readonly type="text" id="immatriculation" value="<?= $resultat['immatriculation'] ?>"/>
+            <input type="text" readonly value="<?= $resultat['immatriculation'] ?>" id="immatriculation" name="immatriculation" />
         </div>
         <div>
             <label>* Type : </label>
@@ -13,12 +17,8 @@
             </select>
         </div>
         <div>
-            <label for="marque">* Marque : </label>
-            <input type="text" id="marque" name="marque" value="<?= $resultat['marque'] ?>"/>
-        </div>
-        <div>
             <label for="modele">* Modèle : </label>
-            <input type="text" id="modele" name="modele" value="<?= $resultat['modele'] ?>"/>
+            <input type="text" id="modele" value="<?= $resultat['modele'] ?>" name="modele" />
         </div>
         <div>
             <label for="cylindree">* Cylindrée : </label>
@@ -43,8 +43,24 @@
             </select>
         </div>
         <div>
+            <label for="km">* Kilométrage : </label>
+            <input type="text" id="km" name="km" value="<?= $resultat['km'] ?>"/>
+        </div>
+        <div>
             <label for="prix">* Prix : </label>
             <input type="text" id="prix" name="prix" value="<?= $resultat['prix'] ?>"/>
+        </div>
+        <div>
+            <label for="dateImma">* Date 1ère immatriculation : </label>
+            <input type="date" id="dateImma" name="dateImma" value="<?= $resultat['date_immat'] ?>" />
+        </div>
+        <div>
+            <label for="etat">* etat : </label>
+            <textarea name="etat" id="etat"><?= $resultat['etat'] ?></textarea>
+        </div>
+        <div>
+            <label for="info"> info : </label>
+            <textarea name="info" id="info"><?= $resultat['information'] ?></textarea>
         </div>
         <div>
             <label for="img1">* img 1: </label>
@@ -56,10 +72,10 @@
         </div>
         <div class="btn">
             <div class="btn-update">
-                <input type="submit" name="update_vehicule_neuf" value="Mettre à jour" />
+                <input type="submit" value="Mettre à jour" name="update_vehicule_occasion" />
             </div>
             <div class="btn-delete">
-                <input type="submit" name="supp_vehicule_neuf" value="Supprimer" />
+                <input type="submit" value="Supprimer" name="delete_veh" />
             </div>
             <div class="btn-annul">
                 <input type="submit" value="Annuler" name="annuler" />
