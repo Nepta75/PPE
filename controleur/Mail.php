@@ -1,5 +1,5 @@
 <?php
-require_once 'modele/modele.php';
+require_once 'C:\wamp64\www\PPE\modele\Modele.php';
 class Mail {
     private $unModele;
 

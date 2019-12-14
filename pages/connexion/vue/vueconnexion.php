@@ -22,7 +22,7 @@
                 <input type="submit" name="connexion" value="Connexion" />
             </div>
             <div>
-                <p style="color: #fff">Pas encore inscrit ?</b><a href="gestionclient.php?inscription"> Inscrivez-vous maintenant !</a><b>
+                <p style="color: #fff">Pas encore inscrit ?</b><a href="/ppe/pages/inscription/index.php"> Inscrivez-vous maintenant !</a><b>
             </div>
         </div>
     </form>

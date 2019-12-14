@@ -1,8 +1,7 @@
 <?php
+include "autoloader.inc.php";
 session_start();
-require_once ("controleur/controleur_admin.php");
-require_once 'includes/identifiants_bdd.php';
-$unControler = new Administrateur($env, $database, $user, $mdp);
+$unControler = new Administrateur('localhost', 'bmwppe', 'root', '');
 $admin = $unControler->verifAdmin();
 
 /* // Program to display URL of current page. 
@@ -41,11 +40,11 @@ echo $link; */
 	<!-- CSS -->
 	
 
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link href="css/fontawesome/css/all.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/header.css"/>
-	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
+	<link rel="stylesheet" type="text/css" href="/ppe/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/ppe/css/style.css"/>
+	<link href="/ppe/css/fontawesome/css/all.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/ppe/css/header.css"/>
+	<link rel="stylesheet" type="text/css" href="/ppe/css/footer.css"/>
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -56,7 +55,7 @@ echo $link; */
 
 	<!-- FAVICON -->
 
-	<link rel="shortcut icon" type="image/ico" href="img/icons/favicon.ico" />
+	<link rel="shortcut icon" type="image/ico" href="/ppe/img/icons/favicon.ico" />
 
 	</head>
 	<body>
@@ -65,31 +64,31 @@ echo $link; */
 
 	<div class="header">
 		<div class="logo">
-			<a href="index.php"><img src="img/logo2.png"></a>
-			<a href="index.php"><h4>BMW Paris<br/>Automobiles & Moto</h4></a>
+			<a href="/ppe/index.php"><img src="/ppe/img/logo2.png"></a>
+			<a href="/ppe/index.php"><h4>BMW Paris<br/>Automobiles & Moto</h4></a>
 		</div>
         <nav class="navbar">
           <ul class="menu">
-            <li class="menu-button"><a href="index.php" class="menu-link">Accueil</a></li>
+            <li class="menu-button"><a href="/ppe/index.php" class="menu-link">Accueil</a></li>
             <li class="menu-button deroulant">
-              <a href="gestionvehicules.php" class="deroulant-link"> Véhicules <i class="fas fa-caret-down"></i></a>
+              <a href="/ppe/pages/vehicule/index.php" class="deroulant-link"> Véhicules <i class="fas fa-caret-down"></i></a>
               <ul class="submenu">
-                <li class="submenu-button"><a href="gestionvehicules.php?#vehiculeoccasion" class="submenu-link">Véhicules d'occasion</a></li>
-                <li class="submenu-button"><a href="gestionvehicules.php?#vehiculeneuf" class="submenu-link">Véhicules neufs</a></li>
+                <li class="submenu-button"><a href="/ppe/pages/vehicule/index.php?type=occas" class="submenu-link">Véhicules d'occasion</a></li>
+                <li class="submenu-button"><a href="/ppe/pages/vehicule/index.php?type=neuf" class="submenu-link">Véhicules neufs</a></li>
               </ul>
             </li>
-            <li class="menu-button"><a href="propos.php" class="menu-link">À Propos</a></li>
-            <li class="menu-button"><a href="contact.php" class="menu-link">Contact</a></li>
+            <li class="menu-button"><a href="/ppe/pages/propos/index.php" class="menu-link">À Propos</a></li>
+            <li class="menu-button"><a href="/ppe/pages/contact/index.php" class="menu-link">Contact</a></li>
 		  <?php if(isset($_SESSION['admin_lvl']) && $_SESSION['admin_lvl'] > 0) { ?>
-		  	<li class="menu-button deroulant"> <a href="admin.php" class="deroulant-link">Admin <i class="fas fa-caret-down"></i></a>
+		  	<li class="menu-button deroulant"> <a href="/ppe/pages/admin/index.php" class="deroulant-link">Admin <i class="fas fa-caret-down"></i></a>
 				<ul class="admin-submenu">
-					<li><a href="admin.php?page=1" class="admin-submenu-link" id="page1">Ajouter un Véhicule</a></li>
-					<li><a href="admin.php?page=2" class="admin-submenu-link">Modifier un Véhicule</a></li>
-					<li><a href="admin.php?page=3" class="admin-submenu-link">Générer un devis</a></li>
-					<li><a href="admin.php?page=4" class="admin-submenu-link">Liste des devis</a></li>
-					<li><a href="admin.php?page=5" class="admin-submenu-link">Liste des véhicules</a></li>
-					<li><a href="admin.php?page=6" class="admin-submenu-link">Liste des clients</a></li>
-					<li><a href="admin.php?page=7" class="admin-submenu-link">Liste des réservations</a></li>				
+					<li><a href="/ppe/pages/admin/index.php?page=1" class="admin-submenu-link" id="page1">Ajouter un Véhicule</a></li>
+					<li><a href="/ppe/pages/admin/index.php?page=2" class="admin-submenu-link">Modifier un Véhicule</a></li>
+					<li><a href="/ppe/pages/admin/index.php?page=3" class="admin-submenu-link">Générer un devis</a></li>
+					<li><a href="/ppe/pages/admin/index.php?page=4" class="admin-submenu-link">Liste des devis</a></li>
+					<li><a href="/ppe/pages/admin/index.php?page=5" class="admin-submenu-link">Liste des véhicules</a></li>
+					<li><a href="/ppe/pages/admin/index.php?page=6" class="admin-submenu-link">Liste des clients</a></li>
+					<li><a href="/ppe/pages/admin/index.php?page=7" class="admin-submenu-link">Liste des réservations</a></li>				
 				</ul>
 			</li>
 			<?php } ?>
@@ -98,9 +97,9 @@ echo $link; */
 			<?php } ?>
 			<?php
 			if (isset($_SESSION['pseudo'])) {
-				echo '<li class="connexion-button"><a href="deconnexion.php" class="connexion-link">Se déconnecter</a></li>';
+				echo '<li class="connexion-button"><a href="/ppe/deconnexion.php" class="connexion-link">Se déconnecter</a></li>';
 			} else {
-				echo '<li class="connexion-button"><a href="gestionclient.php" class="connexion-link">Se connecter</a></li>';
+				echo '<li class="connexion-button"><a href="/ppe/pages/connexion/index.php" class="connexion-link">Se connecter</a></li>';
 			}
 			?>
 			</ul>

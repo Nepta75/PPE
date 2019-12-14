@@ -1,8 +1,6 @@
 <?php
-    require_once 'includes/header.php';
-    require 'controleur/controleur_mail.php';
-    require_once 'includes/identifiants_bdd.php';
-    $cMail = new Mail ($env, $database, $user, $mdp);
+    require_once '../../includes/header.php';
+    $cMail = new Mail ('localhost', 'bmwv2', 'root', '');
     if (isset($_POST['envoyer'])) {
         if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['numero'])
         && !empty($_POST['objet']) && !empty($_POST['message'])) {
@@ -69,5 +67,5 @@
 ?>
 
 <?php
-    require_once 'includes/footer.php';
+    require_once '../../includes/footer.php';
 ?>

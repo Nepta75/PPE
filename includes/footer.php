@@ -5,16 +5,16 @@
 		<div class="vertical-section">
 			<div class="footer-section">
 				<h4> Liens Rapides </h4><br/>
-				<li class="footer-link"><a href="index.php"> Accueil </a>
-				<li class="footer-link"><a href="gestionvehicules.php"> Véhicules </a>
-				<li class="footer-link"><a href="propos.php"> À Propos </a>
-				<li class="footer-link"><a href="contact.php"> Contact </a>
+				<li class="footer-link"><a href="/ppe/index.php"> Accueil </a>
+				<li class="footer-link"><a href="/ppe/pages/vehicule/index.php"> Véhicules </a>
+				<li class="footer-link"><a href="/ppe/propos.php"> À Propos </a>
+				<li class="footer-link"><a href="/ppe/contact.php"> Contact </a>
 			</div>
 			<div class="footer-section footer-img">
-				<a href="#"><img src="img/icons/facebook-icon.png"></a>
-				<a href="#"><img src="img/icons/twitter-icon.png"></a>
-				<a href="#"><img src="img/icons/youtube-icon.png"></a>
-				<a href="#"><img src="img/icons/linkedin-icon.png"></a>
+				<a href="#"><img src="/ppe/img/icons/facebook-icon.png"></a>
+				<a href="#"><img src="/ppe/img/icons/twitter-icon.png"></a>
+				<a href="#"><img src="/ppe/img/icons/youtube-icon.png"></a>
+				<a href="#"><img src="/ppe/img/icons/linkedin-icon.png"></a>
 			</div>
 			<div class="footer-section">
 				<h4> Nos Coordonnées </h4><br/>

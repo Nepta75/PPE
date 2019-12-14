@@ -1,10 +1,10 @@
 <?php
-	include "includes/header.php";
+	include "../../includes/header.php";
 ?>
 
 <div class="about">
 	<div class="about-banner">
-		<img src="img/about4.png"  alt="A PROPOS" />
+		<img src="/ppe/img/about4.png"  alt="A PROPOS" />
 	</div>
 	<div class="about-section1">
 		<div class="aboutsection1-text">
@@ -18,14 +18,14 @@
 			</p>
 		</div>
 		<div class="bannersection1-picture">
-			<img src="img/about1.jpg">
+			<img src="/ppe/img/about1.jpg">
 		</div>
 	</div>
 	<div class="about-section2">
 		<h3>
 			Notre Mission
 		</h3>
-		<img src="img/about3.jpg"/>
+		<img src="/ppe/img/about3.jpg"/>
 		<h6>
 			OBJECTIF DE BMW : DEVENIR LE NUMÉRO UN DE L’INNOVATION
 		</h6>
@@ -36,5 +36,5 @@
 </div>
 
 <?php
-  include "includes/footer.php";
+  include "../../includes/footer.php";
 ?>

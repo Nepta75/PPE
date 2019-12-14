@@ -1,20 +1,27 @@
 <?php
-require_once 'includes/header.php';
-require 'controleur/controleur.php';
+require_once '../../../includes/header.php';
 $unControleur = new Controleur('localhost', 'bmwv2', 'root', '');
 $clients = $unControleur->selectAllClients();
 $vehiculesNeufs = $unControleur->selectAllVehiculesNeuf();
 $vehiculesOccasions = $unControleur->selectAllVehiculesOccasion();
 
+
 if (isset($_POST['valid2'])) {
 	if (!empty($_POST['vehicule'])) {
 		$infoVehicule = $unControleur->selectVehicule($_POST['vehicule']);
+		$user = $unControleur->selectClient(htmlspecialchars($_GET['user']));
 		$dataDevis = 
 			array (
-				"idclient"=> $_GET['user'],
-				"sujet"=> $_GET['sujet'],
-				"user"=> $_SESSION['id_user'],
-				"immatriculation"=> $_POST['vehicule'],
+				"sujet"=>$_GET['sujet'],
+				"immatriculation"=>$_POST['vehicule'],
+				"nom"=>$user['nom'],
+				"prenom"=>$user['prenom'],
+				"mail"=>$user['mail'],
+				"adresse"=>$user['adresse'],
+				"info"=> '',
+				"prix"=> 0,
+				"id_client"=> intval($user['id_user']),
+				"id_technicien"=> intval($_SESSION['id_user']),
 			);
 		$unControleur->insertDevis($dataDevis);
 	} else {
@@ -24,7 +31,7 @@ if (isset($_POST['valid2'])) {
 
 if (isset($_POST['valide1'])) {
 	if(!empty($_POST['subject']) && !empty($_POST['user'])) {
-		header("Location:gestiondevis.php?sujet=".$_POST['subject']."&user=".$_POST['user']);
+		header("Location:/ppe/pages/admin/devis/index.php?sujet=".$_POST['subject']."&user=".$_POST['user']);
 		exit();
 	} else {
 		$erreur = "Veuillez remplir tous les champs !";
@@ -38,7 +45,7 @@ if(isset($_GET['user']) && isset($_GET['sujet'])) {
 }
 
 if (isset($_POST['annuler'])) {
-	header("Location:gestiondevis.php");
+	header("Location:/ppe/pages/admin/devis/index.php?");
 	exit();
 }
 if(isset($erreur)){ echo "<div class='error-message'>".$erreur."</div>";}
@@ -113,5 +120,5 @@ if(isset($erreur)){ echo "<div class='error-message'>".$erreur."</div>";}
 
 
 <?php
-require_once 'includes/footer.php';
+require_once '../../../includes/footer.php';
 ?>

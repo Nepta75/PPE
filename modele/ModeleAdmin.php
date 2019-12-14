@@ -8,7 +8,7 @@ class ModeleAdmin
 		$this->unPdo = null;
 		try{
 		//connexion à la base de données en utlisant la classe PDO
-		$this->unPdo = new PDO ("mysql:host=".$serveur.";dbname=".$bdd,$user,$mdp);
+		$this->unPdo = new PDO ("mysql:host=".$serveur.";dbname=".$bdd,$user,$mdp, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 		}
 		catch (PDOException $exp)
 		{
@@ -38,6 +38,13 @@ class ModeleAdmin
     public function selectAllClients() {
         $requete = "select * from view_client";
         $select = $this->unPdo->query($requete);
+        return $select->fetchAll();
+    }
+
+    public function selectClient($id) {
+        $requete = "select * from view_client where id_user = :id";
+        $select = $this->unPdo->prepare($requete);
+        $select->execute(array(":id"=>$id));
         return $select->fetchAll();
     }
 
@@ -72,7 +79,7 @@ class ModeleAdmin
     }
 
     public function selectAllDevis() {
-        $requete = "select * from devis";
+        $requete = "select * from view_devis";
         $select = $this->unPdo->query($requete);
         return $select->fetchAll();
     }

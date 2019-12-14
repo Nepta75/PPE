@@ -5,9 +5,9 @@ use Spipu\Html2Pdf\Exception\Html2PdfException;
 use Spipu\Html2Pdf\Exception\ExceptionFormatter;
 
 require_once("includes/topdf/html2pdf-master/src/Html2Pdf.php");
-require("controleur/controleur.php");
-require_once 'includes/identifiants_bdd.php';
-$controleur = new Controleur($env, $database, $user, $mdp);
+require_once ("includes/autoloader.inc.php");
+$controleur = new Controleur('localhost', 'bmwv2', 'root', '');
+$cAdmin = new Administrateur('localhost', 'bmwv2', 'root', '');
 
 $user = array(
     "id" => 1,
@@ -20,33 +20,34 @@ $user = array(
 );
 
 $datadevis = $controleur->selectDevis($_GET['id']);
-$data = $controleur->selectUser($datadevis['idclient']);
+$data = $controleur->selectClient($datadevis['id_client']);
 $client = array(
-            "id" => $data['idclient'],
+            "id" => $data['id_user'],
 			"firstname" => $data['prenom'],
 			"lastname" => $data['nom'],
-			"address" => $data['adresse_rue'].", ".$data['adresse_cp']." ".$data['adresse_ville'],
+			"address" => $data['adresse'],
 			"portable" => $data['tel'],
-            "mail" => $data['email'],
-);
- 
-$project = array(
-    "name" => $datadevis['sujet'],
+            "mail" => $data['mail'],
 );
 
 if(isset($datadevis['sujet']) && $datadevis["sujet"] == "vente") {
-    $data = $controleur->selectVehicule($datadevis['immatriculation']);
+    $data = $cAdmin->selectVehicule($datadevis['immatriculation']);
+
+    $project = array(
+        "name" => "Votre devis détaillé pour : ".$data['data']['marque'].' '.$data['data']['modele'].' '.$data['type'],
+    );
+
     $tasks[] = array(
         "id" => 1,
-        "description" => "Vente de vehicule",
-        "price" => $data['prix'],
+        "description" => $data['data']['marque'].', '.$data['data']['modele'].' '.$data['type'],
+        "price" => $data['data']['prix'],
         "quantity" => 1,
         "project_id" => 1
     );
 
     $tasks[] = array(
         "id" => 2,
-        "description" => "Modele : ".$data['modele'],
+        "description" => "Modele : ".$data['data']['modele'],
         "price" => 0,
         "quantity" => 1,
         "project_id" => 2
@@ -54,7 +55,7 @@ if(isset($datadevis['sujet']) && $datadevis["sujet"] == "vente") {
     
     $tasks[] = array(
         "id" => 3,
-        "description" => "Type : ".$data['type_vehicule'],
+        "description" => "Type : ".$data['data']['type_vehicule'],
         "price" => 0,
         "quantity" => 1,
         "project_id" => 3
@@ -62,7 +63,7 @@ if(isset($datadevis['sujet']) && $datadevis["sujet"] == "vente") {
     
     $tasks[] = array(
         "id" => 4,
-        "description" => "Immatriculation : ".$data['immatriculation'],
+        "description" => "Immatriculation : ".$data['data']['immatriculation'],
         "price" => 0,
         "quantity" => 1,
         "project_id" => 4
@@ -70,26 +71,10 @@ if(isset($datadevis['sujet']) && $datadevis["sujet"] == "vente") {
     
     $tasks[] = array(
         "id" => 5,
-        "description" => "Cylindree : ".$data['cylindree'],
+        "description" => "Cylindree : ".$data['data']['cylindree'],
         "price" => 0,
         "quantity" => 1,
         "project_id" => 5
-    );
-    
-    $tasks[] = array(
-        "id" => 6,
-        "description" => "Annee Vehicule : ".$data['millesime'],
-        "price" => 0,
-        "quantity" => 1,
-        "project_id" => 6
-    );
-    
-    $tasks[] = array(
-        "id" => 7,
-        "description" => "Date de 1er immatriculation : ".$data['date_immat'],
-        "price" => 0,
-        "quantity" => 1,
-        "project_id" => 7
     );
 }
 
@@ -146,10 +131,11 @@ $total = 0;  $total_tva = 0;
  <table style="vertical-align: top;">
      <tr>
          <td class="75p">
-             <strong><?php echo $user['firstname']." ".$user['lastname']; ?></strong><br />
-             <?php echo nl2br($user['address']); ?><br />
-             <strong>SIRET:</strong> <?php echo $user['siret']; ?><br />
-             <?php echo $user['email']; ?>
+             <strong><?= $user['firstname']." ".$user['lastname']; ?></strong><br />
+             <?= nl2br($user['address']); ?><br />
+             <strong>SIRET:</strong> <?= $user['siret']; ?><br />
+             <?= $user['email']; ?><br />
+             n° devis: <?= $_GET['id']; ?>
          </td>
          <td class="25p">
              <strong><?php echo $client['firstname']." ".$client['lastname']; ?></strong><br />
@@ -161,7 +147,7 @@ $total = 0;  $total_tva = 0;
 
  <table style="margin-top: 50px;">
      <tr>
-         <td class="50p"><h2>Devis n° <?=$_GET['id'] ?></h2></td>
+         <td class="50p"><h2>Vente de vehicule <?= $data['type'] ?></h2></td>
          <td class="50p" style="text-align: right;">Emis le <?php echo date("d/m/y"); ?></td>
      </tr>
      <tr>
@@ -226,7 +212,7 @@ $total = 0;  $total_tva = 0;
 $content = ob_get_clean();
 $pdf = new Html2Pdf('P','A4','fr',true,"UTF-8",array(10, 10, 10, 16)); 
 $pdf->pdf->SetAuthor('BMW - PARIS');
-$pdf->pdf->SetTitle('Devis 14');
+$pdf->pdf->SetTitle('Devis '.$_GET['id']);
 $pdf->pdf->SetSubject('Achat véhicule');
 $pdf->writeHTML($content);
 $pdf->output('devis.pdf');

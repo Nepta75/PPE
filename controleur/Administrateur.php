@@ -1,5 +1,5 @@
 <?php
-    require_once "modele/modele_admin.php";
+    require_once "C:\wamp64\www\PPE\modele\ModeleAdmin.php";
     class Administrateur {
         private $modeleAdmin;
         
@@ -26,6 +26,10 @@
 
         public function selectAllClients() {
             return $this->modeleAdmin->selectAllClients();
+        }
+
+        public function selectClient($id) {
+            return $this->modeleAdmin->selectClient($id);
         }
 
         public function selectAllTechniciens(){

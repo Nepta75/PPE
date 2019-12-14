@@ -73,20 +73,6 @@ CREATE TABLE vehicule_client(
 	FOREIGN KEY (id_user) REFERENCES user (id_user)
 );
 
-CREATE TABLE devis(
-	id_devis      Int  Auto_increment  NOT NULL ,
-	nom           Varchar (50) NOT NULL ,
-	prenom        Varchar (50) NOT NULL ,
-	adresse       Varchar (50) NOT NULL ,
-	info          Text NOT NULL ,
-	prix          Float NOT NULL ,
-	date_devis    Date NOT NULL ,
-	date_creation Date NOT NULL ,
-	id_user       Int NOT NULL,
-	PRIMARY KEY (id_devis),
-	FOREIGN KEY (id_user) REFERENCES technicien(id_user)
-);
-
 CREATE TABLE pdf(
 	id_pdf   Int  Auto_increment  NOT NULL ,
 	url_pdf  Text NOT NULL ,
@@ -109,6 +95,25 @@ CREATE TABLE client(
 	FOREIGN KEY (id_user) REFERENCES user(id_user)
 );
 
+CREATE TABLE devis(
+	id_devis      Int  Auto_increment  NOT NULL ,
+	sujet 		  Varchar (50) NOT NULL,
+	immatriculation varchar (50) NOT NULL,
+	nom           Varchar (50) NOT NULL ,
+	prenom        Varchar (50) NOT NULL ,
+	mail		  Varchar (100) NOT NULL,
+	adresse       Varchar (50) NOT NULL ,
+	info          Text NOT NULL ,
+	prix          Float NOT NULL ,
+	date_devis    Datetime NOT NULL ,
+	id_client     Int NOT NULL,
+	id_technicien Int NOT NULL,
+
+	PRIMARY KEY (id_devis),
+	FOREIGN KEY (id_client) REFERENCES client(id_user),
+	FOREIGN KEY (id_technicien) REFERENCES technicien(id_user)
+);
+
 CREATE TABLE essayer(
 	id_vehicule   Int NOT NULL ,
 	id_user       Int NOT NULL ,
@@ -129,9 +134,11 @@ CREATE VIEW view_essayer as (
 );
 
 CREATE VIEW view_devis as (
-	select d.id_user, d.id_devis, d.nom, d.prenom, d.adresse, d.info, d.prix, d.date_devis, d.date_creation, t.diplome, t.technicien_lvl
+	select d.id_devis, d.id_client, d.id_technicien, d.sujet, d.immatriculation,
+	d.nom, d.prenom, d.adresse, d.mail, d.info, d.prix, d.date_devis,
+	t.nom as nom_referent, t.prenom as prenom_referent
 	from devis d
-	inner join technicien t on t.id_user = d.id_user
+	inner join user t on t.id_user = d.id_technicien
 );
 
 CREATE VIEW view_client as (
@@ -257,6 +264,5 @@ call insert_veh_neuf('bmw', 'x6', 'rt-003-dd', '4 Roues', 1600, 'essence', 'manu
 call insert_veh_neuf('bmw', 'x6', 'ff-001-dd', '4 Roues', 1600, 'essence', 'manuelle', 36500, "x6_1.jpg", "x6_2.jpg");
 call insert_veh_neuf('bmw', 'x5', 'as-784-dd', '4 Roues', 1600, 'essence', 'manuelle', 87500, "x6_1.jpg", "x6_2.jpg");
 
-insert into devis values(null, 'Aydogan', 'Lokman', '2 rue de Cléry', 'Vérifications', 50, '2019-12-08', '2019-12-08', 1);
-
-
+insert into devis values(null, 'Vente', 'rt-875-dd', 'Aydogan', 'Lokman', 'lokman-hekim@hotmail.fr',
+'2 rue de Cléry', 'Vérifications', 50, NOW(), 1, 5);

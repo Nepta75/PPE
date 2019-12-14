@@ -1,8 +1,7 @@
 <?php
-    require_once 'includes/header.php';
+    session_start();
     $_SESSION = [];
     session_destroy();
-    header("Location:gestionclient.php?succes=dc");
+    header("Location:pages/connexion/index.php?succes=dc");
     exit();
-    require_once 'includes/footer.php';
 ?>
