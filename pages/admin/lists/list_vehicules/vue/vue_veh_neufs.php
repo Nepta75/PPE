@@ -1,4 +1,4 @@
-<h2> Liste des véhicules neufs </h2>
+<h2 class="list__title"> Liste des véhicules neufs </h2>
 <table>
     <thead>
         <tr class="table100-head">
@@ -22,15 +22,8 @@
                 <td class="column5"><?= $data['cylindree'] ?></td>
                 <td class="column6"><?= $data['energie'] ?></td>
                 <td class="column7"><?= $data['type_boite'] ?></td>
-                <td class="column8"><a href="admin.php?page=5&select=neuf&delete=<?= $data['id_vehicule'] ?>"><i style="color: red;" class="fas fa-user-times"></i></a></td>
+                <td class="column8"><a href="/ppe/pages/admin/index.php?page=5&select=neuf&delete=<?= $data['id_vehicule'] ?>"><i style="color: red;" class="fas fa-trash-alt"></i></a></td>
             </tr>
     <?php } ?>
     </tbody>
 </table>
-
-<style type="text/css">
-h2 {
-    margin-top: 50px;
-    text-align: center;
-}    
-</style>

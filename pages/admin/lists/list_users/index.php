@@ -8,6 +8,10 @@
 </form>
 
 <?php
+
+    if(isset($_GET["delete"]) && !empty($_GET["delete"])) {
+        $cAdmin->deleteUser($_GET["delete"]);
+    }
     $array = ['client', 'technicien', 'admin'];
     if(isset($_POST['list']))
     {

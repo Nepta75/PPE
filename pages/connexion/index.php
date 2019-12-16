@@ -1,12 +1,12 @@
 <?php
 require_once "../../includes/header.php";
-$unControler = new Controleur('localhost', 'bmwppe', 'root', '');
+$unControler = new Controleur('localhost', 'bmwv2', 'root', '');
 if (isset($_POST['connexion'])) {
-    if(!empty($_POST['pseudo']) && !empty($_POST['mdp'])) {
-        $pseudo = htmlspecialchars($_POST['pseudo']);
+    if(!empty($_POST['mail']) && !empty($_POST['mdp'])) {
+        $mail = htmlspecialchars($_POST['mail']);
         // $mdp = sha1($_POST['mdp']);
-        if ($unControler->connexion($pseudo, $_POST['mdp']) !== null) {
-            $unControler->connexion($pseudo, $_POST['mdp']);
+        if ($unControler->connexion($mail, $_POST['mdp']) !== null) {
+            $unControler->connexion($mail, $_POST['mdp']);
         } else {
             $erreur = "Erreur : Veuillez vérifier vos identifiants";
         }

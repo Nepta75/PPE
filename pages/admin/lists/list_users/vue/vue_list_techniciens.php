@@ -1,3 +1,4 @@
+<h2 class="list__title"> Liste des Techniciens </h2>
 <table>
     <thead>
         <tr class="table100-head">
@@ -23,7 +24,7 @@
             <td class="column6"><?= $data['mail'] ?></td>  
             <td class="column7"><?= $data['mdp'] ?></td>
             <td class="column8"><?= $data['technicien_lvl'] ?></td>
-            <td class="column9"><a href="admin.php?page=5&select=technicien&delete=<?= $data['id_user'] ?>"><i style="color: red;" class="fas fa-user-times"></i></a></td>
+            <td class="column9"><a href="/ppe/pages/admin/index.php?page=6&select=technicien&delete=<?= $data['id_user'] ?>"><i style="color: red;" class="fas fa-user-times"></i></a></td>
         </tr>
     <?php } ?>
     </tbody>

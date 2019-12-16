@@ -59,7 +59,6 @@ if(isset($error)) {
 } else if(isset($erreur)) {
     echo "<div class='error-message center'>".$erreur."</div>";
 }
-
 $page = 0;
 if (isset($_GET['page'])) { $page = $_GET['page']; }
 switch($page) {

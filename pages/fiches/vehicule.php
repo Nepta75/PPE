@@ -1,24 +1,19 @@
-<?php
-	require_once 'includes/header.php';
-	if(isset($_SESSION['pseudo']))
-	{
-		require_once("controleur/controleur.php");
-		require_once 'includes/identifiants_bdd.php';
-		$unControleur = new Controleur($env, $database, $user, $mdp);
-        $users = $unControleur->selectAllUsers();
-
-        $resultat = $unControleur->selectVehiculeClient($_SESSION['id_user']);
-        require_once("vue/vue_mon_vehicule.php");
-?>
-
-
-
-
 
 <?php
-
-}
-
-require_once 'includes/footer.php';
-
+	require '../../includes/header.php';
+	$result = [];
+	$controleur = new Controleur ('localhost', 'bmwv2', 'root', '');
+	if (isset($_GET['immat'])) {
+		$immat = htmlspecialchars($_GET['immat']);
+		$result = $controleur->selectVehicule($immat);
+	}
+	
+	if (!empty($result)) {
+		$data = $result['data'];
+		if ($result['type'] == 'neuf') require 'vue/vue_fiche_veh_neuf.php';
+		if ($result['type'] == 'occas') require 'vue/vue_fiche_veh_occas.php';
+	} else {
+		echo 'Vehicule introuvable';
+	}
+	require '../../includes/footer.php';
 ?>

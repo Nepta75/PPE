@@ -1,12 +1,8 @@
 <?php
   include "includes/header.php";
-  require_once 'includes/identifiants_bdd.php';
-  $unControleur = new Controleur ($env, $database, $user, $mdp);
-  $vehiculeOccasion = $unControleur->selecttreeVehiculesOccasion();
-  $vehiculeNeuf = $unControleur->selecttreeVehiculesNeuf();
+  $unControleur = new Controleur ('localhost', 'bmwv2', 'root', '');
+  $vehiculesNeufs = $unControleur->selecttreeVehiculesNeuf();
 ?>
-
-<!-- CONTENT -->
 
 <div class="bd-example">
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -54,79 +50,22 @@
 </div>
 
 
-<div class="container">
-    <br>
-    <h4>Nos derniers ajout de vehicule neuf:</h4>
-  <br>  
-  
-	<div class="row" id="ads"> 
-    <?php if ($vehiculeNeuf->fetchAll() != null) {
-
-    
-    while ($data = $vehiculeNeuf->fetch ()) {  
-
-        ?>
-    <!-- Category Card -->
- 
-    <div class="col-md-4">
-        <div class="card rounded">
-            <div class="card-image">
-                <span class="card-notify-badge"><?= $data['modele']; ?></span>
-                <span class="card-notify-year"><?= $data['millesime']; ?></span>
-                <img class="img-fluid" src="<?= $data['img']; ?>" alt="Alternate Text" />
-            </div>
-            <div class="card-image-overlay m-auto">
-              <
-          
-            </div>
-            <div class="card-body text-center">
-                <div class="ad-title m-auto">
-                </div>
-                <a class="ad-btn" href="#">View</a>
-           </div> 
-        </div> 
-    </div>  
-    
-<?php   }}else{
-  echo "nous n'avons pas de véhicules neuf ";
- }  ?>
-</div>
-</div>
-<div class="container">
-    <br>
-    <h4>Nos derniers ajout de véhicule d'occasion :</h4>
-	<br>
-	<div class="row" id="ads">
-    
-  <?php 
-  $resultat = $vehiculeOccasion;
-   if ($resultat != null) {
-
-    foreach ($resultat as $resultat) {  
-     
-      ?>
-      
- 
-    <!-- Category Card -->
-    
-    <div class="col-md-4">
-        <div class="card rounded">
-            <div class="card-image">
-                <span class="card-notify-badge"><?= $resultat['modele']; ?></span>
-                <span class="card-notify-year"><?= $resultat['millesime']; ?></span>
-                <img class="img-fluid" src="<?= $resultat['img'] ?>" alt="Alternate Text" />
-            </div>
-            <div class="card-image-overlay m-auto">
-                <span class="card-detail-badge">Occasion</span>
-                <span class="card-detail-badge"><?= $resultat['prix']; ?>€</span>
-                <span class="card-detail-badge"><?= $resultat['kilometrage']; ?>KM</span>
-             </div>
+<div class="home-last-vehicule">
+  <h4>Nos derniers ajout de vehicule neuf :</h4>
+  <div class="home-last-vehicule__sub">
+    <?php
+      foreach($vehiculesNeufs as $data) { ?>
+        <div class="vehicule-block">
+            <a href="/ppe/pages/fiches/vehicule.php?immat=<?=$data['immatriculation'] ?>">
+                <img src="img/<?= $data['img_1'] ?>" alt='img_vehicule' />
+                <div><label>Marque :</label><span><?= $data['marque'] ?></span></div>
+                <div><label>Type :</label><span><?= $data['type_vehicule'] ?></span></div>
+                <div class="vehicule_prix"><label class="prix_label">Prix :</label><span class="prix_span"><?= $data['prix'] ?>€</span></div>
+            </a>
+            <div class="reserver"><a href="pages/essayer/index.php?&immat=<?= $data['immatriculation']?>">Essayer</a></div>
         </div>
-    </div>
-    <?php }}else{
-  echo "nous n'avons pas de véhicules d'occasion ";
- }  ?>
-</div>
+    <?php }?>
+  </div>
 </div>
 <?php
   include "includes/footer.php";

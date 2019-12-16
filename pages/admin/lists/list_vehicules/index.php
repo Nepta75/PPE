@@ -10,8 +10,6 @@
 <?php
 if(isset($_GET["delete"]) && !empty($_GET["delete"])) {
     $cAdmin->deleteVehicule($_GET["delete"]);
-    $url = "admin.php?page=5&select=".$array[$value];
-    echo "<script> window.location.href = ".$url."; </script>";
 }
 $array = ['neuf', 'occas', 'client'];
 if(isset($_POST['list']))

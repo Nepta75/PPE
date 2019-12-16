@@ -1,4 +1,4 @@
-<h2> Liste des véhicules d'occasion </h2>
+<h2 class="list__title"> Liste des véhicules d'occasions </h2>
 <table>
     <thead>
         <tr class="table100-head">
@@ -29,15 +29,8 @@
             <td class="column8"><?= $data['etat'] ?></td>
             <td class="column9"><?= $data['km'] ?></td>
             <td class="column10"><?= $data['prix'] ?></td>
-            <td class="column11"><a href="admin.php?page=5&select=occas&delete=<?= $data['id_vehicule'] ?>"><i style="color: red;" class="fas fa-user-times"></i></a></td>
+            <td class="column11"><a href="/ppe/pages/admin/index.php?page=5&select=occas&delete=<?= $data['id_vehicule'] ?>"><i style="color: red;" class="fas fa-trash-alt"></i></a></td>
         </tr>
     <?php } ?>
     </tbody>
 </table>
-
-<style type="text/css">
-h2 {
-    margin-top: 50px;
-    text-align: center;
-}    
-</style>

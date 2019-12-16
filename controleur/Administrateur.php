@@ -170,12 +170,23 @@
             $this->modeleAdmin->deleteUser($id);
         }
 
+        public function deleteDevis($id){
+            $this->modeleAdmin->deleteDevis($id);
+        }
+        public function deleteEssayer($id){
+            $this->modeleAdmin->deleteEssayer($id);
+        }
+
         public function selectUser($id) {
            return $this->modeleAdmin->selectUser($id);
         }
 
         public function updateInscription($tab, $id) {
             $this->modeleAdmin->updateInscription($tab, $id);
+        }
+
+        public function udapteEssayer($data) {
+            $this->modeleAdmin->udapteEssayer($data);
         }
 
         //--------------------- Modification d'un vehicule par immatriculation ----------------------- \\
@@ -275,12 +286,12 @@
             return $this->modeleAdmin->selectAllEssai();
         }
 
-        public function confirmEssai($idessayer) {
-            $this->modeleAdmin->confirmEssai($idessayer);
+        public function selectEssai($id) {
+            return $this->modeleAdmin->selectEssai($id);
         }
 
-        public function deleteEssayer($id) {
-            $this->modeleAdmin->deleteEssayer($id);
+        public function confirmEssai($idessayer) {
+            $this->modeleAdmin->confirmEssai($idessayer);
         }
 
         public function verifAdmin() {

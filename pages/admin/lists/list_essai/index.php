@@ -1,35 +1,25 @@
-<form method="POST" action="">
-    <select name="list" onchange="this.form.submit()"> 
-        <option value="">Choisissez une option :</option>
-        <option value="client">Liste des clients</option>    
-        <option value="technicien">Liste des techniciens</option>    
-        <option value="admin">Liste des admins</option>    
-    </select>
-</form>
-
 <?php
-    $array = ['client', 'technicien', 'admin'];
-    if(isset($_POST['list']))
-    {
-       $value = array_search($_POST['list'], $array);
-    } elseif (isset($_GET['select'])) {
-        $value = array_search($_GET['select'], $array);
+    $data = ['statut'=>'', 'id_essayer'=>''];
+
+    if (isset($_GET["delete"]) && !empty($_GET["delete"])) {
+        $cAdmin->deleteEssayer($_GET["delete"]);
     }
-if (isset($value)) {
-    switch($value)
-    {
-        case 0 :  
-            $data = $cAdmin->selectAllClients();
-            require "vue/vue_list_clients.php" ; break ;
-        case 1 :  
-            $data = $cAdmin->selectAllTechniciens();
-            require "vue/vue_list_techniciens.php" ; break ;
-        case 2 :  
-            $data = $cAdmin->selectAllAdmins();
-            require "vue/vue_list_admins.php" ; break ;
+    if (isset($_GET['statut']) && !empty($_GET['statut']) && isset($_GET['id']) && !empty($_GET['id'])) {
+        $data['id_essayer'] = htmlspecialchars($_GET['id']);
+        $essai = $cAdmin->selectEssai($data['id_essayer']);
+        $cMail = new Mail ('localhost', 'bmwv2', 'root', '');
+        $statut = htmlspecialchars($_GET['statut']);
+        if ($statut == 'confirme') {
+            $data['statut'] = 'confirme';
+            $cAdmin->udapteEssayer($data);
+            $cMail->mail_resa_confirm_status($essai);
+        } elseif ($statut == 'refuser') {
+            $data['statut'] = 'refuser';
+            $cAdmin->udapteEssayer($data);
+            $cMail->mail_resa_cancel_status($essai);
+        }
     }
-} else {
-    $data = $cAdmin->selectAllClients();
+    $data = $cAdmin->selectAllEssai();
     require "vue/vue_list_essais.php" ;
-}
+    require '../../includes/footer.php';
 ?>

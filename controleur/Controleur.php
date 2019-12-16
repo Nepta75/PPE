@@ -10,29 +10,42 @@
 			$this->unModele = new Modele ($serveur, $bdd, $user, $mdp);
 		}
 
+		public function selectAdmin($id) {
+			return $this->unModele->selectAdmin($id);
+		}
+
 		public function connexion($user, $mdp) {
+			$isAdmin = false;
 			if($this->unModele->connexion($user, $mdp) == null ) {
 				return null;
 			} else {
 				$resultat = $this->unModele->connexion($user, $mdp);
-				$_SESSION['pseudo'] = $resultat['pseudo'];
 				$_SESSION['nom'] = $resultat['nom'];
 				$_SESSION['prenom'] = $resultat['prenom'];
 				$_SESSION['tel'] = $resultat['tel'];
-				$_SESSION['idclient'] = $resultat['idclient'];
-				$_SESSION['id_user'] = $resultat['iduser'];
+				$_SESSION['id_user'] = $resultat['id_user'];
 				$_SESSION['mdp'] = $resultat['mdp'];
-				$_SESSION['email'] = $resultat['email'];
-				$_SESSION['admin_lvl'] = intval($resultat['admin_lvl']);
+				$_SESSION['email'] = $resultat['mail'];
+				if (!empty($this->selectAdmin($resultat['id_user']))) {
+					$admin = $this->selectAdmin($resultat['id_user']);
+					$isAdmin = true;
+					$_SESSION['admin_lvl'] = $admin['admin_lvl'];
+				}
 
-				if ($resultat['admin_lvl'] == 0) {
+				if (!$isAdmin) {
 					header("Location:/ppe/index.php");
 					exit();
-				} elseif ($resultat['admin_lvl'] > 0) {
+				} elseif ($isAdmin) {
 					header("Location:/ppe/pages/admin/index.php");
 					exit();
 				}
 			}
+		}
+
+		public function addEssai($data) {
+			$veh = $this->selectVehicule($data['immat']);
+			$data['id_vehicule'] = $veh['data']['id_vehicule'];
+			$this->unModele->addEssai($data);
 		}
 
 		public function inscription($tab) {

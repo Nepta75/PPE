@@ -88,7 +88,7 @@ echo $link; */
 					<li><a href="/ppe/pages/admin/index.php?page=4" class="admin-submenu-link">Liste des devis</a></li>
 					<li><a href="/ppe/pages/admin/index.php?page=5" class="admin-submenu-link">Liste des véhicules</a></li>
 					<li><a href="/ppe/pages/admin/index.php?page=6" class="admin-submenu-link">Liste des clients</a></li>
-					<li><a href="/ppe/pages/admin/index.php?page=7" class="admin-submenu-link">Liste des réservations</a></li>				
+					<li><a href="/ppe/pages/admin/index.php?page=7" class="admin-submenu-link">Liste demandes d'essai</a></li>				
 				</ul>
 			</li>
 			<?php } ?>
@@ -96,7 +96,7 @@ echo $link; */
 				<li class="monvehicule" class="menu-button menu-monvehicule"><a href="monvehicule.php" class="menu-link">Mon véhicule</a></li>
 			<?php } ?>
 			<?php
-			if (isset($_SESSION['pseudo'])) {
+			if (isset($_SESSION['email'])) {
 				echo '<li class="connexion-button"><a href="/ppe/deconnexion.php" class="connexion-link">Se déconnecter</a></li>';
 			} else {
 				echo '<li class="connexion-button"><a href="/ppe/pages/connexion/index.php" class="connexion-link">Se connecter</a></li>';

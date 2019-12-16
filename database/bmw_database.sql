@@ -115,10 +115,12 @@ CREATE TABLE devis(
 );
 
 CREATE TABLE essayer(
+	id_essayer Int  Auto_increment  NOT NULL ,
 	id_vehicule   Int NOT NULL ,
 	id_user       Int NOT NULL ,
-	date_essayage Date NOT NULL,
-	PRIMARY KEY (id_vehicule,id_user),
+	date_essayage Datetime NOT NULL,
+	statut enum ("en attente" , "confirme", "refuser"),
+	PRIMARY KEY (id_essayer),
 	FOREIGN KEY (id_vehicule) REFERENCES vehicule(id_vehicule),
 	FOREIGN KEY (id_user) REFERENCES user(id_user)
 );
@@ -127,7 +129,7 @@ CREATE TABLE essayer(
 /* --------- VUES ------------ */ 
 
 CREATE VIEW view_essayer as (
-	select u.id_user, u.nom, u.prenom, u.mail, u.adresse, v.id_vehicule, v.marque, v.modele, v.immatriculation, e.date_essayage
+	select e.id_essayer, u.id_user, u.nom, u.prenom, u.mail, u.adresse, v.id_vehicule, v.marque, v.modele, v.immatriculation, e.date_essayage, e.statut
 	from vehicule v
 	inner join essayer e on e.id_vehicule = v.id_vehicule
 	inner join user u on u.id_user = e.id_user

@@ -1,3 +1,4 @@
+<h2 class="list__title"> Liste des clients </h2>
 <table>
     <thead>
         <tr class="table100-head">
@@ -19,7 +20,7 @@
             <td class="column4"><?= $data['tel'] ?></td>
             <td class="column5"><?= $data['mail'] ?></td>
             <td class="column6"><?= $data['mdp'] ?></td>
-            <td class="column7"><a href="admin.php?page=5&select=client&delete=<?= $data['id_user'] ?>"><i style="color: red;" class="fas fa-user-times"></i></a></td>
+            <td class="column7"><a href="/ppe/pages/admin/index.php?page=6&select=client&delete=<?= $data['id_user'] ?>"><i style="color: red;" class="fas fa-user-times"></i></a></td>
         </tr>
     <?php } ?>
     </tbody>

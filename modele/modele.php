@@ -18,22 +18,40 @@ class Modele
 		}
 	}
 
-	public function connexion ($user, $mdp) {
-		if($this->unPdo != null) {
-			$requete = 'SELECT u.iduser, u.idclient, c.nom, c.prenom, c.adresse_rue, c.adresse_ville, c.adresse_cp,
-			c.tel, u.pseudo, u.mdp, u.email, u.admin_lvl
-			FROM client c
-			JOIN utilisateur u on u.idclient = c.idclient
-			WHERE u.pseudo = :user AND u.mdp = :mdp';
-			$verif = $this->unPdo->prepare($requete);
-			$verif->execute(array(":user"=>$user, ":mdp"=>$mdp));
+	public function verifImmat($immat) {
+        $requete = "select immatriculation from vehicule where immatriculation = :immat";
+        $select = $this->unPdo->prepare($requete);
+        $select->execute(array(":immat"=>$immat));
+        return $select->fetchAll();
+	}
+	
+	public function selectAdmin($id) {
+		$requete = "select * from view_admin where id_user = :id";
+        $select = $this->unPdo->prepare($requete);
+        $select->execute(array(":id"=>intval($id)));
+        return $select->fetch();
+	}
 
+	public function connexion ($mail, $mdp) {
+		if($this->unPdo != null) {
+			$requete = 'SELECT * from user WHERE mail = :mail AND mdp = :mdp';
+			$verif = $this->unPdo->prepare($requete);
+			$verif->execute(array(":mail"=>$mail, ":mdp"=>$mdp));
 			$resultat = $verif->fetch();
 			return $resultat;
 		}
 	}
 
-
+	public function addEssai($data) {
+		$requete = "insert into essayer values (null, :id_veh, :id_user, :date, :statut)";
+		$insert = $this->unPdo->prepare($requete);
+		$insert->execute(array(
+			':id_veh'=>$data['id_vehicule'],
+			':id_user'=>$data['id_user'],
+			':date'=>$data['date'],
+			':statut'=>"en attente",
+		));
+	}
 
 	public function inscription($tab) {
 		$requete1 = "INSERT INTO client (idclient, nom, prenom, adresse_rue, adresse_ville, adresse_cp, email, tel) VALUES 
@@ -86,7 +104,7 @@ class Modele
 	}
 
 	public function selecttreeVehiculesNeuf() {
-		$requete = "Select * from vehicule_neuf order by idvehiculeneuf asc limit 3";
+		$requete = "Select * from view_veh_neuf order by id_vehicule asc limit 3";
 		$select = $this->unPdo->query($requete);
 		return $select;
 
@@ -99,7 +117,7 @@ class Modele
 	}
 
 	public function selecttreeVehiculesOccasion() {
-		$requete = "Select * from vehicule_occasion where valide = 'oui' order by idvehiculeocc asc limit 3";
+		$requete = "Select * from view_veh_occas order by id_vehicule asc limit 3";
 		$select = $this->unPdo->query($requete);
 		return $select->fetchAll();
 
@@ -128,31 +146,35 @@ class Modele
 		return $resultat;
 	}
 
-	public function selectVehicule($immatriculation) {
-		$requete1 = "Select * from vehicule_neuf where immatriculation = :immatriculation";
-		$requete2 = "Select * from vehicule_occasion where immatriculation = :immatriculation";
-		$requete3 = "Select * from vehicule_client where immatriculation = :immatriculation";
-
-
-		$select = $this->unPdo->prepare($requete1);
-		$select->execute(array("immatriculation"=>$immatriculation));
-		$resultat = $select->fetch();
-
-		if ($resultat == null) {
-			$select2 = $this->unPdo->prepare($requete2);
-			$select2->execute(array("immatriculation"=>$immatriculation));
-			$resultat2 = $select2->fetch();
-
-			if ($resultat2 == null) {
-				$select3 = $this->unPdo->prepare($requete3);
-				$select3->execute(array("immatriculation"=>$immatriculation));
-				$resultat3 = $select3->fetch();
-				return $resultat3;
-			}
-			return $resultat2;
-		}
-		return $resultat;
+	public function selectIdVehicule($immatriculation) {
+		$requete = "select id_vehicule from vehicule where immatriculation = :immat";
+		$select = $this->unPdo->prepare($requete);
+		$select->execute(array(':immat'=>$immatriculation));
+		return $select->fetchColumn();
 	}
+
+    public function selectVehicule($immatriculation) {
+        if ($this->verifImmat($immatriculation)) {
+            $type = ["0"=>'neuf', "1"=>'occas', "2"=>'client'];
+            $result = ["type"=>'', "data"=>[]];
+            $requete = [
+                "0"=>"Select * from view_veh_neuf where immatriculation = :immatriculation",
+                "1"=>"Select * from view_veh_occas where immatriculation = :immatriculation",
+                "2"=>"Select * from view_veh_client where immatriculation = :immatriculation",
+            ];
+
+            for($i=0; $i < 3; $i++) {
+                if (!empty($result['data'])) return $result;
+                $select = $this->unPdo->prepare($requete[$i]);
+                $select->execute(array("immatriculation"=>$immatriculation));
+                $result = [
+                    'type'=>$type[$i], 
+                    'data'=>$select->fetch(),
+                ];
+            }
+            return $result;
+        }
+    }
 
 	//devis
 

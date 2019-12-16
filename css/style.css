@@ -189,6 +189,25 @@ a, a:hover{
 	margin: 10% 0 10% 0;
 }
 
+.home-last-vehicule {
+	margin: 50px auto;
+	width: 100%;
+}
+
+.home-last-vehicule h4 {
+	width: 100%;
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	background-color: grey;
+	color: white;
+}
+
+.home-last-vehicule__sub {
+	display: flex;
+	justify-content: center;
+}
+
 /*               A PROPOS                */
 
 div.about {
@@ -275,7 +294,7 @@ div.about-section2 h6 {
 	align-self: flex-end;
 }
 
-.vehicule-block .reserver a{
+.reserver a{
 	margin-top: 5px;
 	display: block;
 	width: 100%;
@@ -289,7 +308,7 @@ div.about-section2 h6 {
 	color: #fff;
 }
 
-.vehicule-block .reserver a:hover{
+.reserver a:hover{
 	background-color: rgb(0, 51, 109,0.7);
 	border-bottom: 3px solid #fff;
 	transition: 0.3s;
@@ -905,6 +924,11 @@ form h3 {
 }
 
 /* -------------- List Clients ----------------- */
+
+.list__title {
+	margin-top: 50px;
+	text-align: center;
+}  
   
   table {
 	border-spacing: 1;
@@ -1035,3 +1059,81 @@ form h3 {
 		text-align: center;
 	}
 }
+
+
+/* ------------- Fiches -------------------------- */
+
+.fiche {
+	width: 100%;
+}
+
+.fiche__image img {
+	width: 250px;
+	margin: 20px 0;
+}
+
+.fiche__vehicule {
+	display: flex;
+	max-width: 100%;
+	margin: 20px 50px;
+}
+
+.fiche__container {
+	margin: 20px;
+}
+
+.fiche__title {
+	width: 100%;
+	text-align: center;
+	margin-top: 50px;
+}
+
+.fiche__element {
+	width: 100%;
+	margin: 20px;
+}
+
+.fiche__element div {
+	padding: 0 5px;
+	margin: 5px;
+	height: 40px;
+	line-height: 40px;
+	background-color: grey;
+	color: black;
+}
+
+.fiche__element div label {
+	margin-right: 10px;
+	font-weight: bold;
+}
+
+/* ------------ Essayer ---------------- */
+.essayer {
+	height: 250px;
+	margin: 50px;
+	padding: 50px;
+	box-shadow: 0px 0px 10px 1px rgba(198, 198, 198, 0.75);
+	-moz-box-shadow: 0px 0px 10px 1px rgba(198, 198, 198, 0.75);
+	-webkit-box-shadow: 0px 0px 10px 1px rgba(198, 198, 198, 0.75);
+}
+
+.essayer label {
+	min-width:  250px;
+}
+
+.essayer input[type='submit'] {
+	border: none;
+	margin-top: 40px;
+	display: block;
+	width: 100%;
+	text-align: center;
+	line-height: 50px;
+	height: 50px;
+	font-weight: bold;
+	text-transform: uppercase;
+	background-color: #161616;
+	color :#fff;
+}
+
+.essayer input[type='submit']:hover {
+	opacity: 0.9;

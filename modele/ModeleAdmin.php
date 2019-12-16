@@ -293,16 +293,26 @@ class ModeleAdmin
     }
 
     public function deleteUser($id) {
-        $requete = "delete from utilisateur where idclient = :idclient";
+        $requete = "delete from user where id_user = :id";
         $delete = $this->unPdo->prepare($requete);
         $delete->execute(array(
-            ":idclient"=>$id,
+            ":id"=>$id,
         ));
+    }
 
-        $requete2 = "delete from client where idclient = :idclient";
-        $delete2 = $this->unPdo->prepare($requete2);
-        $delete2->execute(array(
-            ":idclient"=>$id,
+    public function deleteDevis($id) {
+        $requete = "delete from devis where id_devis = :id";
+        $delete = $this->unPdo->prepare($requete);
+        $delete->execute(array(
+            ":id"=>$id,
+        ));
+    }
+
+    public function deleteEssayer($id) {
+        $requete = "delete from essayer where id_essayer = :id";
+        $delete = $this->unPdo->prepare($requete);
+        $delete->execute(array(
+            ":id"=>$id,
         ));
     }
 
@@ -348,6 +358,15 @@ class ModeleAdmin
 		));
     }
 
+    public function udapteEssayer($data) {
+        $requete = 'update essayer set statut = :statut where id_essayer = :id';
+        $update = $this->unPdo->prepare($requete);
+        $update->execute(array(
+            ":statut"=>$data['statut'],
+            ":id"=>$data['id_essayer'],
+        ));
+    }
+
     //ESSAYER VEHICULE
 
     public function insertEssayer($tab, $idVehicule, $idclient) {
@@ -365,29 +384,22 @@ class ModeleAdmin
     }
 
     public function selectAllEssai(){
-        $requete = "SELECT e.idessayer, e.idvehiculeneuf, e.idclient, e.date_essai, e.heure_essai, e.status_essai, c.nom, c.prenom, c.email, c.tel, c.adresse_rue, c.adresse_cp, c.adresse_ville,
-        v.modele, v.immatriculation, v.idvehiculeneuf
-        FROM client c inner join essayer e
-            on c.idclient = e.idclient
-        inner join vehicule_neuf v
-            on e.idvehiculeneuf = v.idvehiculeneuf
-        ";
-
+        $requete = "SELECT * FROM view_essayer";
         $select = $this->unPdo->query($requete);
-        $resultat = $select->fetchAll();
-        return $resultat;
+        return $select->fetchAll();
+    }
+
+    public function selectEssai($id){
+        $requete = "SELECT * FROM view_essayer where id_essayer = :id";
+        $select = $this->unPdo->prepare($requete);
+        $select->execute(array(':id'=>$id));
+        return $select->fetch();
     }
 
     public function confirmEssai($idessayer) {
         $requete = "UPDATE essayer SET status_essai = 'Confirmer' WHERE idessayer = :idessayer";
         $update = $this->unPdo->prepare($requete);
         $update->execute(array(":idessayer"=>$idessayer));
-    }
-
-    public function deleteEssayer($id) {
-        $requete = "delete from essayer where idessayer = :id";
-        $delete = $this->unPdo->prepare($requete);
-        $delete->execute(array(":id"=>$id));
     }
 } 
     

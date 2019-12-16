@@ -11,8 +11,8 @@
             ?>
             <h3>Connexion</h3>
             <div class="element_connexion">
-                <label for="pseudo">Pseudo :</label>
-                <input id="pseudo" type="text" name="pseudo" />
+                <label for="mail">email :</label>
+                <input id="mail" type="text" name="mail" />
             </div>
             <div class="element_connexion">
                 <label for="mdp">Mot de passe :</label>

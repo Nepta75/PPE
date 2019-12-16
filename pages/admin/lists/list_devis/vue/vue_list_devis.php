@@ -27,7 +27,7 @@
                 <td class="column6"><?= $data['date_devis'] ?></td>  
                 <td class="column7"><?= $data['nom_referent'] ?></td>
                 <td class="column7"><?= $data['prenom_referent'] ?></td>
-                <td class="column9"><a href="admin.php?page=4&action=x&id_devis=<?= $data['id_devis'] ?>"><i style="color: red;" class="fas fa-user-times"></i></a></td>
+                <td class="column9"><a href="admin.php?page=4&action=x&id_devis=<?= $data['id_devis'] ?>"><i style="color: red;" class="fas fa-trash-alt"></i></a></td>
             </tr>
     <?php } ?>
     </tbody>

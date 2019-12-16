@@ -1,4 +1,4 @@
-<h2> Liste des véhicules de clients </h2>
+<h2 class="list__title"> Liste des véhicules clients </h2>
 <table>
     <thead>
     <tr class="table100-head">
@@ -32,15 +32,8 @@
             <td class="column11"><?= $data['type_boite'] ?></td>
             <td class="column12"><?= $data['etat'] ?></td>
             <td class="column13"><?= $data['km'] ?></td>
-            <td class="column14"><a href="admin.php?page=5&select=client&delete=<?= $data['id_vehicule'] ?>"><i style="color: red;" class="fas fa-user-times"></i></a></td>
+            <td class="column14"><a href="/ppe/pages/admin/index.php?page=5&select=client&delete=<?= $data['id_vehicule'] ?>"><i style="color: red;" class="fas fa-trash-alt"></i></a></td>
         </tr>
     <?php } ?>
     </tbody>
 </table>
-
-<style type="text/css">
-h2 {
-    margin-top: 50px;
-    text-align: center;
-}    
-</style>
