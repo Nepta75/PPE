@@ -1,3 +1,4 @@
+<div class='somme_devis'>Somme total des devis confirmé : <b><?= $somme ?></b> </div>
 <table>
     <thead>
         <tr class="table100-head">
@@ -11,6 +12,7 @@
             <th class="column6">Date devis</th>
             <th class="column1">Nom referent</th>
             <th class="column1">Prenom referent</th>
+            <th class="column1">Statut</th>
             <th class="column9">Action</th>
         </tr>
     </thead>
@@ -27,7 +29,14 @@
                 <td class="column6"><?= $data['date_devis'] ?></td>  
                 <td class="column7"><?= $data['nom_referent'] ?></td>
                 <td class="column7"><?= $data['prenom_referent'] ?></td>
-                <td class="column9"><a href="admin.php?page=4&action=x&id_devis=<?= $data['id_devis'] ?>"><i style="color: red;" class="fas fa-trash-alt"></i></a></td>
+                <td class="column7"><?= $data['Statut'] ?></td>
+                <td class="column9">
+                    <div style="display: flex">
+                        <a class="ml-3" href="/ppe/pages/admin/index.php?page=4&statut=confirme&id=<?= $data['id_devis']?>"><i style="color: green;" class="fas fa-check"></i></a>
+                        <a class="ml-3" href="/ppe/pages/admin/index.php?page=4&statut=refuser&id=<?= $data['id_devis']?>"><i style="color: red;" class="fas fa-ban"></i></a>
+                        <a class="ml-3" href="/ppe/pages/admin/index.php?page=4&delete=<?= $data['id_devis'] ?>"><i style="color: red;" class="fas fa-trash-alt"></i></a>
+                    </div>
+                </td>
             </tr>
     <?php } ?>
     </tbody>

@@ -29,9 +29,10 @@ if (isset($_POST['valide1'])) {
 					"mail"=>$user['mail'],
 					"adresse"=>$user['adresse'],
 					"info"=> '',
-					"prix"=> 0,
+					"prix"=> $infoVehicule['data']['prix'],
 					"id_client"=> intval($_POST['id_user']),
 					"id_technicien"=> intval($_SESSION['id_user']),
+					"statut"=> 'en attente',
 				);
 			$unControleur->insertDevis($dataDevis);
 		} else {

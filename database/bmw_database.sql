@@ -108,7 +108,7 @@ CREATE TABLE devis(
 	date_devis    Datetime NOT NULL ,
 	id_client     Int NOT NULL,
 	id_technicien Int NOT NULL,
-
+	statut enum ("en attente" , "confirme", "refuser"),
 	PRIMARY KEY (id_devis),
 	FOREIGN KEY (id_client) REFERENCES client(id_user),
 	FOREIGN KEY (id_technicien) REFERENCES technicien(id_user)
@@ -137,7 +137,7 @@ CREATE VIEW view_essayer as (
 
 CREATE VIEW view_devis as (
 	select d.id_devis, d.id_client, d.id_technicien, d.sujet, d.immatriculation,
-	d.nom, d.prenom, d.adresse, d.mail, d.info, d.prix, d.date_devis,
+	d.nom, d.prenom, d.adresse, d.mail, d.info, d.prix, d.date_devis, d.Statut,
 	t.nom as nom_referent, t.prenom as prenom_referent
 	from devis d
 	inner join user t on t.id_user = d.id_technicien
@@ -267,4 +267,4 @@ call insert_veh_neuf('bmw', 'x6', 'ff-001-dd', '4 Roues', 1600, 'essence', 'manu
 call insert_veh_neuf('bmw', 'x5', 'as-784-dd', '4 Roues', 1600, 'essence', 'manuelle', 87500, "x6_1.jpg", "x6_2.jpg");
 
 insert into devis values(null, 'Vente', 'rt-875-dd', 'Aydogan', 'Lokman', 'lokman-hekim@hotmail.fr',
-'2 rue de Cléry', 'Vérifications', 50, NOW(), 1, 5);
+'2 rue de Cléry', 'Vérifications', 50, NOW(), 1, 5, 'en attente');

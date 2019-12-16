@@ -189,6 +189,10 @@
             $this->modeleAdmin->udapteEssayer($data);
         }
 
+        public function updateStatutDevis($data) {
+            $this->modeleAdmin->updateStatutDevis($data);
+        }
+
         //--------------------- Modification d'un vehicule par immatriculation ----------------------- \\
 
         public function updateVehiculeNeuf($data) {

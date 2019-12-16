@@ -1,10 +1,10 @@
 <?php
 require_once "../../includes/header.php";
-$unControler = new Controleur('localhost', 'bmwppe', 'root', '');
+$unControler = new Controleur('localhost', 'bmwv2', 'root', '');
 
 if(isset($_POST['inscription'])) {
-    if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['adresse_rue']) && !empty($_POST['adresse_cp'])
-    && !empty($_POST['ville']) && !empty($_POST['tel']) && !empty($_POST['pseudo']) && !empty($_POST['mail']) && !empty($_POST['mdp'])) {
+    if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['adresse'])
+    && !empty($_POST['tel']) && !empty($_POST['mail']) && !empty($_POST['mdp'])) {
         $unControler->inscription($_POST);
     } else {
         $erreur = "Erreur Veuillez remplire tous les champs !";

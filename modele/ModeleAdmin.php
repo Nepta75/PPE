@@ -367,6 +367,15 @@ class ModeleAdmin
         ));
     }
 
+    public function updateStatutDevis($data) {
+        $requete = 'update devis set statut = :statut where id_devis = :id';
+        $update = $this->unPdo->prepare($requete);
+        $update->execute(array(
+            ":statut"=>$data['statut'],
+            ":id"=>$data['id'],
+        ));
+    }
+
     //ESSAYER VEHICULE
 
     public function insertEssayer($tab, $idVehicule, $idclient) {

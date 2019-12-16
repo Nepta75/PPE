@@ -18,16 +18,8 @@
                         <input id="prenom" type="text" name="prenom" />
                     </div>
                     <div class="element_inscription">
-                        <label for="adresse_rue">Adresse rue:</label>
-                        <input id="adresse_rue" type="text" name="adresse_rue" />
-                    </div>
-                    <div class="element_inscription">
-                        <label for="adresse_rue">Adresse CP :</label>
-                        <input id="adresse_cp" type="text" name="adresse_cp" />
-                    </div>
-                    <div class="element_inscription">
-                        <label for="ville">Ville :</label>
-                        <input id="ville" type="text" name="ville" />
+                        <label for="adresse">Adresse:</label>
+                        <input id="adresse" type="text" name="adresse" />
                     </div>
                     <div class="element_inscription">
                         <label for="tel">tel :</label>
@@ -35,11 +27,6 @@
                     </div>
                 </div>
                 <div class="inscription-block">
-                    <h3> Info de inscription </h3>
-                    <div class="element_inscription">
-                        <label for="pseudo">Pseudo :</label>
-                        <input id="pseudo" type="text" name="pseudo" />
-                    </div>
                     <div class="element_inscription">
                         <label for="mail">Mail :</label>
                         <input id="mail" type="mail" name="mail" />

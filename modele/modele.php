@@ -54,33 +54,17 @@ class Modele
 	}
 
 	public function inscription($tab) {
-		$requete1 = "INSERT INTO client (idclient, nom, prenom, adresse_rue, adresse_ville, adresse_cp, email, tel) VALUES 
-		(null, :nom, :prenom, :adresse_rue, :adresse_ville, :adresse_cp, :email, :tel)";
-
-		$insert = $this->unPdo->prepare($requete1);
+		$requete = "call insert_client(:nom, :prenom, :mail, :adresse, :tel, :mdp)";
+		$insert = $this->unPdo->prepare($requete);
 		$insert->execute(array(
 			":nom"=>$tab['nom'],
 			":prenom"=>$tab['prenom'],
-			":adresse_rue"=>$tab['adresse_rue'],
-			":adresse_ville"=>$tab['ville'],
-			":adresse_cp"=>$tab['adresse_cp'],
-			":email"=>$tab['mail'],
+			":mail"=>$tab['mail'],
+			":adresse"=>$tab['adresse'],
 			":tel"=>$tab['tel'],
-		));
-
-		$lastId = $this->unPdo->lastInsertId();
-
-		$requete2 = "INSERT INTO utilisateur(iduser, idclient, pseudo, mdp, email, admin_lvl) VALUES 
-		(null, :idclient, :pseudo, :mdp, :email, 0)";
-		$insert2 = $this->unPdo->prepare($requete2);
-		$insert2->execute(array(
-			":idclient"=>$lastId,
-			":pseudo"=>$tab['pseudo'],
 			":mdp"=>$tab['mdp'],
-			":email"=>$tab['mail'],
 		));
 
-		header("Location:/ppe/pages/connexion/index.php?succes=in");
 	}
 
 	public function selectAllClients() {
@@ -188,7 +172,7 @@ class Modele
 
 	public function insertDevis($data) {
 		$requete = "INSERT INTO devis VALUES (null, :sujet, :immatriculation, :nom, :prenom, :mail,
-		 :adresse, :info, :prix, NOW(), :id_client, :id_technicien)";
+		 :adresse, :info, :prix, NOW(), :id_client, :id_technicien, :statut)";
 		try {
 			$insert = $this->unPdo->prepare($requete);
 			$insert->execute(array(
@@ -201,7 +185,8 @@ class Modele
 				":info"=>$data['info'],
 				":prix"=>$data['prix'],
 				":id_client"=>$data['id_client'],
-				":id_technicien"=> $data['id_technicien']
+				":id_technicien"=> $data['id_technicien'],
+				":statut"=>$data['statut'],
 			));
 		} catch (\PDOException $e) {
             echo $e->getCode();
