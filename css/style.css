@@ -165,7 +165,7 @@ a, a:hover{
 /* CONTENU ACCUEIL */
 
 .carousel {
-	position: absolute;
+
 }
 
 .img_carousel_index {
@@ -1145,3 +1145,4 @@ form h3 {
 
 .essayer input[type='submit']:hover {
 	opacity: 0.9;
+}
