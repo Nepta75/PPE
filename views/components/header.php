@@ -14,11 +14,11 @@
 	<!-- CSS -->
 	
 
-	<link rel="stylesheet" type="text/css" href="/ppe/css/bootstrap.min.css"/>
-	<link rel="stylesheet" type="text/css" href="/ppe/css/style.css"/>
-	<link href="/ppe/css/fontawesome/css/all.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="/ppe/css/header.css"/>
-	<link rel="stylesheet" type="text/css" href="/ppe/css/footer.css"/>
+	<link rel="stylesheet" type="text/css" href="<?= CSS ?>bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="<?= CSS ?>style.css"/>
+	<link href="<?= CSS ?>fontawesome/css/all.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="<?= CSS ?>header.css"/>
+	<link rel="stylesheet" type="text/css" href="<?= CSS ?>footer.css"/>
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -29,7 +29,7 @@
 
 	<!-- FAVICON -->
 
-	<link rel="shortcut icon" type="image/ico" href="/ppe/img/icons/favicon.ico" />
+	<link rel="shortcut icon" type="image/ico" href="<?= IMG ?>icons/favicon.ico" />
 
 	</head>
 	<body>
@@ -38,8 +38,8 @@
 
 	<div class="header">
 		<div class="logo">
-			<a href="/ppe/index.php"><img src="/ppe/img/logo2.png"></a>
-			<a href="/ppe/index.php"><h4>BMW Paris<br/>Automobiles & Moto</h4></a>
+			<a href="home"><img src="<?= IMG ?>logo2.png"></a>
+			<a href="home"><h4>BMW Paris<br/>Automobiles & Moto</h4></a>
 		</div>
         <nav class="navbar">
           <ul class="menu">

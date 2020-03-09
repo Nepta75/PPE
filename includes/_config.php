@@ -19,6 +19,7 @@ define('MODEL', ROOT.'modele/');
 define('CLASSE', ROOT.'classes/');
 
 define('IMG', 'img/');
+define('CSS', 'css/');
 
 
 /** SQL Connexion ***/

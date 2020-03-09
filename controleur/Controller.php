@@ -8,8 +8,8 @@ class Controller {
     protected $cAdmin;
 
     public function __construct() {
-        $this->model = new Model('localhost', 'bmwv2', 'root', '');
-        $this->cAdmin = new ControllerAdministrateur('localhost', 'bmwv2', 'root', '');
+        $this->model = new Model(DBHOST, DBNAME, DBUSER, DBMDP);
+        $this->cAdmin = new ControllerAdministrateur(DBHOST, DBNAME, DBUSER, DBMDP);
     }
 
     public function renderHeader() {
@@ -63,7 +63,6 @@ class Controller {
         $veh = $this->selectVehicule($data['immat']);
         $data['id_vehicule'] = $veh['data']['id_vehicule'];
         $this->model->addEssai($data);
-        header("Location:connexion?succes=dc");
     }
 
     public function inscription($tab) {

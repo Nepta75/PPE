@@ -2,9 +2,9 @@
     <div class="fiche__title"><h3>Fiche du véhicule : <?= $data['immatriculation'] ?></h3></div>
     <div class="fiche__vehicule">
         <div class="fiche__image">
-            <div><img src="/ppe/img/<?= $data['img_1'] ?>" alt="vehicule" /></div>
+            <div><img src="<?= IMG ?><?= $data['img_1'] ?>" alt="vehicule" /></div>
             <?php if (!empty($data['img_2'])) { ?>
-            <div><img src="/ppe/img/<?= $data['img_2'] ?>" alt="vehicule" /></div>
+            <div><img src="<?= IMG ?><?= $data['img_2'] ?>" alt="vehicule" /></div>
             <?php } ?>
         </div>
         <div class='fiche__container fiche__container--vehicule'>

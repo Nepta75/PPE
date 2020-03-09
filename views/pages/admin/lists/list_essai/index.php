@@ -7,7 +7,6 @@
     if (isset($_GET['statut']) && !empty($_GET['statut']) && isset($_GET['id']) && !empty($_GET['id'])) {
         $data['id_essayer'] = htmlspecialchars($_GET['id']);
         $essai = $this->cAdmin->selectEssai($data['id_essayer']);
-        $cMail = new Mail ('localhost', 'bmwv2', 'root', '');
         $statut = htmlspecialchars($_GET['statut']);
         if ($statut == 'confirme') {
             $data['statut'] = 'confirme';
