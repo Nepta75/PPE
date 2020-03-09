@@ -210,8 +210,8 @@ class ModeleAdmin
 
     public function updateVehiculeNeuf($id, $marque, $immatriculation, $type, $modele, $cylindree,
     $energie, $typeBoite, $prix, $img1, $img2){
-        $requete = 'call update_veh_neuf(:id, :marque, :modele, :immatriculation, :type, :cylindree, 
-        :energie, :typeBoite, :prix, :img1, :img2)';
+        $requete = 'UPDATE vehicule SET marque = :marque, modele = :modele, immatriculation = :immatriculation, type_vehicule = :type, cylindree = :cylindree, 
+        energie = :energie, type_boite = :typeBoite, prix = :prix, img_1 = :img1, img_2 = :img2 WHERE id_vehicule = :id';
         try {
             $insert = $this->unPdo->prepare($requete);
             $insert->execute(array(
@@ -235,26 +235,34 @@ class ModeleAdmin
 
     public function updateVehiculeOccas($id, $marque, $modele, $date_imma, $immatriculation,
     $type, $cylindree ,$energie, $typeBoite, $etat, $info, $km, $prix, $img1, $img2) {
-        $requete = "call update_veh_occas(:id, :marque, :modele, :date_imma, :immatriculation, :type, :cylindree,
-        :energie, :typeBoite, :etat, :info, :km, :prix, :img1, :img2)";
+        $requete = 'UPDATE vehicule SET marque = :marque, modele = :modele, immatriculation = :immatriculation, type_vehicule = :type, cylindree = :cylindree, 
+        energie = :energie, type_boite = :typeBoite, prix = :prix, img_1 = :img1, img_2 = :img2 WHERE id_vehicule = :id';
+
+        $requete2 = 'UPDATE vehicule_occasion SET date_immat = :date_imma, etat = :etat, information = :info, km = :km
+        WHERE id_vehicule = :id';
         try {
             $insert = $this->unPdo->prepare($requete);
             $insert->execute(array(
                 ":id"=>$id,
                 ":marque"=>$marque,
                 ":modele"=>$modele,
-                ":date_imma"=>$date_imma,
                 ":immatriculation"=>$immatriculation,
                 ":type"=>$type,
                 ":cylindree"=>$cylindree,
                 ":energie"=>$energie,
                 ":typeBoite"=>$typeBoite,
-                ":etat"=>$etat,
-                ":info"=>$info,
-                ":km"=>$km,
                 ":prix"=>$prix,
                 ":img1"=>$img1,
                 ":img2"=>$img2,
+            ));
+
+            $insert2 = $this->unPdo->prepare($requete2);
+            $insert2->execute(array(
+                ":id"=>$id,
+                ":date_imma"=>$date_imma,
+                ":etat"=>$etat,
+                ":info"=>$info,
+                ":km"=>$km,
             ));
         } catch (\PDOException $e) {
             echo $e->getCode();
@@ -265,26 +273,34 @@ class ModeleAdmin
     
     public function updateVehiculeClient($user, $id, $marque, $modele, $date_imma, $immatriculation, $type
     ,$cylindree, $energie, $typeBoite, $etat, $info, $km, $img1, $img2) {
-        $requete = "call update_veh_client(:user, :id, :marque, :modele, :date_imma, :immatriculation, 
-            :type, :cylindree, :energie, :typeBoite, :etat, :info, :km, :img1, :img2)";
+        $requete = 'UPDATE vehicule SET marque = :marque, modele = :modele, immatriculation = :immatriculation, type_vehicule = :type, cylindree = :cylindree, 
+        energie = :energie, type_boite = :typeBoite, prix = :prix, img_1 = :img1, img_2 = :img2 WHERE id_vehicule = :id';
+
+        $requete2 = 'UPDATE vehicule_client SET date_immat = :date_imma, etat = :etat, information = :info, km = :km
+        WHERE id_vehicule = :id';
         try {
             $insert = $this->unPdo->prepare($requete);
             $insert->execute(array(
-                ":user"=>$user,
                 ":id"=>$id,
                 ":marque"=>$marque,
                 ":modele"=>$modele,
-                ":date_imma"=>$date_imma,
                 ":immatriculation"=>$immatriculation,
                 ":type"=>$type,
                 ":cylindree"=>$cylindree,
                 ":energie"=>$energie,
                 ":typeBoite"=>$typeBoite,
+                ":prix"=> null,
+                ":img1"=>$img1,
+                ":img2"=>$img2,
+            ));
+
+            $insert2 = $this->unPdo->prepare($requete2);
+            $insert2->execute(array(
+                ":id"=>$id,
+                ":date_imma"=>$date_imma,
                 ":etat"=>$etat,
                 ":info"=>$info,
                 ":km"=>$km,
-                ":img1"=>$img1,
-                ":img2"=>$img2,
             ));
         } catch (\PDOException $e) {
             echo $e->getCode();
